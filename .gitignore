@@ -1,0 +1,11 @@
+*~
+.DS_Store
+_hgrc
+_netrc
+emacs.d/emacs-desktop-*
+screen_sessions.json
+ssh/_bossylobster_rsa
+ssh/_bossylobster_rsa.pub
+ssh/_github_rsa
+ssh/_github_rsa.pub
+ssh/known_hosts

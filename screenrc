@@ -1,0 +1,108 @@
+#use C-t instead of C-a for screen escape key
+escape "^T^T"
+
+# force the current window to close with C-t K
+bind K kill
+
+# copy the screen paste buffer to the MacOSX pastebord automatically
+bindkey -m ^@ eval "stuff ' '" "writebuf" "exec sh -c '/usr/bin/pbcopy < /tmp/screen-exchange'"
+
+# make copy mode behave more like emacs
+# emacs keybindings for navigation in copy mode
+markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
+
+# special hack for C-e, since it should go *past*
+# the last char. -m means this is for copy mode only.
+bindkey -m ^e stuff "$^f"
+
+# C-g and other keys just quit copy mode. Esc does nothing.
+markkeys \033=\015=^G=^D=h=j=k=l=H=M=L=G=g=y=c=v=a=x=b=e=B=E=w
+markkeys @=\033
+
+# control arrows move by words. (set B, e, and w to F keys so that i can
+# use them to move by words, but they themselves still quit copy mode.)
+markkeys B=[:E=]:b={:e=}:w=>
+bindkey -m ^[Od stuff {  #"[[}"
+bindkey -m ^[Oc stuff ]  #"}]^f"
+
+hardstatus alwayslastline
+hardstatus string '%{= yd}%{.kg}[ %{.kg}%H %{.kg}][%= %{kw}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][ %{Y}%l%{g} ][%{=b C} %m/%d %c %{g} ]%{W}'
+
+# Make the focused region have a green-background caption,
+# and the unfocused region have a black-on-grey caption
+caption string '%?%F%{Wg}%:%{kK}%?%3n %t'
+
+vbell off
+autodetach on
+startup_message off
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+
+defscrollback 20000
+
+bind ^r echo "Cannot open repl -- not running a standard dev screen instace."
+
+#xterm understands both im/ic and doesn't have a status line.
+#Note: Do not specify im and ic in the real termcap/info file as
+#some programs (e.g. vi) will not work anymore.
+termcap  xterm hs@:cs=\E[%i%d;%dr:im=\E[4h:ei=\E[4l
+terminfo xterm hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l
+
+#80/132 column switching must be enabled for ^AW to work
+#change init sequence to not switch width
+termcapinfo  xterm Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+
+# Make the output buffer large for (fast) xterms.
+#termcapinfo xterm* OL=10000
+termcapinfo xterm* OL=100
+
+# tell screen that xterm can switch to dark background and has function
+# keys.
+termcapinfo xterm 'VR=\E[?5h:VN=\E[?5l'
+termcapinfo xterm 'k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~'
+termcapinfo xterm 'kh=\EOH:kI=\E[2~:kD=\E[3~:kH=\EOF:kP=\E[5~:kN=\E[6~'
+
+# special xterm hardstatus: use the window title.
+termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+
+#terminfo xterm 'vb=\E[?5h$<200/>\E[?5l'
+termcapinfo xterm 'vi=\E[?25l:ve=\E[34h\E[?25h:vs=\E[34l'
+
+# emulate part of the 'K' charset
+termcapinfo   xterm 'XC=K%,%\E(B,[\304,\\\\\326,]\334,{\344,|\366,}\374,~\337'
+
+# xterm-52 tweaks:
+# - uses background color for delete operations
+termcapinfo xterm* be
+
+################
+#
+# wyse terminals
+#
+
+#wyse-75-42 must have defflow control (xo = "terminal uses xon/xoff")
+#essential to have it here, as this is a slow terminal.
+termcapinfo wy75-42 xo:hs@
+
+# New termcap sequences for cursor application defmode.
+termcapinfo wy* CS=\E[?1h:CE=\E[?1l:vi=\E[?25l:ve=\E[?25h:VR=\E[?5h:VN=\E[?5l:cb=\E[1K:CD=\E[1J
+
+################
+#
+# other terminals
+#
+
+# make hp700 termcap/info better
+termcapinfo  hp700 'Z0=\E[?3h:Z1=\E[?3l:hs:ts=\E[62"p\E[0$~\E[2$~\E[1$}:fs=\E[0}\E[61"p:ds=\E[62"p\E[1$~\E[61"p:ic@'
+
+# Extend the vt100 desciption by some sequences.
+termcap  vt100* ms:AL=\E[%dL:DL=\E[%dM:UP=\E[%dA:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC
+terminfo vt10*0 ms:AL=\E[%p1%dL:DL=\E[%p1%dM:UP=\E[%p1%dA:DO=\E[%p1%dB:LE=\E[%p1%dD:RI=\E[%p1%dC
+termcapinfo linux C8
+# old rxvt versions also need this
+# termcapinfo rxvt C8
+
+
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+term "xterm-256color"

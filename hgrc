@@ -1,0 +1,25 @@
+[ui]
+username = daniel.j.hermes@gmail.com
+
+[auth]
+codehosting.prefix = https://code.google.com/
+codehosting.username = daniel.j.hermes@gmail.com
+codehosting.password = FAKE
+
+[alias]
+blame = annotate --user --changeset
+
+[extensions]
+mq =
+color =
+bookmarks =
+
+[color]
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = magenta bold
+status.ignored = black bold
+
+[bookmarks]
+track.current = True

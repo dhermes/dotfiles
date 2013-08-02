@@ -1,0 +1,11 @@
+Host bossylobster.unfuddle.com
+  HostName bossylobster.unfuddle.com
+  User git
+  IdentityFile $HOME/.ssh/bossylobster_rsa
+
+Host github
+  HostName github.com
+  User git
+  IdentityFile $HOME/.ssh/github_rsa
+
+ForwardAgent yes
