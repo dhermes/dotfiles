@@ -127,7 +127,6 @@
 ;; FOR BUFFER RECOVERY
 ;; http://www.emacswiki.org/emacs/DeskTop
 (setq dhermes-emacs-dir (concat (getenv "HOME") "/"
-                          "dhermes-local-setup" "/"
                           "dotfiles" "/"
                           "emacs.d" "/"))
 (setq desktop-path (list dhermes-emacs-dir))
