@@ -43,8 +43,32 @@ HISTFILESIZE=2000
 
 # Custom autojump command.
 alias jumpstat="autojump --stat"
+if [[ "`uname`" == 'Darwin' ]]; then
+  [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+fi
 
-export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-:}"
+# For inferior shells that don't define update_terminal_cwd
+# http://stackoverflow.com/questions/85880
+# http://superuser.com/questions/418559
+function_exists() {
+    declare -f -F $1 > /dev/null
+    return $?
+}
+if ! function_exists "update_terminal_cwd"; then
+    update_terminal_cwd() {
+        return
+    }
+fi
+
+# Update the prompt command with a history prefix if have not already.
+# Should probably check for string containment rather than beginning
+# with the prefix, though this brings it much closer to idempotent than
+# it was before (especially with screen).
+PROMPT_PREFIX="history -a; history -c; history -r;"
+if [[ $PROMPT_COMMAND != ${PROMPT_PREFIX}* ]] ;
+then
+    export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-:}"
+fi
 
 alias screen="screen -S djh-screen"
 cd `python $HOME/dotfiles/add_screen_tab.py --new`
