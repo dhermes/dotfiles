@@ -1,0 +1,29 @@
+#-*-sh-*-
+
+## add "/Applications/Macaulay2-1.6/bin" to the environment variable PATH
+case "$PATH" in
+     "/Applications/Macaulay2-1.6/bin"|"/Applications/Macaulay2-1.6/bin:"*|*":/Applications/Macaulay2-1.6/bin"|*":/Applications/Macaulay2-1.6/bin:"*) ;;
+     "") PATH="/Applications/Macaulay2-1.6/bin" ; export PATH ;;
+     *) PATH="/Applications/Macaulay2-1.6/bin:$PATH" ; export PATH ;;
+esac
+
+## add "/Applications/Macaulay2-1.6/share/man" to the environment variable MANPATH
+case "$MANPATH" in
+     "/Applications/Macaulay2-1.6/share/man"|"/Applications/Macaulay2-1.6/share/man:"*|*":/Applications/Macaulay2-1.6/share/man"|*":/Applications/Macaulay2-1.6/share/man:"*) ;;
+     "") MANPATH="/Applications/Macaulay2-1.6/share/man:" ; export MANPATH ;;
+     *) MANPATH="/Applications/Macaulay2-1.6/share/man:$MANPATH" ; export MANPATH ;;
+esac
+
+## add "/Applications/Macaulay2-1.6/share/info" to the environment variable INFOPATH
+case "$INFOPATH" in
+     "/Applications/Macaulay2-1.6/share/info"|"/Applications/Macaulay2-1.6/share/info:"*|*":/Applications/Macaulay2-1.6/share/info"|*":/Applications/Macaulay2-1.6/share/info:"*) ;;
+     "") INFOPATH="/Applications/Macaulay2-1.6/share/info" ; export INFOPATH ;;
+     *) INFOPATH="/Applications/Macaulay2-1.6/share/info:$INFOPATH" ; export INFOPATH ;;
+esac
+
+## add "/Applications/Macaulay2-1.6/lib" to the environment variable LD_LIBRARY_PATH
+case "$LD_LIBRARY_PATH" in
+     "/Applications/Macaulay2-1.6/lib"|"/Applications/Macaulay2-1.6/lib:"*|*":/Applications/Macaulay2-1.6/lib"|*":/Applications/Macaulay2-1.6/lib:"*) ;;
+     "") LD_LIBRARY_PATH="/Applications/Macaulay2-1.6/lib" ; export LD_LIBRARY_PATH ;;
+     *) LD_LIBRARY_PATH="/Applications/Macaulay2-1.6/lib:$LD_LIBRARY_PATH" ; export LD_LIBRARY_PATH ;;
+esac

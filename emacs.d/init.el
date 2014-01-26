@@ -1,3 +1,10 @@
+;; From http://bzg.fr/emacs-strip-tease.html
+;; Prevent the cursor from blinking
+(blink-cursor-mode 0)
+;; Don't use messages that you don't read
+(setq initial-scratch-message "")
+(setq inhibit-startup-message t)
+
 ;; Turn on mark highlighting
 
 (setq transient-mark-mode t)
@@ -177,3 +184,7 @@
           (session-restore)))))
 
 )
+
+;; Macaulay 2 start
+(load "Macaulay2" t)
+;; Macaulay 2 end

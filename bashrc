@@ -74,3 +74,9 @@ alias screen="screen -S djh-screen"
 cd `python $HOME/dotfiles/add_screen_tab.py --new`
 function cd() { builtin cd "$@" && python $HOME/dotfiles/add_screen_tab.py; }
 trap "python $HOME/dotfiles/remove_screen_tab.py" exit
+
+## Macaulay 2 start
+if [ -f ~/.profile-Macaulay2 ]
+then . ~/.profile-Macaulay2
+fi
+## Macaulay 2 end

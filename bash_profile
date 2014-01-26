@@ -16,3 +16,9 @@ fi
 if [ -f /.bashrc ]; then
   . /.bashrc
 fi
+
+## Macaulay 2 start
+if [ -f ~/.profile-Macaulay2 ]
+then . ~/.profile-Macaulay2
+fi
+## Macaulay 2 end
