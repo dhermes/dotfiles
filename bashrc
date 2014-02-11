@@ -71,9 +71,17 @@ then
 fi
 
 alias screen="screen -S djh-screen"
-cd `python $HOME/dotfiles/add_screen_tab.py --new`
-function cd() { builtin cd "$@" && python $HOME/dotfiles/add_screen_tab.py; }
-trap "python $HOME/dotfiles/remove_screen_tab.py" exit
+# For appsa, h/t http://stackoverflow.com/questions/592620
+my_python_26() {
+    if hash python26 2>/dev/null; then
+        python26 "$@"
+    else
+        python2.6 "$@"
+    fi
+}
+cd `my_python_26 $HOME/dotfiles/add_screen_tab.py --new`
+function cd() { builtin cd "$@" && my_python_26 $HOME/dotfiles/add_screen_tab.py; }
+trap "my_python_26 $HOME/dotfiles/remove_screen_tab.py" exit
 
 ## Macaulay 2 start
 if [ -f ~/.profile-Macaulay2 ]
