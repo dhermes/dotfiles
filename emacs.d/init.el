@@ -188,3 +188,8 @@
 ;; Macaulay 2 start
 (load "Macaulay2" t)
 ;; Macaulay 2 end
+
+;; BEGIN: Make sure we never have tabs, only space.
+;; http://www.emacswiki.org/emacs/NoTabs
+(setq-default indent-tabs-mode nil)
+;; END: Make sure we never have tabs, only space.
