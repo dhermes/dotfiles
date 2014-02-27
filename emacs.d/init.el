@@ -193,3 +193,14 @@
 ;; http://www.emacswiki.org/emacs/NoTabs
 (setq-default indent-tabs-mode nil)
 ;; END: Make sure we never have tabs, only space.
+
+;; BEGIN: Make things like eshell respect ANSI color.
+;; http://www.emacswiki.org/emacs/AnsiColor
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+;; This removes colors from eshell:
+(add-hook 'eshell-preoutput-filter-functions
+          'ansi-color-filter-apply)
+;; This correctly prints colors in eshell but is said to be slow:
+;; (add-hook 'eshell-preoutput-filter-functions
+;;           'ansi-color-apply)
+;; END: Make things like eshell respect ANSI color.
