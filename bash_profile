@@ -8,7 +8,8 @@ if [[ "`uname`" == 'Darwin' ]]; then
 fi
 
 if [[ "`uname`" == 'Linux' ]]; then
-  PATH="/usr/local/bin/google_appengine:${PATH}"
+  # ../usg/bin For Hopper/Carver/etc. at NERSC
+  PATH="/usr/local/bin/google_appengine:${PATH}:/usr/common/usg/bin"
   export PATH
 fi
 

@@ -79,7 +79,11 @@ my_python() {
         if hash python26 2>/dev/null; then
             python26 "$@"
         else
-            python2.6 "$@"
+            if hash python2.6 2>/dev/null; then
+                python2.6 "$@"
+            else
+                python2 "$@"
+            fi
         fi
     fi
 }

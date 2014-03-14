@@ -1,4 +1,7 @@
-import json
+try:
+  import json
+except ImportError:
+  import simplejson as json
 import os
 import subprocess
 
@@ -43,8 +46,9 @@ def main():
     return
 
   if os.path.isfile(SCREEN_SESSIONS_FILE):
-    with open(SCREEN_SESSIONS_FILE, 'r') as fh:
-      screen_sessions = json.load(fh)
+    fh = open(SCREEN_SESSIONS_FILE, 'r')
+    screen_sessions = json.load(fh)
+    fh.close()
   else:
     screen_sessions = {}
 
@@ -53,8 +57,9 @@ def main():
   if not current_session:
     screen_sessions.pop(session_id)
 
-  with open(SCREEN_SESSIONS_FILE, 'w') as fh:
-    json.dump(screen_sessions, fh, indent=2)
+  fh = open(SCREEN_SESSIONS_FILE, 'w')
+  json.dump(screen_sessions, fh, indent=2)
+  fh.close()
 
   if emacs_desktop_saved(session_id, window):
     remove_emacs_desktop(session_id, window)

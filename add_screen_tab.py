@@ -1,4 +1,7 @@
-import json
+try:
+  import json
+except ImportError:
+  import simplejson as json
 import os
 import subprocess
 import sys
@@ -60,8 +63,9 @@ def main(argv):
     return
 
   if os.path.isfile(SCREEN_SESSIONS_FILE):
-    with open(SCREEN_SESSIONS_FILE, 'r') as fh:
-      screen_sessions = json.load(fh)
+    fh = open(SCREEN_SESSIONS_FILE, 'r')
+    screen_sessions = json.load(fh)
+    fh.close()
   else:
     screen_sessions = {}
 
@@ -82,14 +86,17 @@ def main(argv):
       print >>sys.stderr, ''
       print >>sys.stderr, ''
       window_as_ints = map(int, current_session)
-      max_window = max(window_as_ints) if window_as_ints else 0
+      max_window = 0
+      if window_as_ints:
+        max_window = max(window_as_ints)
       print >>sys.stderr, 'Your max is', max_window
 
   # If any of the conditions above fail
   current_session[window] = obey_symlink_pwd()
 
-  with open(SCREEN_SESSIONS_FILE, 'w') as fh:
-    json.dump(screen_sessions, fh, indent=2)
+  fh = open(SCREEN_SESSIONS_FILE, 'w')
+  json.dump(screen_sessions, fh, indent=2)
+  fh.close()
 
   if called_from_bashrc:
     print current_session[window]
