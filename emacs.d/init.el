@@ -204,3 +204,6 @@
 ;; (add-hook 'eshell-preoutput-filter-functions
 ;;           'ansi-color-apply)
 ;; END: Make things like eshell respect ANSI color.
+
+(require 'cuda-mode)
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . cuda-mode))
