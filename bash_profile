@@ -23,3 +23,9 @@ if [ -f ~/.profile-Macaulay2 ]
 then . ~/.profile-Macaulay2
 fi
 ## Macaulay 2 end
+
+# The next line updates PATH for the Google Cloud SDK.
+source $HOME/google-cloud-sdk/path.bash.inc
+
+# The next line enables bash completion for gcloud.
+source $HOME/google-cloud-sdk/completion.bash.inc
