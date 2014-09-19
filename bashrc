@@ -20,15 +20,64 @@ alias diff="diff -Nru"
 
 source ~/.git-completion.bash
 
-# http://stackoverflow.com/questions/4133904
-function git_branch_string {
-    local __curr_branch="`git rev-parse --abbrev-ref HEAD 2> /dev/null`"
-    if [[ $__curr_branch != "" ]]; then
-      __curr_branch=" ($__curr_branch)"
+# BEGIN: Git specific prompt methods.
+# From: https://gist.github.com/foosel/e46c649f4eb6a6e0fbde
+# NOTE: git status slightly adapted from https://coderwall.com/p/pn8f0g
+
+source ~/.bash-colors
+
+function git_color {
+  if [[ $EUID -ne 0 ]]; then
+    local git_status="$(git status 2> /dev/null)"
+
+    if [[ ! $git_status =~ "working directory clean" ]]; then
+      echo -e $bldred
+    elif [[ $git_status =~ "Your branch is ahead of" ]]; then
+      echo -e $bldylw
+    elif [[ $git_status =~ "nothing to commit" ]]; then
+      echo -e $bldgrn
+    else
+      echo -e $txtylw
     fi
-    IFS='' && echo $__curr_branch
+  else
+    echo -e $bldred
+  fi
 }
-export PS1='\h:\W`git_branch_string` \u$ '
+
+function git_branch {
+  local git_status="$(git status 2> /dev/null)"
+  local on_branch="On branch ([^${IFS}]*)"
+  local on_commit="HEAD detached at ([^${IFS}]*)"
+
+  if [[ $git_status =~ $on_branch ]]; then
+    local branch=${BASH_REMATCH[1]}
+    echo " ($branch)"
+  elif [[ $git_status =~ $on_commit ]]; then
+    local commit=${BASH_REMATCH[1]}
+    echo " ($commit)"
+  fi
+}
+
+if [[ $EUID -ne 0 ]]; then
+  usercolor=$txtgrn
+  pathcolor=$bldblu
+  gitcolor=$bldylw
+  promptcolor=$bldgrn
+  prompt='\$'
+else
+  usercolor=$txtred
+  promptcolor=$bldred
+  pathcolor=$bldred
+  gitcolor=$txtred
+  prompt='#'
+fi
+
+PS1="\[$usercolor\]\u@\h\[$txtrst\] \[$pathcolor\]\w\[$txtrst\]"
+PS1+="\[\$(git_color)\]"
+PS1+="\$(git_branch)"
+PS1+=" \[$promptcolor\]$prompt\[$txtrst\] \[$bldwht\]"
+
+# END: Git specific prompt methods.
 
 # TODO(dhermes): Implement
 # https://gist.github.com/1169093
