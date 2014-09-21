@@ -27,6 +27,10 @@ aptitude_install = [
     'texlive-full',
     'python-scitools',
     'okular',
+    # http://stackoverflow.com/a/9843560/1068170
+    'libpng-dev',
+    'libfreetype6-dev',
+    'python-pyside',  # Backend for matplotlib>=1.4.0.
 ]
 pip_install = [
     'matplotlib',
