@@ -84,6 +84,8 @@ def add_rc_files():
 
   # Get the template values to be placed into rc files.
   codehosting_email = raw_input('Email for Google Code Hosting: ')
+  print 'NOTE: Google Code Hosting password can be found at'
+  print '      https://code.google.com/hosting/settings'
   codehosting_password = getpass.getpass('Password for Google Code Hosting: ')
   substitution_dict = {
       'codehosting_email': codehosting_email,
