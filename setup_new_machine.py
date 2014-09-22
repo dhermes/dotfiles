@@ -16,7 +16,7 @@ symlinks = {
     '$HOME/dotfiles/hgrc': '$HOME/.hgrc',
     '$HOME/dotfiles/netrc': '$HOME/.netrc',
     '$HOME/dotfiles/screenrc': '$HOME/.screenrc',
-    '$HOME/dotfiles/ssh': '$HOME/.ssh',
+    '$HOME/dotfiles/ssh_config': '$HOME/.ssh/config',
     '$HOME/dotfiles/Xmodmap': '$HOME/.Xmodmap',
 }
 # os.path.expanduser

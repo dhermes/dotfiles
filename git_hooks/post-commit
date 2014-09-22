@@ -25,12 +25,6 @@ def switch_contents(path, fi):
 protected_files = [
     ('', 'hgrc'),
     ('', 'netrc'),
-    ('ssh', 'bossylobster_rsa'),
-    ('ssh', 'bossylobster_rsa.pub'),
-    ('ssh', 'github_rsa'),
-    ('ssh', 'github_rsa.pub'),
-    ('ssh', 'highorder_rsa'),
-    ('ssh', 'highorder_rsa.pub'),
 ]
 for path, fi in protected_files:
   switch_contents(path, fi)
