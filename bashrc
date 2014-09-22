@@ -24,7 +24,7 @@ source ~/.git-completion.bash
 # From: https://gist.github.com/foosel/e46c649f4eb6a6e0fbde
 # NOTE: git status slightly adapted from https://coderwall.com/p/pn8f0g
 
-source ~/.bash-colors
+source ~/.bash_colors
 
 function git_color {
   if [[ $EUID -ne 0 ]]; then

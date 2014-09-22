@@ -6,7 +6,11 @@ import subprocess
 import sys
 
 
-symlinks = {
+SYMLINKS = {
+    '$HOME/dotfiles/git_hooks/post-commit':
+        '$HOME/dotfiles/.git/hooks/post-commit',
+    '$HOME/dotfiles/git_hooks/pre-commit':
+        '$HOME/dotfiles/.git/hooks/pre-commit',
     '$HOME/dotfiles/bash-colors': '$HOME/.bash-colors',
     '$HOME/dotfiles/bash_completion.d': '$HOME/.bash_completion.d',
     '$HOME/dotfiles/bash_profile': '$HOME/.bash_profile',
@@ -20,7 +24,7 @@ symlinks = {
     '$HOME/dotfiles/ssh_config': '$HOME/.ssh/config',
     '$HOME/dotfiles/Xmodmap': '$HOME/.Xmodmap',
 }
-aptitude_install = [
+APTITUDE_INSTALL = [
     'xclip',
     'xsel',
     # http://stackoverflow.com/questions/1911713
@@ -36,12 +40,53 @@ aptitude_install = [
     'openssh-server',
     'espeak',
 ]
-pip_install = [
+PIP_INSTALL = [
     'matplotlib',
     'numpy',
     'scipy',
     'pillow',
 ]
+LINE = '-' * 70
+
+
+def add_symlinks():
+  # NOTE: This is OS agnostic.
+  print 'Adding symlinks:'
+  print LINE
+
+  for source, symbolic_location in SYMLINKS.iteritems():
+    # NOTE: We could make this idempotent by using os.path.islink.
+    src = os.path.expandvars(source)
+    dst = os.path.expandvars(symbolic_location)
+    os.symlink(src, dst)
+
+
+def _linux_add_packages():
+  print 'Adding Linux packages:'
+  print LINE
+
+  apt_cmd = ['apt-get', 'install', '-y'] + APTITUDE_INSTALL
+  subprocess.check_output(apt_cmd)
+
+
+def add_packages():
+  base_platform = platform.system()
+  # NOTE: This is Linux only. (Really even more specific than Linux.)
+  if base_platform == 'Linux':
+    _linux_add_packages()
+
+
+def add_python_packages():
+  # NOTE: This is OS agnostic.
+  print 'Adding Python packages:'
+  print LINE
+
+  # First install `pip`.
+  subprocess.check_output(['easy_install', '--upgrade', 'pip'])
+
+  # Then use `pip` to install all desired packages.
+  pip_cmd = ['pip', 'install', '--upgrade'] + PIP_INSTALL
+  subprocess.check_output(pip_cmd)
 
 
 def _linux_make_ssh_public_key_only():
@@ -143,19 +188,39 @@ def make_ssh_public_key_only():
     print 'Exiting make_ssh_public_key_only without doing anything.'
 
 
-def main():
-  for source, symbolic_location in symlinks.iteritems():
-    # NOTE: We could make this idempotent by using os.path.islink.
-    src = os.path.expandvars(source)
-    dst = os.path.expandvars(symbolic_location)
-    os.symlink(src, dst)
+def _linux_suggestions():
+  print 'Optional suggestions for Linux:'
+  print LINE
+  print '0. To install old versions of Python, i.e. "dead snakes"'
+  print '   Check out: http://askubuntu.com/a/141664'
+  print '   This may be useful.'
 
-  apt_cmd = ['apt-get', 'install', '-y'] + aptitude_install
-  subprocess.check_output(*apt_cmd)
-  pip_cmd = ['pip', 'install', '--upgrade'] + pip_install
-  subprocess.check_output(*pip_cmd)
+
+def suggestions():
+  base_platform = platform.system()
+  # NOTE: This is Linux only.
+  if base_platform == 'Linux':
+    _linux_suggestions()
+
+
+def main():
+  add_symlinks()
+
+  print LINE
+
+  add_packages()
+
+  print LINE
+
+  add_python_packages()
+
+  print LINE
 
   make_ssh_public_key_only()
+
+  print LINE
+
+  suggestions()
 
 
 if __name__ == '__main__':
