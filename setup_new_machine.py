@@ -1,3 +1,4 @@
+import __builtin__
 import getpass
 import os
 import platform
@@ -11,7 +12,7 @@ SYMLINKS = {
         '$HOME/dotfiles/.git/hooks/post-commit',
     '$HOME/dotfiles/git_hooks/pre-commit':
         '$HOME/dotfiles/.git/hooks/pre-commit',
-    '$HOME/dotfiles/bash-colors': '$HOME/.bash-colors',
+    '$HOME/dotfiles/bash_colors': '$HOME/.bash_colors',
     '$HOME/dotfiles/bash_completion.d': '$HOME/.bash_completion.d',
     '$HOME/dotfiles/bash_profile': '$HOME/.bash_profile',
     '$HOME/dotfiles/bashrc': '$HOME/.bashrc',
@@ -50,7 +51,6 @@ LINE = '-' * 70
 
 
 def add_symlinks():
-  # NOTE: This is OS agnostic.
   print 'Adding symlinks:'
   print LINE
 
@@ -58,7 +58,18 @@ def add_symlinks():
     # NOTE: We could make this idempotent by using os.path.islink.
     src = os.path.expandvars(source)
     dst = os.path.expandvars(symbolic_location)
-    os.symlink(src, dst)
+    if os.path.islink(dst):
+      real_path = os.path.realpath(dst)
+      if real_path != src:
+        msg = '\n'.join(['Real path for link: %r' % dst,
+                         'was %r' % real_path,
+                         'supposed to be %r.' % src])
+        raise ValueError(msg)
+    else:
+      msg = '\n'.join(['Linking %r' % src,
+                       'as %r.' % dst])
+      print msg
+      os.symlink(src, dst)
 
 
 def _linux_add_packages():
@@ -204,6 +215,10 @@ def suggestions():
 
 
 def main():
+  if getpass.getuser() != 'root':
+    print 'Please run as root. This is required to install.'
+    sys.exit(1)
+
   add_symlinks()
 
   print LINE
@@ -224,8 +239,8 @@ def main():
 
 
 if __name__ == '__main__':
-  if getpass.getuser() != 'root':
-    print 'Please run as root. This is required to install.'
-    sys.exit(1)
-
-  main()
+  # H/T: http://stackoverflow.com/a/9093598/1068170
+  if hasattr(__builtin__, '__IPYTHON__'):
+    print 'In IPYTHON, not running main().'
+  else:
+    main()
