@@ -45,6 +45,7 @@ PIP_INSTALL = [
     'numpy',
     'scipy',
     'pillow',
+    'mercurial',
 ]
 LINE = '-' * 70
 

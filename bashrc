@@ -147,6 +147,7 @@ fi
 ## Macaulay 2 end
 
 
+## H/T: http://superuser.com/a/707645/196822
 if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]] ;
 then
     echo "SSH Agent not set, setting agent.";
