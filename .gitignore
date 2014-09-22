@@ -1,6 +1,6 @@
 *~
 .DS_Store
-_hgrc
-_netrc
 emacs.d/emacs-desktop-*
 screen_sessions.json
+netrc
+hgrc

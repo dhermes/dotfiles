@@ -1,10 +1,10 @@
 [ui]
-username = daniel.j.hermes@gmail.com
+username = $codehosting_email
 
 [auth]
 codehosting.prefix = https://code.google.com/
-codehosting.username = daniel.j.hermes@gmail.com
-codehosting.password = FAKE
+codehosting.username = $codehosting_email
+codehosting.password = $codehosting_password
 
 [alias]
 blame = annotate --user --changeset

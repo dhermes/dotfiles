@@ -5,15 +5,12 @@ import getpass
 import os
 import platform
 import shutil
+import string
 import subprocess
 import sys
 
 
 SYMLINKS = {
-    '$HOME/dotfiles/git_hooks/post-commit':
-        '$HOME/dotfiles/.git/hooks/post-commit',
-    '$HOME/dotfiles/git_hooks/pre-commit':
-        '$HOME/dotfiles/.git/hooks/pre-commit',
     '$HOME/dotfiles/bash_colors': '$HOME/.bash_colors',
     '$HOME/dotfiles/bash_completion.d': '$HOME/.bash_completion.d',
     '$HOME/dotfiles/bash_profile': '$HOME/.bash_profile',
@@ -72,7 +69,38 @@ def check_python_version():
     raise ValueError('Unexpected system Python: %r.' % stderr)
 
 
+def add_rc_files():
+  # NOTE: This must run before `add_symlinks`.
+  hgrc_fi = os.path.expandvars('$HOME/dotfiles/hgrc')
+  hgrc_template_fi = hgrc_fi + '.pytemplate'
+  with open(hgrc_template_fi, 'r') as fh:
+    hgrc_template = string.Template(fh.read())
+
+  netrc_fi = os.path.expandvars('$HOME/dotfiles/netrc')
+  netrc_template_fi = netrc_fi + '.pytemplate'
+  with open(netrc_template_fi, 'r') as fh:
+    netrc_template = string.Template(fh.read())
+
+  # Get the template values to be placed into rc files.
+  codehosting_email = raw_input('Email for Google Code Hosting: ')
+  codehosting_password = getpass.getpass('Password for Google Code Hosting: ')
+  substitution_dict = {
+      'codehosting_email': codehosting_email,
+      'codehosting_password': codehosting_password,
+  }
+
+  # Make substitutions and write to files.
+  with open(hgrc_fi, 'w') as fh:
+    fh.write(hgrc_template.substitute(substitution_dict))
+    print 'Wrote:', hgrc_fi
+
+  with open(netrc_fi, 'w') as fh:
+    fh.write(netrc_template.substitute(substitution_dict))
+    print 'Wrote:', netrc_fi
+
+
 def add_symlinks():
+  # NOTE: This must run after `add_rc_files`.
   print 'Adding symlinks:'
   print LINE
 
@@ -242,25 +270,17 @@ def main():
     sys.exit(1)
 
   check_python_version()
-
   print LINE
-
+  add_rc_files()
+  print LINE
   add_symlinks()
-
   print LINE
-
   add_packages()
-
   print LINE
-
   add_python_packages()
-
   print LINE
-
   make_ssh_public_key_only()
-
   print LINE
-
   suggestions()
 
 
