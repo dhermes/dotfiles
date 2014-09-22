@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import __builtin__
 import getpass
 import os
@@ -48,6 +50,26 @@ PIP_INSTALL = [
     'pillow',
 ]
 LINE = '-' * 70
+
+
+def check_python_version():
+  # First check the current running version.
+  major, minor, _, _, _ = sys.version_info
+  if (major, minor) != (2, 7):
+    raise ValueError('Expected Python 2.7 to be version running.')
+
+  # Then check system `python`.
+
+  # http://stackoverflow.com/a/2502883/1068170
+  proc = subprocess.Popen(
+      ['python', '-V'],
+      stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+  # NOTE: `communicate` waits for process to terminate.
+  stdout, stderr = proc.communicate()
+  if stdout != '':
+    raise ValueError('Unexpected stdout from `python -V`.')
+  if stderr[:11] != 'Python 2.7.':
+    raise ValueError('Unexpected system Python: %r.' % stderr)
 
 
 def add_symlinks():
@@ -218,6 +240,10 @@ def main():
   if getpass.getuser() != 'root':
     print 'Please run as root. This is required to install.'
     sys.exit(1)
+
+  check_python_version()
+
+  print LINE
 
   add_symlinks()
 
