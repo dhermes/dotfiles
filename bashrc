@@ -145,3 +145,15 @@ if [ -f ~/.profile-Macaulay2 ]
 then . ~/.profile-Macaulay2
 fi
 ## Macaulay 2 end
+
+
+if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]] ;
+then
+    echo "SSH Agent not set, setting agent.";
+    eval $(ssh-agent);
+
+    echo "";
+
+    echo "SSH-Adding GitHub SSH key.";
+    ssh-add $HOME/.ssh/github_rsa;
+fi
