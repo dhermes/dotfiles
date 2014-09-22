@@ -130,7 +130,7 @@ def _linux_add_packages():
   print LINE
 
   apt_cmd = ['apt-get', 'install', '-y'] + APTITUDE_INSTALL
-  subprocess.check_output(apt_cmd)
+  subprocess.check_call(apt_cmd)
 
 
 def add_packages():
@@ -146,11 +146,11 @@ def add_python_packages():
   print LINE
 
   # First install `pip`.
-  subprocess.check_output(['easy_install', '--upgrade', 'pip'])
+  subprocess.check_call(['easy_install', '--upgrade', 'pip'])
 
   # Then use `pip` to install all desired packages.
   pip_cmd = ['pip', 'install', '--upgrade'] + PIP_INSTALL
-  subprocess.check_output(pip_cmd)
+  subprocess.check_call(pip_cmd)
 
 
 def _linux_make_ssh_public_key_only():
@@ -186,7 +186,7 @@ def _linux_make_ssh_public_key_only():
     fh.write('\n'.join(lines))
 
   # Restart ssh server.
-  subprocess.check_output(['restart', 'ssh'])
+  subprocess.check_call(['restart', 'ssh'])
 
 
 def _os_x_make_ssh_public_key_only():
