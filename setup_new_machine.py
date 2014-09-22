@@ -93,7 +93,7 @@ def main():
     dst = os.path.expandvars(symbolic_location)
     os.symlink(src, dst)
 
-  apt_cmd = ['apt-get', 'install'] + aptitude_install
+  apt_cmd = ['apt-get', 'install', '-y'] + aptitude_install
   subprocess.check_output(*apt_cmd)
   pip_cmd = ['pip', 'install', '--upgrade'] + pip_install
   subprocess.check_output(*pip_cmd)
