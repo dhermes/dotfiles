@@ -41,6 +41,8 @@ APTITUDE_INSTALL = [
     'python-pyside',  # Backend for matplotlib>=1.4.0.
     'openssh-server',
     'espeak',
+    'libevent-dev',  # Requirement for python readline.
+    'libncurses5-dev',  # Requirement for python readline.
 ]
 PIP_INSTALL = [
     'matplotlib',
@@ -48,6 +50,9 @@ PIP_INSTALL = [
     'scipy',
     'pillow',
     'mercurial',
+    'readline',  # HAS ISSUES, MIGHT NEED TO TARGET A VERSIOn
+    'ipython',
+    'virtualenv',
 ]
 LINE = '-' * 70
 
