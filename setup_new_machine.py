@@ -10,6 +10,9 @@ import subprocess
 import sys
 
 
+PLATFORM = None
+LINUX_PLATFORM = 'Linux'
+OS_X_PLATFORM = 'Darwin'
 SYMLINKS = {
     '$HOME/dotfiles/bash_colors': '$HOME/.bash_colors',
     '$HOME/dotfiles/bash_completion.d': '$HOME/.bash_completion.d',
@@ -137,6 +140,7 @@ def add_symlinks():
 
 
 def _linux_add_packages():
+  # NOTE: This is Linux only. (Really even more specific than Linux.)
   print 'Adding Linux packages:'
   print LINE
 
@@ -145,9 +149,7 @@ def _linux_add_packages():
 
 
 def add_packages():
-  base_platform = platform.system()
-  # NOTE: This is Linux only. (Really even more specific than Linux.)
-  if base_platform == 'Linux':
+  if PLATFORM == LINUX_PLATFORM:
     _linux_add_packages()
 
 
@@ -252,36 +254,47 @@ def _os_x_make_ssh_public_key_only():
 
 
 def make_ssh_public_key_only():
-  base_platform = platform.system()
-  # NOTE: This is Linux only.
-  if base_platform == 'Linux':
+  if PLATFORM == LINUX_PLATFORM:
     _linux_make_ssh_public_key_only()
-  elif base_platform == 'Darwin':
+  elif PLATFORM == OS_X_PLATFORM:
     _os_x_make_ssh_public_key_only()
   else:
-    print 'Platform is %r.' % (base_platform,)
+    print 'Platform is %r.' % (PLATFORM,)
     print 'Exiting make_ssh_public_key_only without doing anything.'
 
 
 def _linux_suggestions():
+  # NOTE: This is Linux only.
   print 'Optional suggestions for Linux:'
   print LINE
   print '0. To install old versions of Python, i.e. "dead snakes"'
   print '   Check out: http://askubuntu.com/a/141664'
   print '   This may be useful.'
+  print '1. You may want to install pdfkt via'
+  print '       sudo apt-get install pdftk'
+  print '   to help extract information from PDF files.'
+
+
+def _os_x_suggestions():
+  print '0. You may want to install pdfkt from'
+  print '       http://www.pdflabs.com/tools/pdftk-server/'
+  print '   to help extract information from PDF files.'
 
 
 def suggestions():
-  base_platform = platform.system()
-  # NOTE: This is Linux only.
-  if base_platform == 'Linux':
+  if PLATFORM == LINUX_PLATFORM:
     _linux_suggestions()
+  elif PLATFORM == OS_X_PLATFORM:
+    _os_x_suggestions()
 
 
 def main():
   if getpass.getuser() != 'root':
     print 'Please run as root. This is required to install.'
     sys.exit(1)
+
+  global PLATFORM
+  PLATFORM = platform.system()
 
   check_python_version()
   print LINE
