@@ -16,16 +16,6 @@ if [[ "`uname`" == 'Linux' ]]; then
   alias pbpaste="xclip -selection clipboard -o"
 fi
 
-## BEGIN: Xmodmap
-if [[ "`uname`" == 'Linux' ]]; then
-  xmodmap $HOME/.Xmodmap
-fi
-
-if [[ "`uname`" == 'Darwin' ]]; then
-  /usr/X11/bin/xmodmap $HOME/.Xmodmap
-fi
-## END: Xmodmap
-
 alias diff="diff -Nru"
 
 source ~/.git-completion.bash

@@ -23,6 +23,8 @@ SYMLINKS = {
     '$HOME/dotfiles/screenrc': '$HOME/.screenrc',
     '$HOME/dotfiles/ssh_config': '$HOME/.ssh/config',
     '$HOME/dotfiles/Xmodmap': '$HOME/.Xmodmap',
+    # http://unix.stackexchange.com/q/1677
+    '$HOME/dotfiles/xsessionrc': '$HOME/.xsessionrc',
 }
 APTITUDE_INSTALL = [
     'xclip',
