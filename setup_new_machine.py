@@ -25,6 +25,9 @@ SYMLINKS = {
     '$HOME/dotfiles/Xmodmap': '$HOME/.Xmodmap',
     # http://unix.stackexchange.com/q/1677
     '$HOME/dotfiles/xsessionrc': '$HOME/.xsessionrc',
+    # Hand-rolled scripts.
+    '$HOME/dotfiles/wipe_pyc_recursive.py':
+        '/usr/local/bin/wipe-pyc-recursive',
 }
 APTITUDE_INSTALL = [
     'xclip',
@@ -53,6 +56,7 @@ PIP_INSTALL = [
     'readline',  # HAS ISSUES, MIGHT NEED TO TARGET A VERSIOn
     'ipython',
     'virtualenv',
+    'tox',
 ]
 LINE = '-' * 70
 
