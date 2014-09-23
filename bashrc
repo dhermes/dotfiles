@@ -16,6 +16,16 @@ if [[ "`uname`" == 'Linux' ]]; then
   alias pbpaste="xclip -selection clipboard -o"
 fi
 
+## BEGIN: Xmodmap
+if [[ "`uname`" == 'Linux' ]]; then
+  xmodmap $HOME/.Xmodmap
+fi
+
+if [[ "`uname`" == 'Darwin' ]]; then
+  /usr/X11/bin/xmodmap $HOME/.Xmodmap
+fi
+## END: Xmodmap
+
 alias diff="diff -Nru"
 
 source ~/.git-completion.bash
@@ -148,13 +158,12 @@ fi
 
 
 ## H/T: http://superuser.com/a/707645/196822
-if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]] ;
-then
-    echo "SSH Agent not set, setting agent.";
-    eval $(ssh-agent);
+if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]]; then
+  echo "SSH Agent not set, setting agent.";
+  eval $(ssh-agent);
 
-    echo "";
+  echo "";
 
-    echo "SSH-Adding GitHub SSH key.";
-    ssh-add $HOME/.ssh/github_rsa;
+  echo "SSH-Adding GitHub SSH key.";
+  ssh-add $HOME/.ssh/github_rsa;
 fi
