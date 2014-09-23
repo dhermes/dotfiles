@@ -54,6 +54,7 @@ PIP_INSTALL = [
     'matplotlib',
     'numpy',
     'scipy',
+    'sympy',
     'pillow',
     'mercurial',
     'readline',  # HAS ISSUES, MIGHT NEED TO TARGET A VERSIOn
