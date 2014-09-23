@@ -60,6 +60,8 @@ PIP_INSTALL = [
     'ipython',
     'virtualenv',
     'tox',
+    'unittest2',
+    'nose',
 ]
 LINE = '-' * 70
 
