@@ -64,6 +64,7 @@ PIP_INSTALL = [
     'nose',
 ]
 LINE = '-' * 70
+SECTION_SEP = ('=' * 70) + ('\n' * 4) + ('=' * 70)
 
 
 def check_python_version():
@@ -87,14 +88,24 @@ def check_python_version():
 
 
 def add_rc_files():
+  print 'Adding rc files which require passwords (and can\'t be checked in):'
+  print LINE
   # NOTE: This must run before `add_symlinks`.
   hgrc_fi = os.path.expandvars('$HOME/dotfiles/hgrc')
   hgrc_template_fi = hgrc_fi + '.pytemplate'
-  with open(hgrc_template_fi, 'r') as fh:
-    hgrc_template = string.Template(fh.read())
 
   netrc_fi = os.path.expandvars('$HOME/dotfiles/netrc')
   netrc_template_fi = netrc_fi + '.pytemplate'
+
+  if os.path.exists(hgrc_fi) and os.path.exists(netrc_fi):
+    print 'Both rc files already exist.'
+    do_replace = raw_input('Would you like to overwrite them? [y/N] ')
+    if do_replace.lower() != 'y':
+      return
+
+  with open(hgrc_template_fi, 'r') as fh:
+    hgrc_template = string.Template(fh.read())
+
   with open(netrc_template_fi, 'r') as fh:
     netrc_template = string.Template(fh.read())
 
@@ -123,6 +134,7 @@ def add_symlinks():
   print 'Adding symlinks:'
   print LINE
 
+  links_added = False
   for source, symbolic_location in SYMLINKS.iteritems():
     # NOTE: We could make this idempotent by using os.path.islink.
     src = os.path.expandvars(source)
@@ -139,6 +151,10 @@ def add_symlinks():
                        'as %r.' % dst])
       print msg
       os.symlink(src, dst)
+      links_added = True
+
+  if not links_added:
+    print 'No links needed to be added.'
 
 
 def _linux_add_packages():
@@ -151,6 +167,7 @@ def _linux_add_packages():
 
 
 def add_packages():
+  print 'Adding platform specific packages:'
   if PLATFORM == LINUX_PLATFORM:
     _linux_add_packages()
 
@@ -168,6 +185,27 @@ def add_python_packages():
   subprocess.check_call(pip_cmd)
 
 
+def replace_line(lines, old_line, new_line):
+  old_line_matches = [(i, line) for i, line in enumerate(lines)
+                      if line == old_line]
+  if len(old_line_matches) != 1:
+    if lines.count(new_line) == 1:
+      print 'The desired line: %r' % (new_line,)
+      print '    is already contained in the file.'
+      do_nothing = raw_input('Would you like to continue? [y/N] ')
+      if do_nothing.lower() == 'y':
+        return False
+    raise ValueError('Non-unique match for PasswordAuthentication.')
+
+  i, line = old_line_matches[0]
+  do_replace = raw_input('Replace line: %r? [y/N] ' % line)
+  if do_replace.strip().lower() != 'y':
+    raise ValueError('Line rejected by user.')
+
+  lines[i] = new_line
+  return True
+
+
 def _linux_make_ssh_public_key_only():
   # NOTE: This is Linux only.
 
@@ -177,26 +215,24 @@ def _linux_make_ssh_public_key_only():
   # ('https://www.digitalocean.com/community/tutorials/'
   #  'how-to-set-up-ssh-keys--2')
   ssh_config_fi = '/etc/ssh/sshd_config'
-  ssh_config_fi_backup = ssh_config_fi + '.factory-defaults'
-
-  # Create a backup.
-  shutil.copyfile(ssh_config_fi, ssh_config_fi_backup)
 
   with open(ssh_config_fi, 'r') as fh:
     original_contents = fh.read()
 
   lines = original_contents.split('\n')
-  password_lines = [(i, line) for i, line in enumerate(lines)
-                    if 'PasswordAuthentication' in line]
-  if len(password_lines) != 1:
-    raise ValueError('Non-unique match for PasswordAuthentication.')
+  replaced_pw = replace_line(lines, '#PasswordAuthentication no',
+                             'PasswordAuthentication no')
 
-  i, line = password_lines[0]
-  do_replace = raw_input('Replace line: %r? [y/N] ' % line)
-  if do_replace.strip().lower() != 'y':
-    raise ValueError('Line rejected by user.')
+  if not replaced_pw:
+    print 'File unchanged, exiting make_ssh_public_key_only().'
+    return
 
-  lines[i] = 'PasswordAuthentication no'
+  # Create a backup before overwriting file.
+  ssh_config_fi_backup = ssh_config_fi + '.factory-defaults'
+  print 'Creating backup:', ssh_config_fi_backup
+  shutil.copyfile(ssh_config_fi, ssh_config_fi_backup)
+
+  # Write new lines to file.
   with open(ssh_config_fi, 'w') as fh:
     fh.write('\n'.join(lines))
 
@@ -209,10 +245,6 @@ def _os_x_make_ssh_public_key_only():
 
   # See: http://serverfault.com/a/86007
   ssh_config_fi = '/private/etc/sshd_config'
-  ssh_config_fi_backup = ssh_config_fi + '.factory-defaults'
-
-  # Create a backup.
-  shutil.copyfile(ssh_config_fi, ssh_config_fi_backup)
 
   with open(ssh_config_fi, 'r') as fh:
     original_contents = fh.read()
@@ -220,30 +252,22 @@ def _os_x_make_ssh_public_key_only():
   lines = original_contents.split('\n')
 
   # Turn PasswordAuthentication off.
-  password_lines = [(i, line) for i, line in enumerate(lines)
-                    if line == '#PasswordAuthentication no']
-  if len(password_lines) != 1:
-    raise ValueError('Non-unique match for PasswordAuthentication.')
-
-  i, line = password_lines[0]
-  do_replace = raw_input('Replace line: %r? [y/N] ' % line)
-  if do_replace.strip().lower() != 'y':
-    raise ValueError('Line rejected by user.')
-
-  lines[i] = 'PasswordAuthentication no'
+  replaced_pw = replace_line(lines, '#PasswordAuthentication no',
+                             'PasswordAuthentication no')
 
   # Turn ChallengeResponseAuthentication off.
-  challenge_lines = [(i, line) for i, line in enumerate(lines)
-                     if line == '#ChallengeResponseAuthentication yes']
-  if len(challenge_lines) != 1:
-    raise ValueError('Non-unique match for PasswordAuthentication.')
+  replaced_challenge = replace_line(
+      lines, '#ChallengeResponseAuthentication yes',
+      'ChallengeResponseAuthentication no')
 
-  i, line = challenge_lines[0]
-  do_replace = raw_input('Replace line: %r? [y/N] ' % line)
-  if do_replace.strip().lower() != 'y':
-    raise ValueError('Line rejected by user.')
+  if not replaced_pw and not replaced_challenge:
+    print 'File unchanged, exiting make_ssh_public_key_only().'
+    return
 
-  lines[i] = 'ChallengeResponseAuthentication no'
+  # Create a backup before overwriting file.
+  ssh_config_fi_backup = ssh_config_fi + '.factory-defaults'
+  print 'Creating backup:', ssh_config_fi_backup
+  shutil.copyfile(ssh_config_fi, ssh_config_fi_backup)
 
   # Write new lines to file.
   with open(ssh_config_fi, 'w') as fh:
@@ -256,6 +280,8 @@ def _os_x_make_ssh_public_key_only():
 
 
 def make_ssh_public_key_only():
+  print 'Changing settings files to making SSH use public key only:'
+  print LINE
   if PLATFORM == LINUX_PLATFORM:
     _linux_make_ssh_public_key_only()
   elif PLATFORM == OS_X_PLATFORM:
@@ -284,6 +310,8 @@ def _os_x_suggestions():
 
 
 def suggestions():
+  print 'Some optional/suggested things to install:'
+  print LINE
   if PLATFORM == LINUX_PLATFORM:
     _linux_suggestions()
   elif PLATFORM == OS_X_PLATFORM:
@@ -298,18 +326,19 @@ def main():
   global PLATFORM
   PLATFORM = platform.system()
 
+  # This does no printing.
   check_python_version()
-  print LINE
+
   add_rc_files()
-  print LINE
+  print SECTION_SEP
   add_symlinks()
-  print LINE
+  print SECTION_SEP
   add_packages()
-  print LINE
+  print SECTION_SEP
   add_python_packages()
-  print LINE
+  print SECTION_SEP
   make_ssh_public_key_only()
-  print LINE
+  print SECTION_SEP
   suggestions()
 
 
