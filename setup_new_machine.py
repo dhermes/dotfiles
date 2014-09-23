@@ -64,6 +64,11 @@ PIP_INSTALL = [
     'unittest2',
     'nose',
 ]
+NODE_INSTALL = 'http://nodejs.org/dist/v0.10.32/node-v0.10.32.pkg'
+# NOTE: This will be populated with (web_page, install_method) pairs.
+#       Since we need to define the `install_method`, this happens as
+#       the methods are created below.
+MAC_PACKAGES = {}
 LINE = '-' * 70
 SECTION_SEP = ('=' * 70) + ('\n' * 4) + ('=' * 70)
 
@@ -167,10 +172,53 @@ def _linux_add_packages():
   subprocess.check_call(apt_cmd)
 
 
+def homebrew_install():
+  proc = subprocess.Popen(
+      ['which', 'brew'],
+      stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+  stdout, _ = proc.communicate()
+  if stdout != '':
+    print 'Brew found on system at: %r' % (stdout.strip())
+    brew_correct = raw_input('Is this the correct install? [y/N] ')
+    if brew_correct.lower() == 'y':
+      return
+
+  # If we've reached this part of the code, we need to install brew.
+  cmd = (
+      'ruby -e "$(curl -fsSL '
+      'https://raw.githubusercontent.com/Homebrew/install/master/install)"')
+  print 'The suggested way to install Homebrew is:'
+  print '    $ %s' % cmd
+  print 'NOTE: This assumes OS X has ruby installed.'
+  homebrew_install = raw_input('Is this still the correct way? [y/N] ')
+  if homebrew_install.lower() != 'y':
+    msg = ('Please change homebrew_install() to reflect the current\n'
+           'recommended way to install.')
+    raise ValueError(msg)
+
+  ruby_install_script = subprocess.check_output(
+      ['curl', '-fsSL',
+       'https://raw.githubusercontent.com/Homebrew/install/master/install'])
+  subprocess.check_call(['ruby', '-e', repr(ruby_install_script)])
+
+
+MAC_PACKAGES['http://brew.sh/'] = homebrew_install
+
+
+def _os_x_add_packages():
+  for web_page, install_method in MAC_PACKAGES.iteritems():
+    print 'Please check documented install instructions for this package:'
+    print '    %s' % (web_page,)
+    print LINE
+    install_method()
+
+
 def add_packages():
   print 'Adding platform specific packages:'
   if PLATFORM == LINUX_PLATFORM:
     _linux_add_packages()
+  elif PLATFORM == OS_X_PLATFORM:
+    _os_x_add_packages()
 
 
 def add_python_packages():
