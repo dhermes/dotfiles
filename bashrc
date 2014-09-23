@@ -140,13 +140,6 @@ cd `my_python $HOME/dotfiles/add_screen_tab.py --new`
 function cd() { builtin cd "$@" && my_python $HOME/dotfiles/add_screen_tab.py; }
 trap "my_python $HOME/dotfiles/remove_screen_tab.py" exit
 
-## Macaulay 2 start
-if [ -f ~/.profile-Macaulay2 ]
-then . ~/.profile-Macaulay2
-fi
-## Macaulay 2 end
-
-
 ## H/T: http://superuser.com/a/707645/196822
 if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]]; then
   echo "SSH Agent not set, setting agent.";
