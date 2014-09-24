@@ -50,6 +50,8 @@ APTITUDE_INSTALL = [
     'espeak',
     'libevent-dev',  # Requirement for python readline.
     'libncurses5-dev',  # Requirement for python readline.
+    'nodejs',
+    'npm',
 ]
 PIP_INSTALL = [
     'matplotlib',
@@ -65,7 +67,6 @@ PIP_INSTALL = [
     'unittest2',
     'nose',
 ]
-NODE_INSTALL = 'http://nodejs.org/dist/v0.10.32/node-v0.10.32.pkg'
 # NOTE: This will be populated with (web_page, install_method) pairs.
 #       Since we need to define the `install_method`, this happens as
 #       the methods are created below. As some may rely on previous
@@ -207,8 +208,8 @@ def homebrew_install():
   print 'The suggested way to install Homebrew is:'
   print '    $ %s' % cmd
   print 'NOTE: This assumes OS X has ruby installed.'
-  homebrew_install = raw_input('Is this still the correct way? [y/N] ')
-  if homebrew_install.lower() != 'y':
+  proceed = raw_input('Is this still the correct way? [y/N] ')
+  if proceed.lower() != 'y':
     msg = ('Please change homebrew_install() to reflect the current\n'
            'recommended way to install.')
     raise ValueError(msg)
@@ -220,6 +221,44 @@ def homebrew_install():
 
 
 MAC_PACKAGES['http://brew.sh/'] = homebrew_install
+
+
+def nodejs_install():
+  proc = subprocess.Popen(
+      ['which', 'node'],
+      stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+  stdout, _ = proc.communicate()
+  if stdout != '':
+    print 'node.js found on system at: %r' % (stdout.strip())
+    node_correct = raw_input('Is this the correct install? [y/N] ')
+    if node_correct.lower() == 'y':
+      return
+
+  # If we've reached this part of the code, we need to install node.
+  local_path = os.path.join(os.getcwd(), 'node.pkg')
+  if os.path.exists(local_path):
+    raise OSError('Download path exists: %r' % (local_path,))
+  cmd1 = ['curl', 'http://nodejs.org/dist/v0.10.32/node-v0.10.32.pkg',
+          '-o', local_path]
+  cmd2 = ['installer', '-pkg', local_path, '-target', '/']
+
+  print 'The suggested way to install node.js is:'
+  print '    $ %s' % ' '.join(cmd1)
+  print '    $ %s' % ' '.join(cmd2)
+  print 'NOTE: For command-line pkg installation see:'
+  print '      http://hints.macworld.com/article.php?story=20030614230204397'
+
+  proceed = raw_input('Is this still the correct way? [y/N] ')
+  if proceed.lower() != 'y':
+    msg = ('Please change nodejs_install() to reflect the current\n'
+           'recommended way to install.')
+    raise ValueError(msg)
+
+  subprocess.check_call(cmd1)
+  subprocess.check_call(cmd2)
+
+
+MAC_PACKAGES['http://nodejs.org/download/'] = nodejs_install
 
 
 def _os_x_add_packages():
