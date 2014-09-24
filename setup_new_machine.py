@@ -165,6 +165,28 @@ def add_symlinks():
     print 'No links needed to be added.'
 
 
+def install_google_cloud_sdk():
+  gcloud_sdk = os.path.expandvars('$HOME/google-cloud-sdk')
+  if os.path.isdir(gcloud_sdk):
+    print 'Directory %r already exists.' % (gcloud_sdk,)
+    valid_install = raw_input(
+        'Is google-cloud-sdk already installed? [y/N] ')
+    if valid_install.lower() == 'y':
+      return
+
+  cmd = 'curl https://sdk.cloud.google.com | bash'
+  print 'The install command is:'
+  print '    $ %s' % cmd
+  print 'Check this is still valid at https://cloud.google.com/sdk/.'
+  still_valid = raw_input('Is this install command still valid? [y/N] ')
+  if still_valid.lower() != 'y':
+    msg = ('Please change install_google_cloud_sdk() to reflect the\n'
+           'current recommended way to install.')
+    raise ValueError(msg)
+
+  os.system(cmd)
+
+
 def _linux_add_packages():
   # NOTE: This is Linux only. (Really even more specific than Linux.)
   print 'Adding Linux packages:'
@@ -172,6 +194,8 @@ def _linux_add_packages():
 
   apt_cmd = ['apt-get', 'install', '-y'] + APTITUDE_INSTALL
   subprocess.check_call(apt_cmd)
+
+  install_google_cloud_sdk()
 
 
 def mac_cli_tools_install():
@@ -297,6 +321,7 @@ def nodejs_install():
 
 
 MAC_PACKAGES['http://nodejs.org/download/'] = nodejs_install
+MAC_PACKAGES['https://cloud.google.com/sdk/'] = install_google_cloud_sdk
 
 
 def _os_x_add_packages():
