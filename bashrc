@@ -1,3 +1,11 @@
+## bashrc should not be executed outside of log-in shells.
+## SEE http://stackoverflow.com/a/12442753/1068170
+## AND http://superuser.com/a/690749
+## AND http://www.openssh.com/faq.html#2.9
+if [[ -z "$PS1" ]]; then
+   return
+fi
+
 # Need to use -nw since the alias below doesn't apply to root user
 export EDITOR="emacs -nw"
 
@@ -82,8 +90,8 @@ PS1+=" \[$promptcolor\]$prompt\[$txtrst\] \[$bldwht\]"
 # TODO(dhermes): Implement
 # https://gist.github.com/1169093
 
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
+bind '"\e[A": history-search-backward';
+bind '"\e[B": history-search-forward';
 
 # Sync history across screen
 # Increase history size
