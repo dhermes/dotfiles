@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import __builtin__
+import collections
 import getpass
 import os
 import platform
@@ -67,8 +68,9 @@ PIP_INSTALL = [
 NODE_INSTALL = 'http://nodejs.org/dist/v0.10.32/node-v0.10.32.pkg'
 # NOTE: This will be populated with (web_page, install_method) pairs.
 #       Since we need to define the `install_method`, this happens as
-#       the methods are created below.
-MAC_PACKAGES = {}
+#       the methods are created below. As some may rely on previous
+#       installs, we use an `OrderedDict`.
+MAC_PACKAGES = collections.OrderedDict()
 LINE = '-' * 70
 SECTION_SEP = ('=' * 70) + ('\n' * 4) + ('=' * 70)
 
@@ -172,6 +174,21 @@ def _linux_add_packages():
   subprocess.check_call(apt_cmd)
 
 
+def mac_cli_tools_install():
+  try:
+    subprocess.check_output(
+        ['pkgutil', '--pkg-info=com.apple.pkg.CLTools_Executables'])
+    print 'Confirmed Mac OS X command line tools are installed.'
+  except subprocess.CalledProcessError:
+    print 'To install OS X command line tools, please run'
+    print '    xcode-select --install'
+    print 'before invoking this script again.'
+    sys.exit(1)
+
+
+MAC_PACKAGES['http://stackoverflow.com/a/19899984/'] = mac_cli_tools_install
+
+
 def homebrew_install():
   proc = subprocess.Popen(
       ['which', 'brew'],
@@ -207,9 +224,9 @@ MAC_PACKAGES['http://brew.sh/'] = homebrew_install
 
 def _os_x_add_packages():
   for web_page, install_method in MAC_PACKAGES.iteritems():
-    print 'Please check documented install instructions for this package:'
-    print '    %s' % (web_page,)
     print LINE
+    print 'Trying to install Mac OS X dependency:'
+    print '    %s' % (web_page,)
     install_method()
 
 
