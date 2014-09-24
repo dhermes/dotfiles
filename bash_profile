@@ -1,15 +1,7 @@
 source $HOME/.bashrc
 
-if [[ "`uname`" == 'Darwin' ]]; then
-  PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}:/usr/texbin:/usr/local/go/bin:/usr/local/git/bin"
-  export PATH
-  PYTHONPATH="/usr/local/lib/python2.7/site-packages:${PYTHONPATH}"
-  export PYTHONPATH
-fi
-
 if [[ "`uname`" == 'Linux' ]]; then
-  # ../usg/bin For Hopper/Carver/etc. at NERSC
-  PATH="/usr/local/bin/google_appengine:${PATH}:/usr/common/usg/bin"
+  PATH="/usr/local/bin/google_appengine:${PATH}"
   export PATH
 fi
 
@@ -26,3 +18,6 @@ source $HOME/google-cloud-sdk/completion.bash.inc
 
 # Activate global completion for the argcomplete library.
 source $HOME/.bash_completion.d/python-argcomplete.sh
+
+NODE_PATH="/usr/local/lib/node_modules:${NODE_PATH}"
+export NODE_PATH

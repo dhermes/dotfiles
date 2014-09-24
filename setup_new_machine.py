@@ -145,7 +145,6 @@ def add_symlinks():
 
   links_added = False
   for source, symbolic_location in SYMLINKS.iteritems():
-    # NOTE: We could make this idempotent by using os.path.islink.
     src = os.path.expandvars(source)
     dst = os.path.expandvars(symbolic_location)
     if os.path.islink(dst):
@@ -188,6 +187,45 @@ def mac_cli_tools_install():
 
 
 MAC_PACKAGES['http://stackoverflow.com/a/19899984/'] = mac_cli_tools_install
+
+
+def change_system_paths():
+  system_path_file = '/etc/paths'
+  custom_path_file = os.path.expandvars('$HOME/dotfiles/mac_etc_paths')
+
+  with open(system_path_file, 'r') as fh:
+    system_path_contents = fh.read()
+
+  with open(custom_path_file, 'r') as fh:
+    custom_path_contents = fh.read()
+
+  if system_path_contents == custom_path_contents:
+    # If the real path matches the desired file, we are done.
+    print '%r->%r mapping already exists.' % (system_path_file,
+                                              custom_path_file)
+    return
+
+
+  print 'We want to replace the contents of %r:' % (system_path_file,)
+  print system_path_contents
+
+  print LINE
+
+  print 'The intended replacement is:'
+  print custom_path_contents
+
+  proceed = raw_input('Is this file OK to replace? [y/N] ')
+  if proceed.lower() != 'y':
+    raise ValueError('Can\'t proceed, rejected by user.')
+
+  # Move the existing file to backup.
+  system_path_file_backup = system_path_file + '.factory-defaults'
+  shutil.move(system_path_file, system_path_file_backup)
+  # Copy the contents.
+  shutil.copyfile(custom_path_file, system_path_file)
+
+
+MAC_PACKAGES['http://unix.stackexchange.com/q/75748'] = change_system_paths
 
 
 def homebrew_install():
