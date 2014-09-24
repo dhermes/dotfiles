@@ -109,7 +109,7 @@ shopt -s checkwinsize
 # Custom autojump command.
 alias jumpstat="autojump --stat"
 if [[ "`uname`" == 'Darwin' ]]; then
-  [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+  [[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
 fi
 
 # For inferior shells that don't define update_terminal_cwd

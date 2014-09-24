@@ -1,8 +1,6 @@
-source $HOME/.bashrc
-
 # Get the aliases and functions
-if [ -f /.bashrc ]; then
-  . /.bashrc
+if [[ -f $HOME/.bashrc ]]; then
+  source $HOME/.bashrc
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
