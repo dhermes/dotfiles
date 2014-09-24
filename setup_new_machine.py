@@ -285,6 +285,32 @@ def homebrew_install():
 MAC_PACKAGES['http://brew.sh/'] = homebrew_install
 
 
+def install_from_pkg_link(link):
+  # If we've reached this part of the code, we need to install node.
+  local_path = os.path.join(os.getcwd(), 'tmp.pkg')
+  if os.path.exists(local_path):
+    raise OSError('Download path exists: %r' % (local_path,))
+  cmd1 = ['curl', link, '-o', local_path]
+  cmd2 = ['installer', '-pkg', local_path, '-target', '/']
+  cmd3 = ['rm', '-f', local_path]
+
+  print 'The suggested way to install is:'
+  print '    $ %s' % ' '.join(cmd1)
+  print '    $ %s' % ' '.join(cmd2)
+  print 'NOTE: For command-line pkg installation see:'
+  print '      http://hints.macworld.com/article.php?story=20030614230204397'
+
+  proceed = raw_input('Is this still the correct way? [y/N] ')
+  if proceed.lower() != 'y':
+    msg = ('Please change the relevant method to reflect the current\n'
+           'recommended way to install.')
+    raise ValueError(msg)
+
+  subprocess.check_call(cmd1)
+  subprocess.check_call(cmd2)
+  subprocess.check_call(cmd3)
+
+
 def nodejs_install():
   proc = subprocess.Popen(
       ['which', 'node'],
@@ -297,31 +323,30 @@ def nodejs_install():
       return
 
   # If we've reached this part of the code, we need to install node.
-  local_path = os.path.join(os.getcwd(), 'node.pkg')
-  if os.path.exists(local_path):
-    raise OSError('Download path exists: %r' % (local_path,))
-  cmd1 = ['curl', 'http://nodejs.org/dist/v0.10.32/node-v0.10.32.pkg',
-          '-o', local_path]
-  cmd2 = ['installer', '-pkg', local_path, '-target', '/']
-
-  print 'The suggested way to install node.js is:'
-  print '    $ %s' % ' '.join(cmd1)
-  print '    $ %s' % ' '.join(cmd2)
-  print 'NOTE: For command-line pkg installation see:'
-  print '      http://hints.macworld.com/article.php?story=20030614230204397'
-
-  proceed = raw_input('Is this still the correct way? [y/N] ')
-  if proceed.lower() != 'y':
-    msg = ('Please change nodejs_install() to reflect the current\n'
-           'recommended way to install.')
-    raise ValueError(msg)
-
-  subprocess.check_call(cmd1)
-  subprocess.check_call(cmd2)
+  install_from_pkg_link('http://nodejs.org/dist/v0.10.32/node-v0.10.32.pkg')
 
 
 MAC_PACKAGES['http://nodejs.org/download/'] = nodejs_install
 MAC_PACKAGES['https://cloud.google.com/sdk/'] = install_google_cloud_sdk
+
+
+def install_tex_on_mac():
+  proc = subprocess.Popen(
+      ['which', 'pdflatex'],
+      stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+  stdout, _ = proc.communicate()
+  if stdout != '':
+    print 'pdflatex found on system at: %r' % (stdout.strip())
+    tex_correct = raw_input('Is this the correct install? [y/N] ')
+    if tex_correct.lower() == 'y':
+      return
+
+  # If we've reached this part of the code, we need to install MacTex.
+  install_from_pkg_link(
+      'http://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg')
+
+
+MAC_PACKAGES['http://www.tug.org/mactex/'] = install_tex_on_mac
 
 
 def _os_x_add_packages():
