@@ -1,10 +1,5 @@
 source $HOME/.bashrc
 
-if [[ "`uname`" == 'Linux' ]]; then
-  PATH="/usr/local/bin/google_appengine:${PATH}"
-  export PATH
-fi
-
 # Get the aliases and functions
 if [ -f /.bashrc ]; then
   . /.bashrc
