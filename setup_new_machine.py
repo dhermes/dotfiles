@@ -363,7 +363,7 @@ def _linux_make_ssh_public_key_only():
     original_contents = fh.read()
 
   lines = original_contents.split('\n')
-  replaced_pw = replace_line(lines, '#PasswordAuthentication no',
+  replaced_pw = replace_line(lines, '#PasswordAuthentication yes',
                              'PasswordAuthentication no')
 
   if not replaced_pw:
