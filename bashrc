@@ -97,6 +97,14 @@ bind '"\e[B": history-search-forward';
 # Increase history size
 HISTSIZE=1000
 HISTFILESIZE=2000
+# Don't put duplicate lines in the history.
+HISTCONTROL=ignoredups:ignorespace
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 # Custom autojump command.
 alias jumpstat="autojump --stat"
