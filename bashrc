@@ -154,7 +154,8 @@ my_python() {
 }
 cd `my_python $HOME/dotfiles/add_screen_tab.py --new`
 function cd() { builtin cd "$@" && my_python $HOME/dotfiles/add_screen_tab.py; }
-trap "my_python $HOME/dotfiles/remove_screen_tab.py" exit
+trap "my_python $HOME/dotfiles/detect_term.py" TERM
+trap "my_python $HOME/dotfiles/remove_screen_tab.py" EXIT
 
 ## H/T: http://superuser.com/a/707645/196822
 if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]]; then
