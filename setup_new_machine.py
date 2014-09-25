@@ -138,6 +138,15 @@ def add_rc_files():
     print 'Wrote:', netrc_fi
 
 
+def add_session_file():
+  # Add SENTINEL to screen sessions file so that it is never an empty
+  # {}. This is because json.dump({}, fh) will store an empty string.
+  import screen_tab_utils
+  screen_sessions = screen_tab_utils.load_sessions()
+  screen_sessions['SENTINEL'] = None
+  screen_tab_utils.write_sessions(screen_sessions)
+
+
 def add_symlinks():
   # NOTE: This must run after `add_rc_files`.
   print 'Adding symlinks:'
@@ -519,8 +528,9 @@ def main():
   global PLATFORM
   PLATFORM = platform.system()
 
-  # This does no printing.
+  # These do no printing.
   check_python_version()
+  add_session_file()
 
   add_rc_files()
   print SECTION_SEP

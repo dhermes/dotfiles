@@ -154,6 +154,8 @@ my_python() {
 }
 cd `my_python $HOME/dotfiles/add_screen_tab.py --new`
 function cd() { builtin cd "$@" && my_python $HOME/dotfiles/add_screen_tab.py; }
+# See http://stackoverflow.com/a/9256709/1068170
+# for details on determining which signals are being caught.
 trap "my_python $HOME/dotfiles/detect_term.py" TERM
 trap "my_python $HOME/dotfiles/remove_screen_tab.py" EXIT
 

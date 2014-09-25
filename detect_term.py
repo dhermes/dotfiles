@@ -22,4 +22,6 @@ def main():
 
 
 if __name__ == '__main__':
+  # See http://stackoverflow.com/a/9256709/1068170
+  # for details on determining which signals are being caught.
   main()
