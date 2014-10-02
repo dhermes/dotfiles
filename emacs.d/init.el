@@ -58,7 +58,6 @@
 ;; Line specific python rules
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(setq-default py-indent-offset 2)
 (add-hook 'javascript-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'latex-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
