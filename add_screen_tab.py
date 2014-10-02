@@ -1,3 +1,5 @@
+# pylint: disable=missing-docstring
+
 import subprocess
 import sys
 
@@ -62,7 +64,9 @@ def change_directory(screen_sessions, session_info,
         sys.exit(0)
     else:
         print >> sys.stderr, TAB_MISSING_TEMPLATE % (window, session_id)
+        # pylint: disable=bad-builtin
         windows_as_ints = map(int, current_session.keys())
+        # pylint: enable=bad-builtin
         max_window = 0
         if windows_as_ints:
             max_window = max(windows_as_ints)

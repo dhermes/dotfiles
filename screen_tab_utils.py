@@ -1,9 +1,10 @@
+# pylint: disable=missing-docstring
+
 try:
     import json
 except ImportError:
     import simplejson as json
 import os
-import subprocess
 
 
 SESSION_ID_KEY = 'STY'
@@ -55,9 +56,9 @@ def emacs_desktop_saved(session_info):
 def load_sessions():
     if os.path.isfile(SCREEN_SESSIONS_FILE):
         # NOTE: Not using `with` since may be using an old version of Python.
-        fh = open(SCREEN_SESSIONS_FILE, 'r')
-        screen_sessions = json.load(fh)
-        fh.close()
+        file_obj = open(SCREEN_SESSIONS_FILE, 'r')
+        screen_sessions = json.load(file_obj)
+        file_obj.close()
     else:
         screen_sessions = {}
 
@@ -66,6 +67,6 @@ def load_sessions():
 
 def write_sessions(screen_sessions):
     # NOTE: Not using `with` since may be using an old version of Python.
-    fh = open(SCREEN_SESSIONS_FILE, 'w')
-    json.dump(screen_sessions, fh, indent=2)
-    fh.close()
+    file_obj = open(SCREEN_SESSIONS_FILE, 'w')
+    json.dump(screen_sessions, file_obj, indent=2)
+    file_obj.close()

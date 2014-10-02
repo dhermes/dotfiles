@@ -1,3 +1,5 @@
+# pylint: disable=missing-docstring
+
 import screen_tab_utils
 
 

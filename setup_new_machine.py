@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# pylint: disable=missing-docstring
+
 import __builtin__
 import collections
 import getpass
@@ -125,11 +127,11 @@ def add_rc_files():
         if do_replace.lower() != 'y':
             return
 
-    with open(hgrc_template_fi, 'r') as fh:
-        hgrc_template = string.Template(fh.read())
+    with open(hgrc_template_fi, 'r') as file_obj:
+        hgrc_template = string.Template(file_obj.read())
 
-    with open(netrc_template_fi, 'r') as fh:
-        netrc_template = string.Template(fh.read())
+    with open(netrc_template_fi, 'r') as file_obj:
+        netrc_template = string.Template(file_obj.read())
 
     # Get the template values to be placed into rc files.
     codehosting_email = raw_input('Email for Google Code Hosting: ')
@@ -143,18 +145,18 @@ def add_rc_files():
     }
 
     # Make substitutions and write to files.
-    with open(hgrc_fi, 'w') as fh:
-        fh.write(hgrc_template.substitute(substitution_dict))
+    with open(hgrc_fi, 'w') as file_obj:
+        file_obj.write(hgrc_template.substitute(substitution_dict))
         print 'Wrote:', hgrc_fi
 
-    with open(netrc_fi, 'w') as fh:
-        fh.write(netrc_template.substitute(substitution_dict))
+    with open(netrc_fi, 'w') as file_obj:
+        file_obj.write(netrc_template.substitute(substitution_dict))
         print 'Wrote:', netrc_fi
 
 
 def add_session_file():
     # Add SENTINEL to screen sessions file so that it is never an empty
-    # {}. This is because json.dump({}, fh) will store an empty string.
+    # {}. This is because json.dump({}, file_obj) will store an empty string.
     import screen_tab_utils
     screen_sessions = screen_tab_utils.load_sessions()
     screen_sessions['SENTINEL'] = None
@@ -240,11 +242,11 @@ def change_system_paths():
     system_path_file = '/etc/paths'
     custom_path_file = os.path.expandvars('$HOME/dotfiles/mac_etc_paths')
 
-    with open(system_path_file, 'r') as fh:
-        system_path_contents = fh.read()
+    with open(system_path_file, 'r') as file_obj:
+        system_path_contents = file_obj.read()
 
-    with open(custom_path_file, 'r') as fh:
-        custom_path_contents = fh.read()
+    with open(custom_path_file, 'r') as file_obj:
+        custom_path_contents = file_obj.read()
 
     if system_path_contents == custom_path_contents:
         # If the real path matches the desired file, we are done.
@@ -431,8 +433,8 @@ def _linux_make_ssh_public_key_only():
     #  'how-to-set-up-ssh-keys--2')
     ssh_config_fi = '/etc/ssh/sshd_config'
 
-    with open(ssh_config_fi, 'r') as fh:
-        original_contents = fh.read()
+    with open(ssh_config_fi, 'r') as file_obj:
+        original_contents = file_obj.read()
 
     lines = original_contents.split('\n')
     replaced_pw = replace_line(lines, '#PasswordAuthentication yes',
@@ -448,8 +450,8 @@ def _linux_make_ssh_public_key_only():
     shutil.copyfile(ssh_config_fi, ssh_config_fi_backup)
 
     # Write new lines to file.
-    with open(ssh_config_fi, 'w') as fh:
-        fh.write('\n'.join(lines))
+    with open(ssh_config_fi, 'w') as file_obj:
+        file_obj.write('\n'.join(lines))
 
     # Restart ssh server.
     subprocess.check_call(['restart', 'ssh'])
@@ -461,8 +463,8 @@ def _os_x_make_ssh_public_key_only():
     # See: http://serverfault.com/a/86007
     ssh_config_fi = '/private/etc/sshd_config'
 
-    with open(ssh_config_fi, 'r') as fh:
-        original_contents = fh.read()
+    with open(ssh_config_fi, 'r') as file_obj:
+        original_contents = file_obj.read()
 
     lines = original_contents.split('\n')
 
@@ -485,8 +487,8 @@ def _os_x_make_ssh_public_key_only():
     shutil.copyfile(ssh_config_fi, ssh_config_fi_backup)
 
     # Write new lines to file.
-    with open(ssh_config_fi, 'w') as fh:
-        fh.write('\n'.join(lines))
+    with open(ssh_config_fi, 'w') as file_obj:
+        file_obj.write('\n'.join(lines))
 
     # NOTE: (Quote from the server fault page)
     #       "If you are using a stock install (i.e., you didn't build/install
@@ -555,7 +557,7 @@ def main():
         print 'Please run as root. This is required to install.'
         sys.exit(1)
 
-    global PLATFORM
+    global PLATFORM  # pylint: disable=global-statement
     PLATFORM = platform.system()
 
     # These do no printing.
