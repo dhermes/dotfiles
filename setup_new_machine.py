@@ -64,6 +64,7 @@ APTITUDE_INSTALL = [
     'libwxgtk2.8-dev',
     'libgtk2.0-dev',
     'autojump',
+    'nautilus-dropbox',
 ]
 PIP_INSTALL = [
     'matplotlib',
