@@ -111,6 +111,9 @@ alias jumpstat="autojump --stat"
 if [[ "`uname`" == 'Darwin' ]]; then
   [[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
 fi
+if [[ "`uname`" == 'Linux' ]]; then
+  source /usr/share/autojump/autojump.sh
+fi
 
 # For inferior shells that don't define update_terminal_cwd
 # http://stackoverflow.com/questions/85880
