@@ -506,6 +506,21 @@ def make_ssh_public_key_only():
     print 'Exiting make_ssh_public_key_only without doing anything.'
 
 
+def matplotlib_suggestion(index):
+  rc_file = mpl_backend = None
+  try:
+    import matplotlib
+    mpl_backend = matplotlib.get_backend()
+    rc_file = os.path.join(os.path.dirname(matplotlib.__file__),
+                           'mpl-data', 'matplotlibrc')
+  except ImportError:
+    pass
+  print '%d. Your current matplotlib backend is:' % (index,)
+  print '       %s' % (mpl_backend,)
+  print '   If you would like to change this, check your RC file:'
+  print '       %s' % (rc_file,)
+
+
 def _linux_suggestions():
   # NOTE: This is Linux only.
   print 'Optional suggestions for Linux:'
@@ -516,12 +531,14 @@ def _linux_suggestions():
   print '1. You may want to install pdfkt via'
   print '       sudo apt-get install pdftk'
   print '   to help extract information from PDF files.'
+  matplotlib_suggestion(2)
 
 
 def _os_x_suggestions():
   print '0. You may want to install pdfkt from'
   print '       http://www.pdflabs.com/tools/pdftk-server/'
   print '   to help extract information from PDF files.'
+  matplotlib_suggestion(1)
 
 
 def suggestions():
