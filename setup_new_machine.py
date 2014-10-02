@@ -52,6 +52,18 @@ APTITUDE_INSTALL = [
     'libncurses5-dev',  # Requirement for python readline.
     'nodejs',
     'npm',
+    'tk-dev',
+    'python-gtk2',
+    'python-gtk2-dev',
+    'emacs23',
+    'screen',
+    'libgnome2-bin',
+    'python-wxgtk2.8',
+    'python-wxtools',
+    'wx2.8-i18n',
+    'libwxgtk2.8-dev',
+    'libgtk2.0-dev',
+    'autojump',
 ]
 PIP_INSTALL = [
     'matplotlib',
