@@ -20,6 +20,7 @@ SYMLINKS = {
     '$HOME/dotfiles/bash_colors': '$HOME/.bash_colors',
     '$HOME/dotfiles/bash_completion.d': '$HOME/.bash_completion.d',
     '$HOME/dotfiles/bash_profile': '$HOME/.bash_profile',
+    '$HOME/dotfiles/profile': '$HOME/.profile',
     '$HOME/dotfiles/bashrc': '$HOME/.bashrc',
     '$HOME/dotfiles/emacs.d': '$HOME/.emacs.d',
     '$HOME/dotfiles/git-completion.bash': '$HOME/.git-completion.bash',
@@ -188,14 +189,6 @@ def add_symlinks():
 
     if not links_added:
         print 'No links needed to be added.'
-
-    profile_path = os.path.expandvars('$HOME/.profile')
-    if os.path.exists(profile_path):
-        print '$HOME/.profile exists. It may conflict with'
-        print 'your $HOME/.bash_profile settings'
-        remove = raw_input('Would you like to remove it? [y/N] ')
-        if remove.lower() == 'y':
-            os.remove(profile_path)
 
 
 def install_google_cloud_sdk():
