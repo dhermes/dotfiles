@@ -57,7 +57,7 @@ APTITUDE_INSTALL = [
     'tk-dev',
     'python-gtk2',
     'python-gtk2-dev',
-    'emacs23',
+    'emacs24',
     'screen',
     'libgnome2-bin',
     'python-wxgtk2.8',

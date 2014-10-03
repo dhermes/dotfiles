@@ -131,59 +131,6 @@
   )
 )
 
-;; FOR BUFFER RECOVERY
-;; http://www.emacswiki.org/emacs/DeskTop
-(setq dhermes-emacs-dir (concat (getenv "HOME") "/"
-                          "dotfiles" "/"
-                          "emacs.d" "/"))
-(setq desktop-path (list dhermes-emacs-dir))
-(setq desktop-dirname dhermes-emacs-dir)
-(setq screen-sty (getenv "STY"))
-(setq screen-window (getenv "WINDOW"))
-
-(when (and (stringp screen-sty)
-      (stringp screen-window)
-      (string-match "." screen-sty)
-    )
-  (setq screen-session-name (nth 1 (split-string screen-sty "\\.")))
-  (setq desktop-base-file-name
-    (concat "emacs-desktop-" screen-session-name "-" screen-window)
-  )
-
-  (defun saved-session ()
-    (file-exists-p (concat desktop-dirname "/" desktop-base-file-name)))
-
-  ;; use session-restore to restore the desktop manually
-  (defun session-restore ()
-    "Restore a saved emacs session."
-    (interactive)
-    (if (saved-session)
-        (desktop-read)
-      (message "No desktop found.")))
-
-  ;; use session-save to save the desktop manually
-  (defun session-save ()
-    "Save an emacs session."
-    (interactive)
-    ;; (if (saved-session)
-    ;;   (if (y-or-n-p "Overwrite existing desktop? ")
-    ;;       (desktop-save-in-desktop-dir)
-    ;;     (message "Session not saved."))
-    (desktop-save-in-desktop-dir))
-
-  ;; Auto-save the desktop state
-  (add-hook 'auto-save-hook 'session-save)
-  (add-hook 'buffer-list-update-hook 'session-save)
-
-  ;; ask user whether to restore desktop at start-up
-  (add-hook 'after-init-hook
-    '(lambda ()
-      (if (saved-session)
-        (if (y-or-n-p "Restore desktop? ")
-          (session-restore)))))
-
-)
-
 ;; BEGIN: Make sure we never have tabs, only space.
 ;; http://www.emacswiki.org/emacs/NoTabs
 (setq-default indent-tabs-mode nil)
