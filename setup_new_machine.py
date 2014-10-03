@@ -541,6 +541,10 @@ def _os_x_suggestions():
     print '       http://www.pdflabs.com/tools/pdftk-server/'
     print '   to help extract information from PDF files.'
     matplotlib_suggestion(1)
+    print '2. To install Emacs 24 on OS X, either visit'
+    print '     http://stackoverflow.com/a/15084055/1068170'
+    print '   or'
+    print '     http://readystate4.com/2011/04/19/'
 
 
 def suggestions():
