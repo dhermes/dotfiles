@@ -68,6 +68,8 @@ APTITUDE_INSTALL = [
     'libgtk2.0-dev',
     'autojump',
     'nautilus-dropbox',
+    # http://askubuntu.com/a/350799
+    'shutter',  # To replace gnome-screenshot.
 ]
 PIP_INSTALL = [
     'matplotlib',
