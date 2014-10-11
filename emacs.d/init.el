@@ -48,13 +48,6 @@
 (color-theme-initialize)
 (color-theme-tty-dark)
 
-(defvar python-comment (make-face 'python-comment))
-(set-face-foreground 'python-comment "Pink")
-
-(font-lock-add-keywords
- 'python-mode
- '(("\\(#.*$\\)" 1 python-comment prepend)))
-
 ;; Line specific python rules
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
