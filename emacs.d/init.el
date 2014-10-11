@@ -1,3 +1,7 @@
+;; Prevent vertical window splitting.
+(setq split-height-threshold nil)
+(setq split-width-threshold 75)
+
 ;; From http://bzg.fr/emacs-strip-tease.html
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)
