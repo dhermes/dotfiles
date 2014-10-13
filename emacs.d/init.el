@@ -1,3 +1,5 @@
+(add-to-list 'load-path "~/.emacs.d/")
+
 ;; Prevent vertical window splitting.
 (setq split-height-threshold nil)
 (setq split-width-threshold 75)
@@ -10,8 +12,12 @@
 (setq inhibit-startup-message t)
 
 ;; Turn on mark highlighting
-
 (setq transient-mark-mode t)
+
+;; Put white-marker in 80th column (if it exists).
+(require 'column-marker)
+(add-hook 'javascript-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'latex-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; Window management
 
@@ -26,20 +32,41 @@
 (column-number-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Python setup
+;; BEGIN: Python setup
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/.emacs.d/")
+;; H/T http://stackoverflow.com/a/21905123/1068170
+;; trying ipython tab completion: that works :)
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args ""
+ python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+ python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+ python-shell-completion-setup-code
+     "from IPython.core.completerlib import module_completion"
+ python-shell-completion-module-string-code
+     "';'.join(module_completion('''%s'''))\n"
+ python-shell-completion-string-code
+     "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
-(require 'ipython)
-(require 'python-mode)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-
-(require 'auto-complete)
-(global-auto-complete-mode t)
+;; Hook for code folding.
+(add-hook 'python-mode-hook 'hs-minor-mode)
 
 (fset 'py-execute-line
    "\C-a\C-@\C-e\C-c\C-r")
 (global-set-key (kbd "C-c C-j") 'py-execute-line)
+
+;; PYLINT
+(autoload 'python-pylint "python-pylint")
+(autoload 'pylint "python-pylint")
+
+;; Put white-marker in 80th column (if it exists).
+(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; END: Python setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'auto-complete)
+(global-auto-complete-mode t)
 
 ;; Mini-buffer customization
 (require 'ido)
@@ -51,12 +78,6 @@
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-tty-dark)
-
-;; Line specific python rules
-(require 'column-marker)
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(add-hook 'javascript-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(add-hook 'latex-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; Require newline
 (setq require-final-newline t)
@@ -82,10 +103,6 @@
 
 ;; TRAILING WHITESPACE
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; PYLINT
-(autoload 'python-pylint "python-pylint")
-(autoload 'pylint "python-pylint")
 
 ;; http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
 ;; I prefer using the "clipboard" selection (the one the
