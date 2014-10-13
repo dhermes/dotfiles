@@ -164,11 +164,13 @@ trap "my_python $HOME/dotfiles/remove_screen_tab.py" EXIT
 
 ## H/T: http://superuser.com/a/707645/196822
 if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]]; then
-  echo "SSH Agent not set, setting agent.";
-  eval $(ssh-agent);
+  if [[ -f $HOME/.ssh/github_rsa ]]; then
+    echo "SSH Agent not set, setting agent.";
+    eval $(ssh-agent);
 
-  echo "";
+    echo "";
 
-  echo "SSH-Adding GitHub SSH key.";
-  ssh-add $HOME/.ssh/github_rsa;
+    echo "SSH-Adding GitHub SSH key.";
+    ssh-add $HOME/.ssh/github_rsa;
+  fi
 fi
