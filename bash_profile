@@ -4,13 +4,19 @@ if [[ -f $HOME/.bashrc ]]; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-source $HOME/google-cloud-sdk/path.bash.inc
+if [[ -f $HOME/google-cloud-sdk/path.bash.inc ]]; then
+  source $HOME/google-cloud-sdk/path.bash.inc
+fi
 
 # The next line enables bash completion for gcloud.
-source $HOME/google-cloud-sdk/completion.bash.inc
+if [[ -f $HOME/google-cloud-sdk/completion.bash.inc ]]; then
+  source $HOME/google-cloud-sdk/completion.bash.inc
+fi
 
 # Activate global completion for the argcomplete library.
-source $HOME/.bash_completion.d/python-argcomplete.sh
+if [[ -f $HOME/.bash_completion.d/python-argcomplete.sh ]]; then
+  source $HOME/.bash_completion.d/python-argcomplete.sh
+fi
 
 NODE_PATH="/usr/local/lib/node_modules:${NODE_PATH}"
 export NODE_PATH
