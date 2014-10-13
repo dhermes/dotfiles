@@ -3,6 +3,11 @@ if [[ -f $HOME/.bashrc ]]; then
   source $HOME/.bashrc
 fi
 
+# Allow custom bin for systems without root privilege.
+if [[ -d "$HOME/bin" ]]; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [[ -f $HOME/google-cloud-sdk/path.bash.inc ]]; then
   source $HOME/google-cloud-sdk/path.bash.inc
