@@ -112,7 +112,9 @@ if [[ "`uname`" == 'Darwin' ]]; then
   [[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
 fi
 if [[ "`uname`" == 'Linux' ]]; then
-  source /usr/share/autojump/autojump.sh
+  if [[ -f /usr/share/autojump/autojump.sh ]]; then
+    source /usr/share/autojump/autojump.sh
+  fi
 fi
 
 # For inferior shells that don't define update_terminal_cwd
