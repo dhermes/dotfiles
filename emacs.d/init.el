@@ -64,6 +64,13 @@
 
 ;; Put white-marker in 80th column (if it exists).
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
+
+;; H/T: http://www.emacswiki.org/emacs/AutoIndentation
+;; Enter key executes newline-and-indent
+(defun set-newline-and-indent ()
+  "Map the return key with `newline-and-indent'"
+  (local-set-key (kbd "RET") 'newline-and-indent))
+(add-hook 'python-mode-hook 'set-newline-and-indent)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; END: Python setup
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
