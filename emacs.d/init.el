@@ -51,6 +51,9 @@
 ;; Hook for code folding.
 (add-hook 'python-mode-hook 'hs-minor-mode)
 
+(fset 'py-launch-interpreter
+   "\C-c\C-p")
+(global-set-key (kbd "C-c !") 'py-launch-interpreter)
 (fset 'py-execute-line
    "\C-a\C-@\C-e\C-c\C-r")
 (global-set-key (kbd "C-c C-j") 'py-execute-line)
