@@ -58,10 +58,6 @@
    "\C-a\C-@\C-e\C-c\C-r")
 (global-set-key (kbd "C-c C-j") 'py-execute-line)
 
-;; PYLINT
-(autoload 'python-pylint "python-pylint")
-(autoload 'pylint "python-pylint")
-
 ;; Put white-marker in 80th column (if it exists).
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
@@ -85,9 +81,8 @@
   (ido-mode 1)
 
 ;; Colors
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-tty-dark)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'tty-dark t)
 
 ;; Require newline
 (setq require-final-newline t)
@@ -170,9 +165,6 @@
 ;; (add-hook 'eshell-preoutput-filter-functions
 ;;           'ansi-color-apply)
 ;; END: Make things like eshell respect ANSI color.
-
-(require 'cuda-mode)
-(add-to-list 'auto-mode-alist '("\\.cu\\'" . cuda-mode))
 
 ;; BEGIN: Org-Mode init.
 ;; See http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
