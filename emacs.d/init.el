@@ -14,13 +14,12 @@
 ;; Turn on mark highlighting
 (setq transient-mark-mode t)
 
-;; Put white-marker in 80th column (if it exists).
-(require 'column-marker)
-(add-hook 'javascript-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(add-hook 'latex-mode-hook (lambda () (interactive) (column-marker-1 80)))
+;; Use default mode to complain about whitespace.
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
 
 ;; Window management
-
 (defun prev-window ()
   (interactive)
   (other-window -1))
@@ -57,9 +56,6 @@
 (fset 'py-execute-line
    "\C-a\C-@\C-e\C-c\C-r")
 (global-set-key (kbd "C-c C-j") 'py-execute-line)
-
-;; Put white-marker in 80th column (if it exists).
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; H/T: http://www.emacswiki.org/emacs/AutoIndentation
 ;; Enter key executes newline-and-indent
