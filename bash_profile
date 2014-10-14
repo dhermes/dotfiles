@@ -31,5 +31,11 @@ if [[ -f $HOME/.bash_completion.d/python-argcomplete.sh ]]; then
   fi
 fi
 
+# For changes to PATH (or other env vars) which only belong on a
+# temporary machine or involve a temporary install:
+if [[ -f $HOME/.local_profile_extensions ]]; then
+  source $HOME/.local_profile_extensions
+fi
+
 NODE_PATH="/usr/local/lib/node_modules:${NODE_PATH}"
 export NODE_PATH

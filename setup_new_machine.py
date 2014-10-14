@@ -30,6 +30,9 @@ SYMLINKS = {
     '$HOME/dotfiles/screenrc': '$HOME/.screenrc',
     '$HOME/dotfiles/ssh_config': '$HOME/.ssh/config',
     '$HOME/dotfiles/Xmodmap': '$HOME/.Xmodmap',
+    # Optional, but will fail to link if doesn't exist.
+    '$HOME/dotfiles/local_profile_extensions':
+        '$HOME/.local_profile_extensions',
     # http://unix.stackexchange.com/q/1677
     '$HOME/dotfiles/xsessionrc': '$HOME/.xsessionrc',
     # Hand-rolled scripts.
