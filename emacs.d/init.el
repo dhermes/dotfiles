@@ -169,3 +169,19 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 ;; END: Org-Mode init.
+
+;; BEGIN: Turn off default background color.
+;; H/T: http://stackoverflow.com/a/20233611/1068170
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+    (set-face-background 'default "unspecified-bg" frame)))
+
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
+
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
+;; END: Turn off default background color.
