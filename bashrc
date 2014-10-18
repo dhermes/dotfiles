@@ -176,3 +176,21 @@ if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]]; then
     ssh-add $HOME/.ssh/github_rsa;
   fi
 fi
+
+# The next line enables bash completion for gcloud.
+if [[ -f $HOME/google-cloud-sdk/completion.bash.inc ]]; then
+  source $HOME/google-cloud-sdk/completion.bash.inc
+fi
+
+# Activate global completion for the argcomplete library.
+if [[ -f $HOME/.bash_completion.d/python-argcomplete.sh ]]; then
+  # Only install on bash>=4.2, since -D option is needed.
+  # H/T: http://stackoverflow.com/a/9450628/1068170
+  FULL_VERSION=${BASH_VERSION%%[^0-9.]*}
+  MAJOR_VERSION=${FULL_VERSION%%[^0-9]*}
+  MINOR_VERSION=${FULL_VERSION#[0-9].}
+  MINOR_VERSION=${MINOR_VERSION%%[^0-9]*}
+  if [[ $MAJOR_VERSION -ge 5 || ($MAJOR_VERSION == 4 && $MINOR_VERSION -ge 2) ]]; then
+    source $HOME/.bash_completion.d/python-argcomplete.sh
+  fi
+fi
