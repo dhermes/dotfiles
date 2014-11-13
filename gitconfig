@@ -2,21 +2,22 @@
 	name = Danny Hermes
 	email = daniel.j.hermes@gmail.com
 [color]
-        ui = auto
+	ui = auto
 [alias]
-        lc = log ORIG_HEAD.. --stat --no-merges # log commits
+	lc = log ORIG_HEAD.. --stat --no-merges # log commits
 	com = commit
-        co = checkout
-        br = branch
-        st = status
-        last = log -1 HEAD
-        showlast = log -1 -p
-        showlast-names = log -1 -p --name-only
-        unstage = reset HEAD --
-        root = rev-parse --show-toplevel
-        # git diverges {BRANCH1} {BRANCH2} will give the commit they diverge at
-        diverges = !sh -c 'git rev-list --boundary $1...$2 | grep ^- | cut -c2-'
-        last-commit = log -1 --pretty=%s
-        current-branch = rev-parse --abbrev-ref HEAD
-        wdiff = diff --color-words
-        wshow = show --color-words
+	co = checkout
+	br = branch
+	st = status
+	last = log -1 HEAD
+	showlast = log -1 -p
+	showlast-names = log -1 -p --name-only
+	unstage = reset HEAD --
+	root = rev-parse --show-toplevel
+	# git diverges {BRANCH1} {BRANCH2} will give the commit they diverge at
+	diverges = !sh -c 'git rev-list --boundary $1...$2 | grep ^- | cut -c2-'
+	last-commit = log -1 --pretty=%s
+	current-branch = rev-parse --abbrev-ref HEAD
+	wdiff = diff --color-words
+	wshow = show --color-words
+	is-child = is-git-child

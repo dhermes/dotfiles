@@ -38,6 +38,7 @@ SYMLINKS = {
     # Hand-rolled scripts.
     '$HOME/dotfiles/wipe_pyc_recursive.py':
         '/usr/local/bin/wipe-pyc-recursive',
+    '$HOME/dotfiles/is-git-child.sh': '/usr/local/bin/is-git-child',
 }
 APTITUDE_INSTALL = [
     'xclip',
@@ -401,6 +402,14 @@ def add_python_packages():
     print LINE
 
     # First install `pip`.
+    # NOTE: This caused a problem on my machine when
+    #         $ head -1 `which easy_install`
+    #         #!/usr/bin/python2.6
+    #       but
+    #         $ python -V
+    #         Python 2.7.6
+    #       I'm guessing this is some flaw relating to deadsnakes
+    #       or a manual change I forgot to undo.
     subprocess.check_call(['easy_install', '--upgrade', 'pip'])
 
     # Then use `pip` to install all desired packages.
