@@ -20,4 +20,4 @@
 	current-branch = rev-parse --abbrev-ref HEAD
 	wdiff = diff --color-words
 	wshow = show --color-words
-	is-child = is-git-child
+	is-child = !sh -c 'is-git-child $0 $1'
