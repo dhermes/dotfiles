@@ -2,7 +2,7 @@
 set -e
 
 if [[ "${#}" != 2 ]]; then
-  echo "Usage: is-child.sh <child-guess> <parent-guess>."
+  echo "Usage: is-git-child.sh <child-guess> <parent-guess>."
   exit 1
 fi
 
