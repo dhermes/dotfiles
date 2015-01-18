@@ -1,5 +1,13 @@
 (add-to-list 'load-path "~/.emacs.d/")
 
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  )
+;; Make sure to install go-mode (if needed).
+;; M-x list-packages --> Find "go-mode" --> Install.
+
 ;; Prevent vertical window splitting.
 (setq split-height-threshold nil)
 (setq split-width-threshold 75)
@@ -104,6 +112,8 @@
 
 ;; TRAILING WHITESPACE
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; gofmt for Go-Mode
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
 ;; I prefer using the "clipboard" selection (the one the
