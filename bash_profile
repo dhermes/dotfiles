@@ -5,7 +5,7 @@ fi
 
 # Allow custom bin for systems without root privilege.
 if [[ -d "$HOME/bin" ]]; then
-  export PATH="$HOME/bin:$PATH"
+  export PATH="$HOME/bin:$PATH:/usr/local/go/bin"
 fi
 
 # The next line updates PATH for the Google Cloud SDK.

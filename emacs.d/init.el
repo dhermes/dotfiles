@@ -26,6 +26,9 @@
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
+(add-hook 'go-mode-hook
+          (lambda ()
+            (global-whitespace-mode -1)))
 
 ;; Window management
 (defun prev-window ()
