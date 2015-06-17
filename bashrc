@@ -81,7 +81,7 @@ else
 fi
 
 PS1="\[$usercolor\]\u@\h\[$txtrst\] \[$pathcolor\]\w\[$txtrst\]"
-PS1+="\[\$(git_color)\]"
+PS1+="\[$(git_color)\]"
 PS1+="\$(git_branch)"
 PS1+=" \[$promptcolor\]$prompt\[$txtrst\] \[$bldwht\]"
 
