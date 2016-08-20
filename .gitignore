@@ -1,8 +1,8 @@
 *~
 .DS_Store
 emacs.d/elpa/
-emacs.d/emacs-desktop-*
-emacs.d/eshell/
+emacs.d/lisp/emacs-desktop-*
+emacs.d/lisp/eshell/
 screen_sessions.json
 netrc
 hgrc

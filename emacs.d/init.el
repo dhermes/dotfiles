@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -48,7 +48,7 @@
 ;; trying ipython tab completion: that works :)
 (setq
  python-shell-interpreter "ipython"
- python-shell-interpreter-args ""
+ python-shell-interpreter-args "--simple-prompt -i"
  python-shell-prompt-regexp "In \\[[0-9]+\\]: "
  python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
  python-shell-completion-setup-code
@@ -57,6 +57,7 @@
      "';'.join(module_completion('''%s'''))\n"
  python-shell-completion-string-code
      "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
+;; H/T: http://emacs.stackexchange.com/a/24572/13053
 
 ;; Hook for code folding.
 (add-hook 'python-mode-hook 'hs-minor-mode)
@@ -88,7 +89,7 @@
   (ido-mode 1)
 
 ;; Colors
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/themes")
 (load-theme 'tty-dark t)
 
 ;; Require newline
