@@ -4,6 +4,9 @@ escape "^T^T"
 # force the current window to close with C-t K
 bind K kill
 
+# Turn off lock: http://unix.stackexchange.com/a/140951/89278
+bind x
+
 # copy the screen paste buffer to the MacOSX pastebord automatically
 bindkey -m ^@ eval "stuff ' '" "writebuf" "exec sh -c '/usr/bin/pbcopy < /tmp/screen-exchange'"
 
