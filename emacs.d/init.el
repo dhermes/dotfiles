@@ -25,6 +25,7 @@
 ;; Use default mode to complain about whitespace.
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
+(setq whitespace-line-column 79)
 (global-whitespace-mode t)
 (add-hook 'go-mode-hook
           (lambda ()
