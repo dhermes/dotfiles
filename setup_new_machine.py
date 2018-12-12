@@ -25,8 +25,6 @@ SYMLINKS = {
     '$HOME/dotfiles/emacs.d': '$HOME/.emacs.d',
     '$HOME/dotfiles/git-completion.bash': '$HOME/.git-completion.bash',
     '$HOME/dotfiles/gitconfig': '$HOME/.gitconfig',
-    '$HOME/dotfiles/hgrc': '$HOME/.hgrc',
-    '$HOME/dotfiles/netrc': '$HOME/.netrc',
     '$HOME/dotfiles/screenrc': '$HOME/.screenrc',
     '$HOME/dotfiles/ssh_config': '$HOME/.ssh/config',
     '$HOME/dotfiles/Xmodmap': '$HOME/.Xmodmap',
@@ -118,49 +116,6 @@ def check_python_version():
         raise ValueError('Unexpected system Python: %r.' % stderr)
 
 
-def add_rc_files():
-    print 'Adding rc files which require passwords (and can\'t be checked in):'
-    print LINE
-    # NOTE: This must run before `add_symlinks`.
-    hgrc_fi = os.path.expandvars('$HOME/dotfiles/hgrc')
-    hgrc_template_fi = hgrc_fi + '.pytemplate'
-
-    netrc_fi = os.path.expandvars('$HOME/dotfiles/netrc')
-    netrc_template_fi = netrc_fi + '.pytemplate'
-
-    if os.path.exists(hgrc_fi) and os.path.exists(netrc_fi):
-        print 'Both rc files already exist.'
-        do_replace = raw_input('Would you like to overwrite them? [y/N] ')
-        if do_replace.lower() != 'y':
-            return
-
-    with open(hgrc_template_fi, 'r') as file_obj:
-        hgrc_template = string.Template(file_obj.read())
-
-    with open(netrc_template_fi, 'r') as file_obj:
-        netrc_template = string.Template(file_obj.read())
-
-    # Get the template values to be placed into rc files.
-    codehosting_email = raw_input('Email for Google Code Hosting: ')
-    print 'NOTE: Google Code Hosting password can be found at'
-    print '      https://code.google.com/hosting/settings'
-    codehosting_password = getpass.getpass(
-        'Password for Google Code Hosting: ')
-    substitution_dict = {
-        'codehosting_email': codehosting_email,
-        'codehosting_password': codehosting_password,
-    }
-
-    # Make substitutions and write to files.
-    with open(hgrc_fi, 'w') as file_obj:
-        file_obj.write(hgrc_template.substitute(substitution_dict))
-        print 'Wrote:', hgrc_fi
-
-    with open(netrc_fi, 'w') as file_obj:
-        file_obj.write(netrc_template.substitute(substitution_dict))
-        print 'Wrote:', netrc_fi
-
-
 def add_session_file():
     # Add SENTINEL to screen sessions file so that it is never an empty
     # {}. This is because json.dump({}, file_obj) will store an empty string.
@@ -171,7 +126,6 @@ def add_session_file():
 
 
 def add_symlinks():
-    # NOTE: This must run after `add_rc_files`.
     print 'Adding symlinks:'
     print LINE
 
@@ -583,8 +537,6 @@ def main():
     check_python_version()
     add_session_file()
 
-    add_rc_files()
-    print SECTION_SEP
     add_symlinks()
     print SECTION_SEP
     add_packages()

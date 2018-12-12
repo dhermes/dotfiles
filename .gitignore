@@ -4,7 +4,5 @@ emacs.d/elpa/
 emacs.d/lisp/emacs-desktop-*
 emacs.d/lisp/eshell/
 screen_sessions.json
-netrc
-hgrc
 screen_tab_utils.pyc
 local_profile_extensions
