@@ -92,8 +92,8 @@ PS1+=" \[$promptcolor\]$prompt\[$txtrst\] \[$bldwht\]"
 # TODO(dhermes): Implement
 # https://gist.github.com/1169093
 
-bind '"\e[A": history-search-backward';
-bind '"\e[B": history-search-forward';
+bind '"\033[A": history-search-backward';
+bind '"\033[B": history-search-forward';
 
 # Sync history across screen
 # Increase history size
