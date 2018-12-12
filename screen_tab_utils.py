@@ -1,6 +1,7 @@
 # pylint: disable=missing-docstring
 
 import json
+import os
 
 
 SESSION_ID_KEY = "STY"
