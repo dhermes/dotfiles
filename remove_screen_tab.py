@@ -11,8 +11,8 @@ def remove_emacs_desktop(session_info):
 
 
 def remove_current_session(screen_sessions, session_info):
-    session_id = session_info['session_id']
-    window = session_info['window']
+    session_id = session_info["session_id"]
+    window = session_info["window"]
 
     current_session = screen_sessions.setdefault(session_id, {})
 
@@ -20,17 +20,17 @@ def remove_current_session(screen_sessions, session_info):
 
     keep_tab_intact = False
     if isinstance(current_tab, list):
-        if len(current_tab) == 2 and current_tab[1] == 'SIGTERM':
+        if len(current_tab) == 2 and current_tab[1] == "SIGTERM":
             keep_tab_intact = True
             # The tab was not EXITed by a user, restore the correct path
             # for future use.
             current_session[window] = current_tab[0]
         else:
-            raise ValueError('Only valid list ends in SIGTERM.')
-    elif isinstance(current_tab, basestring):
+            raise ValueError("Only valid list ends in SIGTERM.")
+    elif isinstance(current_tab, str):
         current_session.pop(window)
     elif current_tab is not None:
-        raise TypeError('Unexpected value for current tab.')
+        raise TypeError("Unexpected value for current tab.")
 
     if not current_session:
         screen_sessions.pop(session_id)
@@ -50,5 +50,5 @@ def main():
         remove_emacs_desktop(session_info)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
