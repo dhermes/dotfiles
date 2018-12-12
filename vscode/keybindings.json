@@ -1,0 +1,18 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    // https://christoph-jahn.com/?p=2148
+    { "key": "ctrl+a",
+        "command": "",
+        "when": "terminalFocus" },
+      { "key": "ctrl+e",
+        "command": "",
+        "when": "terminalFocus" },
+      { "key": "ctrl+k",
+        "command": "",
+        "when": "terminalFocus"
+      },
+      {
+        "key": "ctrl+shift+unknown",
+        "command": "editor.action.transformToUppercase"
+      }
+    ]
