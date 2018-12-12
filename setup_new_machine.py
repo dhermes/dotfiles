@@ -32,7 +32,6 @@ SYMLINKS = {
     # http://unix.stackexchange.com/q/1677
     "$HOME/dotfiles/xsessionrc": "$HOME/.xsessionrc",
     # Hand-rolled scripts.
-    "$HOME/dotfiles/wipe_pyc_recursive.py": "/usr/local/bin/wipe-pyc-recursive",
     "$HOME/dotfiles/is-git-child.sh": "/usr/local/bin/is-git-child",
 }
 # NOTE: This will be populated with (web_page, install_method) pairs.

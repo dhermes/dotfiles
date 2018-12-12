@@ -1,29 +1,27 @@
 Danny Hermes `dotfiles`
-========================
-
-Make sure to checkout with `git clone git@github.com:dhermes/dotfiles.git`
-so that `ssh` keys can be used.
-
+=======================
 
 ## Getting Started
 
-After cloning this, simply running
+After cloning this, create symlinks to all configuration files:
 
-```sh
-$ sudo ./setup_new_machine.py
+```
+$ python create_symlinks.py
+Adding symlinks:
+----------------------------------------------------------------------
+...
 ```
 
-should be sufficient to set up a new machine.
+You may need to create `~/.ssh` as well. You may also want to enable
+`git is-child` via:
+
+```
+ln -s is-git-child.sh /usr/local/bin/is-git-child
+```
+
+(or some directory on your `${PATH}` other than `/usr/local/bin`).
 
 ## Pre-requisites
 
-In order to do this you'll need to install `git`.
-
-- On Mac OS X, you can download an [installer][1].
-- On Ubuntu, you can install via
-
-  ```sh
-  $ sudo apt-get install git-core
-  ```
-
-[1]: http://git-scm.com/download/mac
+In order to do this you'll need `git` installed. It should come by default
+on macOS and Linux. If not, get a new version of your OS.

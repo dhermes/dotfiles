@@ -1,17 +1,3 @@
-Host math
-    HostName login.math.berkeley.edu
-    User dhermes
-
-Host appsa
-    HostName appsa.math.berkeley.edu
-    ProxyCommand ssh -q math nc %h %p
-    User dhermes
-
-Host bossylobster.unfuddle.com
-  HostName bossylobster.unfuddle.com
-  User git
-  IdentityFile $HOME/.ssh/bossylobster_rsa
-
 Host github
   HostName github.com
   User git
