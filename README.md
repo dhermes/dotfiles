@@ -92,7 +92,8 @@ Also note that you may need to install Roboto on Ubuntu (see
 - On macOS, it's always important to start by running
   `xcode-select --install` to make sure Developer Tools are installed
 - For working with `node`, install [`nvm`][4]
-- For working with `python`, install [`pyenv`][5]
+- For working with `python`, install [`pyenv`][5] and sometimes also
+  [`pyenv-virtualenv`][10]
 - For working with `go`, install [`goenv`][6]
 - For working with `ruby`, install [`rbenv`][7]
 - I occasionally like to use LaTeX for typesetting, so sometimes will
@@ -107,3 +108,4 @@ Also note that you may need to install Roboto on Ubuntu (see
 [7]: https://github.com/rbenv/rbenv
 [8]: http://serverfault.com/a/86007
 [9]: https://code.visualstudio.com/docs/getstarted/settings
+[10]: https://github.com/pyenv/pyenv-virtualenv
