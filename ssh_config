@@ -1,6 +1,6 @@
 Host github
-  HostName github.com
-  User git
-  IdentityFile $HOME/.ssh/github_rsa
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/github_rsa
 
 ForwardAgent yes

@@ -108,17 +108,6 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Custom autojump command.
-alias jumpstat="autojump --stat"
-if [[ "`uname`" == 'Darwin' ]]; then
-  [[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
-fi
-if [[ "`uname`" == 'Linux' ]]; then
-  if [[ -f /usr/share/autojump/autojump.sh ]]; then
-    source /usr/share/autojump/autojump.sh
-  fi
-fi
-
 # For inferior shells that don't define update_terminal_cwd
 # http://stackoverflow.com/questions/85880
 # http://superuser.com/questions/418559
@@ -196,3 +185,7 @@ if [[ -f $HOME/.bash_completion.d/python-argcomplete.sh ]]; then
     source $HOME/.bash_completion.d/python-argcomplete.sh
   fi
 fi
+
+export NVM_DIR="${HOME}/.nvm"
+[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
+[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion

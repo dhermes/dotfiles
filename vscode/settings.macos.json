@@ -1,0 +1,20 @@
+{
+    "python.pythonPath": "/Users/dhermes/.pyenv/versions/3.7.1/bin/python",
+    "files.autoSave": "afterDelay",
+    "window.zoomLevel": 1,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "editor.rulers": [
+        80
+    ],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "79"
+    ],
+    "editor.formatOnSave": true,
+    "python.terminal.activateEnvironment": false
+}

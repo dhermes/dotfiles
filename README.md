@@ -51,6 +51,37 @@ There are some paths on the system that define default behavior.
   from source), launchd should take care of picking up the new config without
   having to restart the daemon."
 
+## VS Code
+
+In order to use VS Code [settings][9] and keybindings, create symlinks
+into the VS Code install directory. (Before creating the symlinks you'll
+likely need to delete the existing JSON files.)
+
+On macOS:
+
+```
+ln -s \
+  vscode/settings.macos.json \
+  "${HOME}/Library/Application Support/Code/User/settings.json"
+ln -s \
+  vscode/keybindings.macos.json \
+  "${HOME}/Library/Application Support/Code/User/keybindings.json"
+```
+
+On Ubuntu:
+
+```
+ln -s \
+  vscode/settings.ubuntu.json \
+  "${HOME}/.config/Code/User/settings.json"
+ln -s \
+  vscode/keybindings.ubuntu.json \
+  "${HOME}/.config/Code/User/keybindings.json"
+```
+
+Also note that you may need to install Roboto on Ubuntu (see
+`editor.fontFamily`).
+
 ## Optional
 
 - Often the default version of `emacs` on macOS is too old, so it may be
@@ -75,3 +106,4 @@ There are some paths on the system that define default behavior.
 [6]: https://github.com/syndbg/goenv
 [7]: https://github.com/rbenv/rbenv
 [8]: http://serverfault.com/a/86007
+[9]: https://code.visualstudio.com/docs/getstarted/settings
