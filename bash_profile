@@ -19,21 +19,12 @@ if [[ -f ${HOME}/.local_profile_extensions ]]; then
   source ${HOME}/.local_profile_extensions
 fi
 
-NODE_PATH="/usr/local/lib/node_modules:${NODE_PATH}"
-export NODE_PATH
-
 if [[ -d "/usr/local/go/bin" ]]; then
     export PATH="${PATH}:/usr/local/go/bin"
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:${PATH}"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  if [[ -d "${PYENV_ROOT}/plugins/pyenv-virtualenv" ]]; then
-    eval "$(pyenv virtualenv-init -)"
-  fi
-fi
 
 if [[ "$(uname)" == 'Darwin' ]]; then
   export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"

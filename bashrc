@@ -126,7 +126,7 @@ fi
 # with the prefix, though this brings it much closer to idempotent than
 # it was before (especially with screen).
 PROMPT_PREFIX="history -a; history -c; history -r;"
-if [[ $PROMPT_COMMAND != ${PROMPT_PREFIX}* ]] ;
+if [[ ! $PROMPT_COMMAND =~ ${PROMPT_PREFIX} ]] ;
 then
     export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-:}"
 fi
@@ -189,3 +189,11 @@ fi
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
+
+export PYENV_ROOT="${HOME}/.pyenv"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  if [[ -d "${PYENV_ROOT}/plugins/pyenv-virtualenv" ]]; then
+    eval "$(pyenv virtualenv-init -)"
+  fi
+fi
