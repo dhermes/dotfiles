@@ -10,7 +10,6 @@ DOTFILES_DIR = os.path.dirname(os.path.abspath(__file__))
 HOME = os.path.expanduser("~")
 SYMLINKS = (
     ("bash_colors", ".bash_colors"),
-    ("bash_completion.d", ".bash_completion.d"),
     ("bash_profile", ".bash_profile"),
     ("profile", ".profile"),
     ("bashrc", ".bashrc"),
