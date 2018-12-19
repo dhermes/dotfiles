@@ -2,6 +2,11 @@
     "[markdown]": {
         "editor.wordWrap": "off"
     },
+    "[typescript]": {
+        "editor.rulers": [
+            120
+        ]
+    },
     "editor.formatOnSave": true,
     "editor.rulers": [
         80

@@ -2,6 +2,11 @@
     "[markdown]": {
         "editor.wordWrap": "off"
     },
+    "[typescript]": {
+        "editor.rulers": [
+            120
+        ]
+    },
     "editor.fontFamily": "'Noto Sans Mono', 'monospace', monospace, 'Noto Sans Fallback'",
     "editor.formatOnSave": true,
     "editor.rulers": [
