@@ -84,13 +84,8 @@ Also note that you may need to install Roboto on Ubuntu (see
 
 ## Optional
 
-- Often the default version of `emacs` on macOS is too old, so it may be
-  worth trying to update
 - Install VS Code (`code`)
-- On macOS, install [Homebrew][3]
 - It's not uncommon for me to install the [Google Cloud SDK][1].
-- On macOS, it's always important to start by running
-  `xcode-select --install` to make sure Developer Tools are installed
 - For working with `node`, install [`nvm`][4]
 - For working with `python`, install [`pyenv`][5] and sometimes also
   [`pyenv-virtualenv`][10]
@@ -98,6 +93,16 @@ Also note that you may need to install Roboto on Ubuntu (see
 - For working with `ruby`, install [`rbenv`][7]
 - I occasionally like to use LaTeX for typesetting, so sometimes will
   install it on a new machine. I will also sometimes install `pdftk`.
+
+### macOS
+
+- Often the default version of `emacs` is too old, so it may be
+  worth trying to update
+- It's always important to start by running
+  `xcode-select --install` to make sure Developer Tools are installed
+- install [Homebrew][3]
+- Set custom command to lock screen ([ref][11])
+- Make function (`FN`) keys be function keys ([ref][12])
 
 [1]: https://cloud.google.com/sdk/install
 [2]: https://www.linux.org/threads/how-to-force-ssh-login-via-public-key-authentication.8726/
@@ -109,3 +114,5 @@ Also note that you may need to install Roboto on Ubuntu (see
 [8]: http://serverfault.com/a/86007
 [9]: https://code.visualstudio.com/docs/getstarted/settings
 [10]: https://github.com/pyenv/pyenv-virtualenv
+[11]: https://maclovin.org/blog-native/2017/high-sierra-set-a-global-shortcut-to-lock-screen
+[12]: https://support.apple.com/en-us/HT204436
