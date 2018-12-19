@@ -1,21 +1,25 @@
 {
-    "python.pythonPath": "/home/dhermes/.pyenv/versions/3.7.1/bin/python",
-    "files.autoSave": "afterDelay",
-    "window.zoomLevel": 0,
-    "editor.trimAutoWhitespace": true,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
+    "[markdown]": {
+        "editor.wordWrap": "off"
+    },
     "editor.fontFamily": "'Noto Sans Mono', 'monospace', monospace, 'Noto Sans Fallback'",
-    "workbench.colorTheme": "Visual Studio Dark",
+    "editor.formatOnSave": true,
     "editor.rulers": [
         80
     ],
-    "python.formatting.provider": "black",
+    "editor.trimAutoWhitespace": true,
+    "editor.wordWrap": "off",
+    "files.autoSave": "afterDelay",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
     "python.formatting.blackArgs": [
         "--line-length",
         "79"
     ],
-    "editor.formatOnSave": true,
-    "python.terminal.activateEnvironment": false
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/home/dhermes/.pyenv/shims/python",
+    "python.terminal.activateEnvironment": false,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Visual Studio Dark"
 }
