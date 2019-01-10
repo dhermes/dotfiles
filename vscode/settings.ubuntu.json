@@ -9,6 +9,7 @@
     },
     "editor.fontFamily": "'Noto Sans Mono', 'monospace', monospace, 'Noto Sans Fallback'",
     "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
     "editor.rulers": [
         80
     ],
