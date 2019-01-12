@@ -18,10 +18,11 @@ Adding symlinks:
 ```
 
 You may need to create `~/.ssh` as well. You may also want to enable
-`git is-child` via:
+`git is-child` and `annoy` via:
 
 ```
-ln -s is-git-child.sh /usr/local/bin/is-git-child
+ln -s $(pwd)/is-git-child.sh /usr/local/bin/is-git-child
+ln -s $(pwd)/annoy.py /usr/local/bin/annoy
 ```
 
 (or some directory on your `${PATH}` other than `/usr/local/bin`).
