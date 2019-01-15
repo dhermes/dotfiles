@@ -16,6 +16,7 @@
     "editor.trimAutoWhitespace": true,
     "editor.wordWrap": "off",
     "files.autoSave": "afterDelay",
+    "files.hotExit": "onExitAndWindowClose",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
@@ -26,6 +27,7 @@
     "python.formatting.provider": "black",
     "python.pythonPath": "/home/dhermes/.pyenv/shims/python",
     "python.terminal.activateEnvironment": false,
+    "terminal.integrated.confirmOnExit": true,
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Visual Studio Dark"
 }
