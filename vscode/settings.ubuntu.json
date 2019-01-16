@@ -20,6 +20,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "python.formatting.blackArgs": [
         "--line-length",
         "79"
@@ -28,6 +29,7 @@
     "python.pythonPath": "/home/dhermes/.pyenv/shims/python",
     "python.terminal.activateEnvironment": false,
     "terminal.integrated.confirmOnExit": true,
+    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Visual Studio Dark"
 }
