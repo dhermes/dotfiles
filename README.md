@@ -83,6 +83,25 @@ ln -s \
 Also note that you may need to install Roboto on Ubuntu (see
 `editor.fontFamily`).
 
+My current (as of January 2019) list of extensions is
+
+```
+$ code --list-extensions
+DotJoshJohnson.xml
+esbenp.prettier-vscode
+ms-python.python
+ms-vscode.Go
+```
+
+These can be installed on a new machine via
+`code --install-extension ${EXTENSION}`. The actual state of these is kept
+in `${CONFIG_DIR}/Code/CachedExtensions/user` (a JSON file) but that file is
+too specific to be stored in version control. (For example, it tracks the
+current version of VS Code.)
+
+> **NOTE**: `${CONFIG_DIR}` is `${HOME}/Library/Application Support` on macOS
+> and `${HOME}/.config` on Linux
+
 ## Optional
 
 - Install VS Code (`code`)
