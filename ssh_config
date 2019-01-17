@@ -1,4 +1,4 @@
-Host github
+Host *
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/github_rsa
