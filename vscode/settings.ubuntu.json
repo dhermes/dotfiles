@@ -31,5 +31,6 @@
     "terminal.integrated.confirmOnExit": true,
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Visual Studio Dark"
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.editor.enablePreview": false
 }

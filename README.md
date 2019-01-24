@@ -88,8 +88,10 @@ My current (as of January 2019) list of extensions is
 ```
 $ code --list-extensions
 DotJoshJohnson.xml
+eamodio.gitlens
 esbenp.prettier-vscode
 ms-python.python
+ms-vscode.cpptools
 ms-vscode.Go
 ```
 
