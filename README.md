@@ -90,6 +90,7 @@ $ code --list-extensions
 DotJoshJohnson.xml
 eamodio.gitlens
 esbenp.prettier-vscode
+kaiwood.center-editor-window  // CTRL+L recenters editor on current line
 ms-python.python
 ms-vscode.cpptools
 ms-vscode.Go
