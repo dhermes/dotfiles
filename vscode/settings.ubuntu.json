@@ -21,6 +21,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "git.autoRepositoryDetection": false,
     "git.autofetch": false,
     "git.autorefresh": false,
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
