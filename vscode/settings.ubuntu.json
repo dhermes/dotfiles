@@ -33,6 +33,7 @@
     "python.pythonPath": "/home/dhermes/.pyenv/shims/python",
     "python.terminal.activateEnvironment": false,
     "terminal.integrated.confirmOnExit": true,
+    "terminal.integrated.fontFamily": "Menlo for Powerline",
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Visual Studio Dark",

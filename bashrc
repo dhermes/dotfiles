@@ -1,186 +1,77 @@
-## bashrc should not be executed outside of log-in shells.
-## SEE http://stackoverflow.com/a/12442753/1068170
-## AND http://superuser.com/a/690749
-## AND http://www.openssh.com/faq.html#2.9
-if [[ -z "$PS1" ]]; then
-   return
-fi
+#!/usr/bin/env bash
 
-# Need to use -nw since the alias below doesn't apply to root user
-export EDITOR="emacs -nw"
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+    *) return;;
+esac
 
+# Path to the bash it configuration
+export BASH_IT="${HOME}/.bash_it"
+
+# Lock and Load a custom theme file.
+# Leave empty to disable theming.
+# location /.bash_it/themes/
+export BASH_IT_THEME='powerline-multiline'  # Default is 'bobby'
+
+# (Advanced): Change this to the name of your remote repo if you
+# cloned bash-it with a remote other than origin such as `bash-it`.
+# export BASH_IT_REMOTE='bash-it'
+
+# Your place for hosting Git repos. I use this for private repos.
+export GIT_HOSTING='git@git.domain.com'
+
+# Don't check mail when opening terminal.
+unset MAILCHECK
+
+# Change this to your console based IRC client of choice.
+export IRC_CLIENT='irssi'
+
+# Set this to the command you use for todo.txt-cli
+export TODO="t"
+
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=true
+
+# Set Xterm/screen/Tmux title with only a short hostname.
+# Uncomment this (or set SHORT_HOSTNAME to something else),
+# Will otherwise fall back on $HOSTNAME.
+#export SHORT_HOSTNAME=$(hostname -s)
+
+# Set Xterm/screen/Tmux title with only a short username.
+# Uncomment this (or set SHORT_USER to something else),
+# Will otherwise fall back on $USER.
+#export SHORT_USER=${USER:0:8}
+
+# Set Xterm/screen/Tmux title with shortened command and directory.
+# Uncomment this to set.
+#export SHORT_TERM_LINE=true
+
+# Set vcprompt executable path for scm advance info in prompt (demula theme)
+# https://github.com/djl/vcprompt
+#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+
+# (Advanced): Uncomment this to make Bash-it reload itself automatically
+# after enabling or disabling aliases, plugins, and completions.
+# export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
+
+# Uncomment this to make Bash-it create alias reload.
+# export BASH_IT_RELOAD_LEGACY=1
+
+# Load Bash It
+source "$BASH_IT"/bash_it.sh
+
+# Make sure we on't clobber files by mistake.
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias rmdir="rm -ir"
 
-alias ls="ls -F"
-alias ll="ls -alFG"
-
-alias emacs="emacs -nw"
-if [[ "`uname`" == 'Linux' ]]; then
-  alias open="gnome-open"
-  alias pbcopy="xclip -selection clipboard"
-  alias pbpaste="xclip -selection clipboard -o"
-fi
+alias ls="ls -F --color=auto"
+alias ll="ls -alFG --color=auto"
 
 alias diff="diff -Nru"
-
-source ~/.git-completion.bash
-
-# BEGIN: Git specific prompt methods.
-# From: https://gist.github.com/foosel/e46c649f4eb6a6e0fbde
-# NOTE: git status slightly adapted from https://coderwall.com/p/pn8f0g
-
-source ~/.bash_colors
-
-# How does =~ work in BASH: http://stackoverflow.com/a/12454780/1068170
-function git_color {
-  if [[ $EUID -ne 0 ]]; then
-    local git_status="$(git status 2> /dev/null)"
-
-    if [[ ! $git_status =~ "working tree clean" ]]; then
-      echo -e $bldred
-    elif [[ $git_status =~ "Your branch is ahead of" ]]; then
-      echo -e $bldylw
-    elif [[ $git_status =~ "nothing to commit" ]]; then
-      echo -e $bldgrn
-    else
-      echo -e $txtylw
-    fi
-  else
-    echo -e $bldred
-  fi
-}
-
-function git_branch {
-  local git_status="$(git status 2> /dev/null)"
-  local on_branch="On branch ([^${IFS}]*)"
-  local on_commit="HEAD detached at ([^${IFS}]*)"
-
-  if [[ $git_status =~ $on_branch ]]; then
-    local branch=${BASH_REMATCH[1]}
-    echo " ($branch)"
-  elif [[ $git_status =~ $on_commit ]]; then
-    local commit=${BASH_REMATCH[1]}
-    echo " ($commit)"
-  fi
-}
-
-if [[ $EUID -ne 0 ]]; then
-  usercolor=$txtgrn
-  pathcolor=$bldblu
-  gitcolor=$bldylw
-  promptcolor=$bldgrn
-  prompt='\$'
-else
-  usercolor=$txtred
-  promptcolor=$bldred
-  pathcolor=$bldred
-  gitcolor=$txtred
-  prompt='#'
-fi
-
-PS1="\[$usercolor\]\u@\h\[$txtrst\] \[$pathcolor\]\w\[$txtrst\]"
-# NOTE: Retain the escape, http://askubuntu.com/a/651875/439339
-PS1+="\[\$(git_color)\]"
-PS1+="\$(git_branch)"
-PS1+=" \[$promptcolor\]$prompt\[$txtrst\] \[$bldwht\]"
-
-# END: Git specific prompt methods.
-
-# TODO(dhermes): Implement
-# https://gist.github.com/1169093
-
-bind '"\033[A": history-search-backward';
-bind '"\033[B": history-search-forward';
-
-# Sync history across screen
-# Increase history size
-HISTSIZE=1000
-HISTFILESIZE=2000
-# Don't put duplicate lines in the history.
-HISTCONTROL=ignoredups:ignorespace
-# Append to the history file, don't overwrite it
-shopt -s histappend
-
-# Check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# For inferior shells that don't define update_terminal_cwd
-# http://stackoverflow.com/questions/85880
-# http://superuser.com/questions/418559
-function_exists() {
-    declare -f -F $1 > /dev/null
-    return $?
-}
-if ! function_exists "update_terminal_cwd"; then
-    update_terminal_cwd() {
-        return
-    }
-fi
-
-# Update the prompt command with a history prefix if have not already.
-# Should probably check for string containment rather than beginning
-# with the prefix, though this brings it much closer to idempotent than
-# it was before (especially with screen).
-PROMPT_PREFIX="history -a; history -c; history -r;"
-if [[ ! $PROMPT_COMMAND =~ ${PROMPT_PREFIX} ]] ;
-then
-    export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-:}"
-fi
-
-alias screen="screen -S djh-screen"
-# For appsa, h/t http://stackoverflow.com/questions/592620
-my_python() {
-    if hash python2.7 2>/dev/null; then
-        python2.7 "$@"
-    else
-        if hash python26 2>/dev/null; then
-            python26 "$@"
-        else
-            if hash python2.6 2>/dev/null; then
-                python2.6 "$@"
-            else
-                python2 "$@"
-            fi
-        fi
-    fi
-}
-cd `my_python $HOME/dotfiles/add_screen_tab.py --new`
-function cd() { builtin cd "$@" && my_python $HOME/dotfiles/add_screen_tab.py; }
-# See http://stackoverflow.com/a/9256709/1068170
-# for details on determining which signals are being caught.
-trap "my_python $HOME/dotfiles/detect_term.py" TERM
-trap "my_python $HOME/dotfiles/remove_screen_tab.py" EXIT
-
-## H/T: http://superuser.com/a/707645/196822
-if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]]; then
-  if [[ -f $HOME/.ssh/github_rsa ]]; then
-    echo "SSH Agent not set, setting agent.";
-    eval $(ssh-agent);
-
-    echo "";
-
-    echo "SSH-Adding GitHub SSH key.";
-    ssh-add $HOME/.ssh/github_rsa;
-  fi
-fi
-
-# The next line enables bash completion for gcloud.
-if [[ -f $HOME/google-cloud-sdk/completion.bash.inc ]]; then
-  source $HOME/google-cloud-sdk/completion.bash.inc
-fi
 
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
-
-export PYENV_ROOT="${HOME}/.pyenv"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  if [[ -d "${PYENV_ROOT}/plugins/pyenv-virtualenv" ]]; then
-    eval "$(pyenv virtualenv-init -)"
-  fi
-fi

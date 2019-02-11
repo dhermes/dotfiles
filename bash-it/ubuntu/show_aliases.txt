@@ -1,0 +1,48 @@
+Alias               Enabled?  Description
+ag                    [ ]     the silver searcher (ag) aliases
+ansible               [ ]     ansible abbreviations
+apt                   [ ]     Apt and dpkg aliases for Ubuntu and Debian distros.
+atom                  [ ]     Atom.io editor abbreviations
+bolt                  [ ]     puppet bolt aliases
+bundler               [ ]     ruby bundler
+clipboard             [x]     pbcopy and pbpaste shortcuts to linux
+composer              [ ]     common composer abbreviations
+curl                  [ ]     Curl aliases for convenience.
+docker                [ ]     docker abbreviations
+docker-compose        [ ]     docker-compose abbreviations
+emacs                 [ ]     emacs editor
+fuck                  [ ]     
+general               [x]     general aliases
+git                   [ ]     common git abbreviations
+gitsvn                [ ]     common git-svn abbreviations
+heroku                [ ]     heroku task abbreviations
+hg                    [ ]     mercurial abbreviations
+homebrew              [ ]     homebrew abbreviations
+homebrew-cask         [ ]     homebrew-cask abbreviations
+homesick              [ ]     homesick aliases
+jitsu                 [ ]     jitsu task abbreviations
+kubectl               [ ]     kubectl aliases
+laravel               [ ]     laravel artisan abbreviations
+maven                 [ ]     maven abbreviations
+msys2                 [ ]     MSYS2 aliases
+npm                   [x]     common npm abbreviations
+osx                   [x]     osx-specific aliases
+phoenix               [ ]     phoenix abbreviations
+puppet                [ ]     puppet aliases
+pyrocms               [ ]     pyrocms abbreviations
+rails                 [ ]     rails abbreviations
+svn                   [ ]     common svn abbreviations
+systemd               [ ]     systemd service
+textmate              [ ]     textmate abbreviations
+tmux                  [ ]     Tmux terminal multiplexer
+todo.txt-cli          [ ]     todo.txt-cli abbreviations
+vagrant               [ ]     vagrant aliases
+vault                 [ ]     vault aliases
+vim                   [ ]     vim abbreviations
+yarn                  [ ]     yarn package manager aliases
+
+to enable an alias, do:
+$ bash-it enable alias  <alias name> [alias name]... -or- $ bash-it enable alias all
+
+to disable an alias, do:
+$ bash-it disable alias <alias name> [alias name]... -or- $ bash-it disable alias all

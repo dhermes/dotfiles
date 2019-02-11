@@ -23,9 +23,11 @@ if [[ -d "/usr/local/go/bin" ]]; then
     export PATH="${PATH}:/usr/local/go/bin"
 fi
 
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${PYENV_ROOT}/bin:${PATH}"
-
 if [[ "$(uname)" == 'Darwin' ]]; then
   export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+fi
+
+if [[ -d "${HOME}/.pyenv" ]]; then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  export PATH="${PYENV_ROOT}/bin:${PATH}"
 fi

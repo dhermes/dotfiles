@@ -1,0 +1,77 @@
+Plugin              Enabled?  Description
+alias-completion      [x]     Automatic completion of aliases
+autojump              [x]     Autojump configuration, see https://github.com/wting/autojump for more details
+aws                   [x]     AWS helper functions
+base                  [x]     miscellaneous tools
+battery               [x]     display info about your battery charge level
+boot2docker           [ ]     Helpers to get Docker setup correctly for boot2docker
+browser               [ ]     render commandline output in your browser
+chruby-auto           [ ]     load chruby + auto-switching (from /usr/local/share/chruby)
+chruby                [ ]     load chruby                  (from /usr/local/share/chruby)
+direnv                [ ]     load direnv, if you are using it: https://direnv.net/
+dirs                  [ ]     directory stack navigation
+docker-compose        [ ]     Helper functions for using docker-compose
+docker-machine        [ ]     Helpers to get Docker setup correctly for docker-machine
+docker                [ ]     Helpers to more easily work with Docker
+edit-mode-emacs       [ ]     Enable emacs editing mode
+edit-mode-vi          [ ]     Enable vi editing mode
+explain               [ ]     mankier.com explain function to explain other commands
+extract               [ ]     one command to extract them all...
+fasd                  [ ]     initialize fasd (see https://github.com/clvv/fasd)
+fzf                   [ ]     load fzf, if you are using it
+gh                    [ ]     load gh, if you are using it (DEPRECATED, use hub instead)
+gif                   [ ]     video to gif, gif to WebM helper functions
+git                   [x]     git helper functions
+git-subrepo           [x]     load git-subrepo if you are using it, and initialize completions
+go                    [x]     go environment variables & path configuration
+gradle                [ ]     Add a gw command to use gradle wrapper if present, else use system gradle
+hg                    [ ]     hg helper functions
+history               [x]     history manipulation
+hub                   [ ]     load hub, if you are using it
+java                  [ ]     Java and JAR helper functions
+javascript            [ ]     download jquery files into current project
+jekyll                [ ]     manage your jekyll site
+jenv                  [ ]     load jenv, if you are using it
+jgitflow              [ ]     Maven jgitflow build helpers
+jump                  [ ]     initialize jump (see https://github.com/gsamokovarov/jump)
+latex                 [ ]     use mactex
+less-pretty-cat       [x]     pygmentize instead of cat to terminal if possible
+nginx                 [ ]     manage your nginx service
+nodenv                [x]     load nodenv, if you are using it
+node                  [x]     Node.js helper functions
+nvm                   [x]     node version manager configuration
+osx                   [x]     osx-specific functions
+osx-timemachine       [ ]     OS X Time Machine functions
+percol                [ ]     Search&Select history and fasd with percol
+pipsi                 [ ]     load pipsi, if you are using it
+plenv                 [ ]     plenv plugin for Perl
+postgres              [ ]     postgres helper functions
+powerline             [x]     enables powerline daemon
+projects              [ ]     add "export PROJECT_PATHS=~/projects:~/intertrode/projects" to navigate quickly to your project directories with `pj` and `pjo`
+proxy                 [x]     Proxy Tools
+pyenv                 [x]     load pyenv, if you are using it
+python                [ ]     alias "shttp" to SimpleHTTPServer
+rails                 [ ]     Helper functions for Ruby on Rails
+rbenv                 [ ]     load rbenv, if you are using it
+ruby                  [ ]     ruby and rubygems specific functions and settings
+rvm                   [ ]     load rvm, if you are using it
+sdkman                [ ]     Load Software Development Kit Manager
+sshagent              [x]     sshagent helper functions
+ssh                   [x]     ssh helper functions
+subversion            [ ]     svn helper functions
+textmate              [ ]     set textmate as a default editor
+tmuxinator            [ ]     sources tmuxinator script if available
+tmux                  [ ]     make sure that tmux is launched in 256 color mode
+todo                  [ ]     Todo.txt integration
+virtualenv            [x]     virtualenvwrapper and pyenv-virtualenvwrapper helper functions
+visual-studio-code    [x]     Defines the `code` executable for Visual Studio Code on OS X
+xterm                 [x]     automatically set your xterm title with host and location info
+z_autoenv             [ ]     source into environment when cding to directories
+z                     [ ]     maintains a jump-list of the directories you actually use
+                              z is DEPRECATED, use fasd instead
+
+to enable a plugin, do:
+$ bash-it enable plugin  <plugin name> [plugin name]... -or- $ bash-it enable plugin all
+
+to disable a plugin, do:
+$ bash-it disable plugin <plugin name> [plugin name]... -or- $ bash-it disable plugin all

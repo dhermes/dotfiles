@@ -1,16 +1,22 @@
-Danny Hermes `dotfiles`
-=======================
+# Danny Hermes `dotfiles`
 
 ## Prerequisites
 
 In order to do this you'll need `git` installed. It should come by default
 on macOS and Linux. If not, get a new version of your OS.
 
+## `bash-it` Framework
+
+As of February 2019, I'm using [`bash-it`][14] for many shell features I
+used to "handroll". I use the powerline theme, which has some font issues in
+VS Code and required installing [Menlo for Powerline][15] (I followed a
+[blog post][15] to resolve the issue).
+
 ## Symlinks
 
 After cloning this, create symlinks to all configuration files:
 
-```
+```console
 $ python create_symlinks.py
 Adding symlinks:
 ----------------------------------------------------------------------
@@ -20,7 +26,7 @@ Adding symlinks:
 You may need to create `~/.ssh` as well. You may also want to enable
 `git is-child` and `annoy` via:
 
-```
+```console
 ln -s $(pwd)/is-git-child.sh /usr/local/bin/is-git-child
 ln -s $(pwd)/annoy.py /usr/local/bin/annoy
 ```
@@ -60,23 +66,23 @@ likely need to delete the existing JSON files.)
 
 On macOS:
 
-```
+```console
 ln -s \
-  vscode/settings.macos.json \
+  $(pwd)/vscode/settings.macos.json \
   "${HOME}/Library/Application Support/Code/User/settings.json"
 ln -s \
-  vscode/keybindings.macos.json \
+  $(pwd)/vscode/keybindings.macos.json \
   "${HOME}/Library/Application Support/Code/User/keybindings.json"
 ```
 
 On Ubuntu:
 
-```
+```console
 ln -s \
-  vscode/settings.ubuntu.json \
+  $(pwd)/vscode/settings.ubuntu.json \
   "${HOME}/.config/Code/User/settings.json"
 ln -s \
-  vscode/keybindings.ubuntu.json \
+  $(pwd)/vscode/keybindings.ubuntu.json \
   "${HOME}/.config/Code/User/keybindings.json"
 ```
 
@@ -85,7 +91,7 @@ Also note that you may need to install Roboto on Ubuntu (see
 
 My current (as of January 2019) list of extensions is
 
-```
+```console
 $ code --list-extensions
 DotJoshJohnson.xml
 eamodio.gitlens
@@ -127,6 +133,16 @@ current version of VS Code.)
 - Set custom command to lock screen ([ref][11])
 - Make function (`FN`) keys be function keys ([ref][12])
 
+### Linux
+
+- The [`libsecret` library][13] can be used in a similar fashion as the macOS
+  keychain
+
+  ```ini
+  [credential]
+         helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+  ```
+
 [1]: https://cloud.google.com/sdk/install
 [2]: https://www.linux.org/threads/how-to-force-ssh-login-via-public-key-authentication.8726/
 [3]: https://brew.sh
@@ -139,3 +155,7 @@ current version of VS Code.)
 [10]: https://github.com/pyenv/pyenv-virtualenv
 [11]: https://maclovin.org/blog-native/2017/high-sierra-set-a-global-shortcut-to-lock-screen
 [12]: https://support.apple.com/en-us/HT204436
+[13]: https://askubuntu.com/a/959662/439339
+[14]: https://github.com/Bash-it/bash-it
+[15]: https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7
+[16]: https://github.com/abertsch/Menlo-for-Powerline
