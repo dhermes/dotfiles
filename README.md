@@ -8,9 +8,7 @@ on macOS and Linux. If not, get a new version of your OS.
 ## `bash-it` Framework
 
 As of February 2019, I'm using [`bash-it`][14] for many shell features I
-used to "handroll". I use the powerline theme, which has some font issues in
-VS Code and required installing [Menlo for Powerline][15] (I followed a
-[blog post][15] to resolve the issue).
+used to "handroll". I use the powerline theme.
 
 ## Symlinks
 
@@ -43,6 +41,28 @@ ln -s $(pwd)/annoy.py /usr/local/bin/annoy
 
 (or some directory on your `${PATH}` other than `/usr/local/bin`).
 
+To use VS Code settings on macOS:
+
+```console
+ln -s \
+  $(pwd)/vscode/settings.macos.json \
+  "${HOME}/Library/Application Support/Code/User/settings.json"
+ln -s \
+  $(pwd)/vscode/keybindings.macos.json \
+  "${HOME}/Library/Application Support/Code/User/keybindings.json"
+```
+
+To use VS Code settings on Ubuntu:
+
+```console
+ln -s \
+  $(pwd)/vscode/settings.ubuntu.json \
+  "${HOME}/.config/Code/User/settings.json"
+ln -s \
+  $(pwd)/vscode/keybindings.ubuntu.json \
+  "${HOME}/.config/Code/User/keybindings.json"
+```
+
 ## GNU Screen
 
 In order to track open GNU Screen windows, the `dotfiles/screen_sessions.json`
@@ -74,39 +94,21 @@ In order to use VS Code [settings][9] and keybindings, create symlinks
 into the VS Code install directory. (Before creating the symlinks you'll
 likely need to delete the existing JSON files.)
 
-On macOS:
-
-```console
-ln -s \
-  $(pwd)/vscode/settings.macos.json \
-  "${HOME}/Library/Application Support/Code/User/settings.json"
-ln -s \
-  $(pwd)/vscode/keybindings.macos.json \
-  "${HOME}/Library/Application Support/Code/User/keybindings.json"
-```
-
-On Ubuntu:
-
-```console
-ln -s \
-  $(pwd)/vscode/settings.ubuntu.json \
-  "${HOME}/.config/Code/User/settings.json"
-ln -s \
-  $(pwd)/vscode/keybindings.ubuntu.json \
-  "${HOME}/.config/Code/User/keybindings.json"
-```
-
 Also note that you may need to install Roboto on Ubuntu (see
 `editor.fontFamily`).
 
-My current (as of January 2019) list of extensions is
+The `bash-it` Powerline theme has some font issues in VS Code and requires
+installing [Menlo for Powerline][15] (I followed a [blog post][15] to resolve
+the issue).
+
+My current (as of February 2019) list of extensions is
 
 ```console
 $ code --list-extensions
 DotJoshJohnson.xml
 eamodio.gitlens
 esbenp.prettier-vscode
-kaiwood.center-editor-window  // CTRL+L recenters editor on current line
+kaiwood.center-editor-window  # CTRL+L recenters editor on current line
 ms-python.python
 ms-vscode.cpptools
 ms-vscode.Go
