@@ -22,5 +22,6 @@
 	wshow = show --color-words
 	is-child = !sh -c 'is-git-child $0 $1'
 	update-from-upstream = !sh -c 'git fetch official && git pull official master:master && git push origin master:master'
+	conflicted = diff --name-only --diff-filter=U
 [core]
 	editor = code --wait
