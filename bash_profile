@@ -1,8 +1,3 @@
-# Get the aliases and functions
-if [[ -f ${HOME}/.bashrc ]]; then
-  source ${HOME}/.bashrc
-fi
-
 # Allow custom bin for systems without root privilege.
 if [[ -d "${HOME}/bin" ]]; then
   export PATH="${HOME}/bin:${PATH}"
@@ -30,4 +25,9 @@ fi
 if [[ -d "${HOME}/.pyenv" ]]; then
   export PYENV_ROOT="${HOME}/.pyenv"
   export PATH="${PYENV_ROOT}/bin:${PATH}"
+fi
+
+# Get the aliases and functions
+if [[ -f ${HOME}/.bashrc ]]; then
+  source ${HOME}/.bashrc
 fi

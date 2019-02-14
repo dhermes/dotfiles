@@ -24,6 +24,7 @@
     "git.autoRepositoryDetection": false,
     "git.autofetch": false,
     "git.autorefresh": false,
+    "gitlens.codeLens.enabled": false,
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "python.formatting.blackArgs": [
         "--line-length",

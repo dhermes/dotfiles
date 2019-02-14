@@ -11,16 +11,16 @@ HOME = os.path.expanduser("~")
 SYMLINKS = (
     ("bash_logout", ".bash_logout"),
     ("bash_profile", ".bash_profile"),
-    ("profile", ".profile"),
     ("bashrc", ".bashrc"),
     ("emacs.d", ".emacs.d"),
     ("git-completion.bash", ".git-completion.bash"),
     ("gitconfig", ".gitconfig"),
+    # Optional, but will fail to link if doesn't exist).
+    ("local_profile_extensions", ".local_profile_extensions"),
+    ("profile", ".profile"),
     ("screenrc", ".screenrc"),
     ("ssh_config", os.path.join(".ssh", "config")),
     ("Xmodmap", ".Xmodmap"),
-    # Optional, but will fail to link if doesn't exist).
-    ("local_profile_extensions", ".local_profile_extensions"),
     # http://unix.stackexchange.com/q/1677
     ("xsessionrc", ".xsessionrc"),
 )
@@ -44,11 +44,14 @@ def add_symlinks():
                     src,
                 )
                 raise ValueError(msg)
-        else:
+        elif os.path.exists(src):
             msg = "Linking %r\nas %r." % (src, dst)
             print(msg)
             os.symlink(src, dst)
             links_added = True
+        else:
+            msg = "Not adding link %r,\n  %r does not exist." % (dst, src)
+            print(msg)
 
     if not links_added:
         print("No links needed to be added.")

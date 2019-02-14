@@ -1,33 +1,33 @@
 [
-  {
-    "key": "ctrl+a",
-    "command": "",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "shift+cmd+j",
-    "command": "workbench.action.terminal.focusNext"
-  },
-  {
-    "key": "shift+cmd+k",
-    "command": "workbench.action.terminal.focusPrevious"
-  },
-  {
-    "key": "shift+cmd+1",
-    "command": "workbench.action.terminal.focusAtIndex1"
-  },
-  {
-    "key": "shift+cmd+2",
-    "command": "workbench.action.terminal.focusAtIndex2"
-  }
+    {
+        "command": "",
+        "key": "ctrl+a",
+        "when": "terminalFocus"
+    },
+    {
+        "command": "",
+        "key": "ctrl+e",
+        "when": "terminalFocus"
+    },
+    {
+        "command": "",
+        "key": "ctrl+k",
+        "when": "terminalFocus"
+    },
+    {
+        "command": "workbench.action.terminal.focusNext",
+        "key": "shift+cmd+j"
+    },
+    {
+        "command": "workbench.action.terminal.focusPrevious",
+        "key": "shift+cmd+k"
+    },
+    {
+        "command": "workbench.action.terminal.focusAtIndex1",
+        "key": "shift+cmd+1"
+    },
+    {
+        "command": "workbench.action.terminal.focusAtIndex2",
+        "key": "shift+cmd+2"
+    }
 ]

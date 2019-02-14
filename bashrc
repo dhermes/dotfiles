@@ -67,11 +67,21 @@ alias mv="mv -i"
 alias rm="rm -i"
 alias rmdir="rm -ir"
 
-alias ls="ls -F --color=auto"
-alias ll="ls -alFG --color=auto"
+if [[ "$(uname)" == 'Darwin' ]]; then
+  alias ls="ls -F"
+  alias ll="ls -alFG"
+else
+  alias ls="ls -F --color=auto"
+  alias ll="ls -alFG --color=auto"
+fi
 
 alias diff="diff -Nru"
 
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
+
+# Unfortunately sometimes `bash-it` adds an empty segment to the
+# `${PROMPT_COMMAND}`. This happens on macOS when there is mixed use of
+# login and non-login shells.
+export PROMPT_COMMAND=${PROMPT_COMMAND/;;/;}
