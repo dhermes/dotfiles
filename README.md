@@ -17,14 +17,24 @@ VS Code and required installing [Menlo for Powerline][15] (I followed a
 After cloning this, create symlinks to all configuration files:
 
 ```console
-$ python create_symlinks.py
-Adding symlinks:
-----------------------------------------------------------------------
-...
+ln -s $(pwd)/bash_logout ~/.bash_logout
+ln -s $(pwd)/bash_profile ~/.bash_profile
+ln -s $(pwd)/bashrc ~/.bashrc
+ln -s $(pwd)/emacs.d ~/.emacs.d
+ln -s $(pwd)/git-completion.bash ~/.git-completion.bash
+ln -s $(pwd)/gitconfig ~/.gitconfig
+ln -s $(pwd)/profile ~/.profile
+ln -s $(pwd)/screenrc ~/.screenrc
+mkdir -p ~/.ssh  # Create if it doesn't exist
+ln -s $(pwd)/ssh_config ~/.ssh/config
+ln -s $(pwd)/Xmodmap ~/.Xmodmap
+# See: http://unix.stackexchange.com/q/1677
+ln -s $(pwd)/xsessionrc ~/.xsessionrc
+# Optional extensions used in `~/.bash_profile`
+ln -s $(pwd)/local_profile_extensions ~/.local_profile_extensions
 ```
 
-You may need to create `~/.ssh` as well. You may also want to enable
-`git is-child` and `annoy` via:
+You may also want to enable `git is-child` and `annoy` via:
 
 ```console
 ln -s $(pwd)/is-git-child.sh /usr/local/bin/is-git-child
