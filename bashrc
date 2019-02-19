@@ -6,6 +6,8 @@ case $- in
     *) return;;
 esac
 
+# NOTE: `pyenv` and `nodenv` set up is handled by `bash-it`
+
 # Path to the bash it configuration
 export BASH_IT="${HOME}/.bash_it"
 
@@ -76,10 +78,6 @@ else
 fi
 
 alias diff="diff -Nru"
-
-export NVM_DIR="${HOME}/.nvm"
-[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
-[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
 
 # Unfortunately sometimes `bash-it` adds an empty segment to the
 # `${PROMPT_COMMAND}`. This happens on macOS when there is mixed use of

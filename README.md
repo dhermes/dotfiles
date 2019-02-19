@@ -127,7 +127,8 @@ current version of VS Code.)
 
 - Install VS Code (`code`)
 - It's not uncommon for me to install the [Google Cloud SDK][1].
-- For working with `node`, install [`nvm`][4]
+- For working with `node`, install [`nodenv`][4] and [`node-build`][17] (I
+  prefer **not** to use Homebrew to install these)
 - For working with `python`, install [`pyenv`][5] and sometimes also
   [`pyenv-virtualenv`][10]
 - For working with `go`, install [`goenv`][6]
@@ -158,7 +159,7 @@ current version of VS Code.)
 [1]: https://cloud.google.com/sdk/install
 [2]: https://www.linux.org/threads/how-to-force-ssh-login-via-public-key-authentication.8726/
 [3]: https://brew.sh
-[4]: https://github.com/creationix/nvm
+[4]: https://github.com/nodenv/nodenv
 [5]: https://github.com/pyenv/pyenv
 [6]: https://github.com/syndbg/goenv
 [7]: https://github.com/rbenv/rbenv
@@ -171,3 +172,4 @@ current version of VS Code.)
 [14]: https://github.com/Bash-it/bash-it
 [15]: https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7
 [16]: https://github.com/abertsch/Menlo-for-Powerline
+[17]: https://github.com/nodenv/node-build
