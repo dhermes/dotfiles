@@ -34,6 +34,7 @@
     "python.terminal.activateEnvironment": false,
     "terminal.integrated.confirmOnExit": true,
     "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "terminal.integrated.rendererType": "dom",
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "window.zoomLevel": 1,
     "workbench.colorTheme": "Visual Studio Dark",
