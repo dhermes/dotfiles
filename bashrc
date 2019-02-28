@@ -83,3 +83,15 @@ alias diff="diff -Nru"
 # `${PROMPT_COMMAND}`. This happens on macOS when there is mixed use of
 # login and non-login shells.
 export PROMPT_COMMAND=${PROMPT_COMMAND/;;/;}
+
+# Update the prompt command with a history prefix if have not already.
+# It should probably check for string containment rather than beginning
+# with the prefix, though this brings it close to idempotent.
+# See also:
+# - https://unix.stackexchange.com/a/48113/89278
+# - https://github.com/Bash-it/bash-it/blob/master/lib/history.bash
+PROMPT_PREFIX="history -a; history -c; history -r;"
+if [[ ! $PROMPT_COMMAND =~ ${PROMPT_PREFIX} ]] ;
+then
+    export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-:}"
+fi
