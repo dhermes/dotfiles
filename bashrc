@@ -78,6 +78,7 @@ else
 fi
 
 alias diff="diff -Nru"
+alias which="type -all"
 
 # Unfortunately sometimes `bash-it` adds an empty segment to the
 # `${PROMPT_COMMAND}`. This happens on macOS when there is mixed use of
