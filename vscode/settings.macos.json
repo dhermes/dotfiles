@@ -16,15 +16,37 @@
     "editor.trimAutoWhitespace": true,
     "editor.wordWrap": "off",
     "files.autoSave": "afterDelay",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.svn": true,
+        "**/CVS": true,
+        "**/bower_components": true,
+        "**/dist": true,
+        "**/node_modules": true,
+        "**/tmp": true
+    },
     "files.hotExit": "onExitAndWindowClose",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/bower_components/**": true,
+        "**/dist/**": true,
+        "**/node_modules/**": true,
+        "**/tmp/**": true
+    },
     "git.autoRepositoryDetection": false,
     "git.autofetch": false,
     "git.autorefresh": false,
     "gitlens.codeLens.enabled": false,
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "peacock.affectStatusBar": true,
+    "peacock.affectTitleBar": false,
+    "peacock.surpriseMeOnStartup": true,
     "python.formatting.blackArgs": [
         "--line-length",
         "79"
