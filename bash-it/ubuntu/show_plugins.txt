@@ -39,7 +39,7 @@ less-pretty-cat       [x]     pygmentize instead of cat to terminal if possible
 nginx                 [ ]     manage your nginx service
 nodenv                [x]     load nodenv, if you are using it
 node                  [x]     Node.js helper functions
-nvm                   [x]     node version manager configuration
+nvm                   [ ]     node version manager configuration
 osx                   [x]     osx-specific functions
 osx-timemachine       [ ]     OS X Time Machine functions
 percol                [ ]     Search&Select history and fasd with percol
