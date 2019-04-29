@@ -15,6 +15,21 @@ export BASH_IT="${HOME}/.bash_it"
 # Leave empty to disable theming.
 # location /.bash_it/themes/
 export BASH_IT_THEME='powerline-multiline'  # Default is 'bobby'
+export POWERLINE_LEFT_PROMPT="scm python_venv ruby aws_vault cwd"
+
+# H/T: https://jonasjacek.github.io/colors/
+AWS_VAULT_THEME_PROMPT_COLOR=130
+
+function __powerline_aws_vault_prompt {
+  set +u
+  local aws_vault=""
+
+  if [[ -n "${AWS_VAULT}" ]]; then
+    aws_vault="[a] ${AWS_VAULT}"
+  fi
+
+  [[ -n "${aws_vault}" ]] && echo "${aws_vault}|${AWS_VAULT_THEME_PROMPT_COLOR}"
+}
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
