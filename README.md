@@ -108,7 +108,6 @@ $ code --list-extensions
 DotJoshJohnson.xml
 eamodio.gitlens
 esbenp.prettier-vscode
-johnpapa.vscode-peacock
 kaiwood.center-editor-window  # CTRL+L recenters editor on current line
 mostafa.change-case
 ms-python.python
