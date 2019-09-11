@@ -5,6 +5,8 @@
 osascript -e 'display notification "Lorem ipsum dolor sit amet" with title "Title"
 """
 
+from __future__ import print_function
+
 import argparse
 import json
 import subprocess
