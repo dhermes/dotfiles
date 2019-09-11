@@ -16,6 +16,7 @@ export BASH_IT="${HOME}/.bash_it"
 # location /.bash_it/themes/
 export BASH_IT_THEME='powerline-multiline'  # Default is 'bobby'
 export POWERLINE_LEFT_PROMPT="scm python_venv ruby aws_vault cwd"
+export POWERLINE_PROMPT_CHAR="$"
 
 # H/T: https://jonasjacek.github.io/colors/
 AWS_VAULT_THEME_PROMPT_COLOR=130
