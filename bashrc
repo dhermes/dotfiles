@@ -88,6 +88,7 @@ alias rmdir="rm -ir"
 if [[ "$(uname)" == 'Darwin' ]]; then
   alias ls="ls -F"
   alias ll="ls -alFG"
+  alias nproc="sysctl -n hw.logicalcpu" # As opposed to `hw.physicalcpu`
 else
   alias ls="ls -F --color=auto"
   alias ll="ls -alFG --color=auto"
