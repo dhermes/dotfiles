@@ -101,18 +101,20 @@ The `bash-it` Powerline theme has some font issues in VS Code and requires
 installing [Menlo for Powerline][15] (I followed a [blog post][15] to resolve
 the issue).
 
-My current (as of February 2019) list of extensions is
+My current (as of June 2020) list of extensions is
 
 ```console
 $ code --list-extensions
+artdiniz.quitcontrol-vscode
 DotJoshJohnson.xml
 eamodio.gitlens
 esbenp.prettier-vscode
+ExecutableBookProject.myst-highlight
+golang.Go
 kaiwood.center-editor-window  # CTRL+L recenters editor on current line
 mostafa.change-case
 ms-python.python
 ms-vscode.cpptools
-ms-vscode.Go
 ```
 
 These can be installed on a new machine via
