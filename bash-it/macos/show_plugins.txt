@@ -1,74 +1,82 @@
+$ bash-it show plugins
 Plugin              Enabled?  Description
-alias-completion      [ ]     [38;5;124m'Automatic completion of aliases'[39m
-autojump              [x]     [38;5;124m'Autojump configuration, see https://github.com/wting/autojump for more details'[39m
-aws                   [x]     [38;5;124m'AWS helper functions'[39m
-base                  [x]     [38;5;124m'miscellaneous tools'[39m
-battery               [x]     [38;5;124m'display info about your battery charge level'[39m
-boot2docker           [ ]     [38;5;124m'Helpers to get Docker setup correctly for boot2docker'[39m
-browser               [ ]     [38;5;124m'render commandline output in your browser'[39m
-chruby-auto           [ ]     [38;5;124m'load chruby + auto-switching (from /usr/local/share/chruby)'[39m
-chruby                [ ]     [38;5;124m'load chruby                  (from /usr/local/share/chruby)'[39m
-direnv                [ ]     [38;5;124m'load direnv, if you are using it: https://direnv.net/'[39m
-dirs                  [ ]     [38;5;124m'directory stack navigation'[39m
-docker-compose        [ ]     [38;5;124m'Helper functions for using docker-compose'[39m
-docker-machine        [ ]     [38;5;124m'Helpers to get Docker setup correctly for docker-machine'[39m
-docker                [ ]     [38;5;124m'Helpers to more easily work with Docker'[39m
-edit-mode-emacs       [ ]     [38;5;124m'Enable emacs editing mode'[39m
-edit-mode-vi          [ ]     [38;5;124m'Enable vi editing mode'[39m
-explain               [ ]     [38;5;124m'mankier.com explain function to explain other commands'[39m
-extract               [ ]     [38;5;124m'one command to extract them all...'[39m
-fasd                  [ ]     [38;5;124m'initialize fasd (see https://github.com/clvv/fasd)'[39m
-fzf                   [ ]     [38;5;124m'load fzf, if you are using it'[39m
-gh                    [ ]     [38;5;124m'load gh, if you are using it (DEPRECATED, use hub instead)'[39m
-gif                   [ ]     [38;5;124m'video to gif, gif to WebM helper functions'[39m
-git-subrepo           [x]     [38;5;124m'load git-subrepo if you are using it, and initialize completions'[39m
-git                   [x]     [38;5;124m'git helper functions'[39m
-go                    [x]     [38;5;124m'go environment variables & path configuration'[39m
-gradle                [ ]     [38;5;124m'Add a gw command to use gradle wrapper if present, else use system gradle'[39m
-hg                    [ ]     [38;5;124m'hg helper functions'[39m
-history               [x]     [38;5;124m'history manipulation'[39m
-hub                   [ ]     [38;5;124m'load hub, if you are using it'[39m
-java                  [ ]     [38;5;124m'Java and JAR helper functions'[39m
-javascript            [ ]     [38;5;124m'download jquery files into current project'[39m
-jekyll                [ ]     [38;5;124m'manage your jekyll site'[39m
-jenv                  [ ]     [38;5;124m'load jenv, if you are using it'[39m
-jgitflow              [ ]     [38;5;124m'Maven jgitflow build helpers'[39m
-jump                  [ ]     [38;5;124m'initialize jump (see https://github.com/gsamokovarov/jump)'[39m
-latex                 [ ]     [38;5;124m'use mactex'[39m
-less-pretty-cat       [x]     [38;5;124m'pygmentize instead of cat to terminal if possible'[39m
-nginx                 [ ]     [38;5;124m'manage your nginx service'[39m
-node                  [x]     [38;5;124m'Node.js helper functions'[39m
-nodenv                [x]     [38;5;124m'load nodenv, if you are using it'[39m
-nvm                   [ ]     [38;5;124m'node version manager configuration'[39m
-osx-timemachine       [ ]     [38;5;124m'OS X Time Machine functions'[39m
-osx                   [x]     [38;5;124m'osx-specific functions'[39m
-percol                [ ]     [38;5;124m'Search&Select history and fasd with percol'[39m
-pipsi                 [ ]     [38;5;124m'load pipsi, if you are using it'[39m
-plenv                 [ ]     [38;5;124m'plenv plugin for Perl'[39m
-postgres              [ ]     [38;5;124m'postgres helper functions'[39m
-powerline             [x]     [38;5;124m'enables powerline daemon'[39m
-projects              [ ]     [38;5;124m'add "export PROJECT_PATHS=~/projects:~/intertrode/projects" to navigate quickly to your project directories with `pj` and `pjo`'[39m
-proxy                 [ ]     [38;5;124m'Proxy Tools'[39m
-pyenv                 [x]     [38;5;124m'load pyenv, if you are using it'[39m
-python                [ ]     [38;5;124m'alias "shttp" to SimpleHTTPServer'[39m
-rails                 [ ]     [38;5;124m'Helper functions for Ruby on Rails'[39m
-rbenv                 [ ]     [38;5;124m'load rbenv, if you are using it'[39m
-ruby                  [ ]     [38;5;124m'ruby and rubygems specific functions and settings'[39m
-rvm                   [ ]     [38;5;124m'load rvm, if you are using it'[39m
-sdkman                [ ]     [38;5;124m'Load Software Development Kit Manager'[39m
-ssh                   [x]     [38;5;124m'ssh helper functions'[39m
-sshagent              [ ]     [38;5;124m'sshagent helper functions'[39m
-subversion            [ ]     [38;5;124m'svn helper functions'[39m
-textmate              [ ]     [38;5;124m'set textmate as a default editor'[39m
-tmux                  [ ]     [38;5;124m'make sure that tmux is launched in 256 color mode'[39m
-tmuxinator            [ ]     [38;5;124m'sources tmuxinator script if available'[39m
-todo                  [ ]     [38;5;124m'Todo.txt integration'[39m
-virtualenv            [x]     [38;5;124m'virtualenvwrapper and pyenv-virtualenvwrapper helper functions'[39m
-visual-studio-code    [x]     [38;5;124m'Defines the `code` executable for Visual Studio Code on OS X'[39m
-xterm                 [x]     [38;5;124m'automatically set your xterm title with host and location info'[39m
-z                     [ ]     [38;5;124m'maintains a jump-list of the directories you actually use'[39m
-[38;5;124m'                              z is DEPRECATED, use fasd instead'[39m
-z_autoenv             [ ]     [38;5;124m'source into environment when cding to directories'[39m
+alias-completion      [ ]     Automatic completion of aliases
+autojump              [x]     Autojump configuration, see https://github.com/wting/autojump for more details
+aws                   [x]     AWS helper functions
+base                  [x]     miscellaneous tools
+basher                [ ]     initializes basher, the shell package manager
+battery               [x]     display info about your battery charge level
+boot2docker           [ ]     Helpers to get Docker setup correctly for boot2docker
+browser               [ ]     render commandline output in your browser
+chruby-auto           [ ]     load chruby + auto-switching (from /usr/local/share/chruby)
+chruby                [ ]     load chruby                  (from /usr/local/share/chruby)
+cht-sh                [ ]     Simplify `curl cht.sh/<query>` to `cht.sh <query>`
+cmd-returned-notify   [ ]     Alert (BEL) when process ends after a threshold of seconds
+direnv                [ ]     load direnv, if you are using it: https://direnv.net/
+dirs                  [ ]     directory stack navigation
+docker-compose        [ ]     Helper functions for using docker-compose
+docker-machine        [ ]     Helpers to get Docker setup correctly for docker-machine
+docker                [ ]     Helpers to more easily work with Docker
+edit-mode-emacs       [ ]     Enable emacs editing mode
+edit-mode-vi          [ ]     Enable vi editing mode
+explain               [ ]     mankier.com explain function to explain other commands
+extract               [ ]     one command to extract them all...
+fasd                  [ ]     load fasd, if you are using it
+fzf                   [ ]     load fzf, if you are using it
+gif                   [ ]     video to gif, gif to WebM helper functions
+git-subrepo           [x]     load git-subrepo if you are using it, and initialize completions
+git                   [x]     git helper functions
+gitstatus             [ ]     speeds up your life by using gitstatus for git status calculations. install from https://github.com/romkatv/gitstatus
+go                    [x]     go environment variables & path configuration
+goenv                 [ ]     load goenv, if you are using it
+gradle                [ ]     Add a gw command to use gradle wrapper if present, else use system gradle
+hg                    [ ]     hg helper functions
+history-search        [ ]     search history using the prefix already entered
+history-substring-search  [ ]     search history using the substring already entered
+history               [x]     improve history handling with sane defaults
+hub                   [ ]     load hub, if you are using it
+java                  [ ]     Java and JAR helper functions
+javascript            [ ]     download jquery files into current project
+jekyll                [ ]     manage your jekyll site
+jenv                  [ ]     load jenv, if you are using it
+jgitflow              [ ]     Maven jgitflow build helpers
+jump                  [ ]     initialize jump (see https://github.com/gsamokovarov/jump). Add `export JUMP_OPTS=("--bind=z")` to change keybinding
+latex                 [ ]     use mactex
+less-pretty-cat       [x]     pygmentize instead of cat to terminal if possible
+man                   [ ]     colorize man pages for better readability
+nginx                 [ ]     manage your nginx service
+node                  [x]     Node.js helper functions
+nodenv                [x]     load nodenv, if you are using it
+nvm                   [ ]     node version manager configuration
+osx-timemachine       [ ]     OS X Time Machine functions
+osx                   [x]     osx-specific functions
+pack                  [ ]     CNB pack cli aliases
+percol                [ ]     Search&Select history with percol
+pipsi                 [ ]     load pipsi, if you are using it
+plenv                 [ ]     plenv plugin for Perl
+postgres              [ ]     postgres helper functions
+powerline             [x]     enables powerline daemon
+projects              [ ]     quickly navigate configured paths with `pj` and `pjo`. example: "export PROJECT_PATHS=~/projects:~/work/projects
+proxy                 [ ]     Proxy Tools
+pyenv                 [x]     load pyenv, if you are using it
+python                [ ]     alias "shttp" to SimpleHTTPServer
+rails                 [ ]     Helper functions for Ruby on Rails
+rbenv                 [ ]     load rbenv, if you are using it
+ruby                  [ ]     ruby and rubygems specific functions and settings
+rvm                   [ ]     load rvm, if you are using it
+sdkman                [ ]     Load Software Development Kit Manager
+ssh                   [x]     ssh helper functions
+sshagent              [ ]     sshagent helper functions
+subversion            [ ]     svn helper functions
+sudo                  [ ]     Toggle sudo at the beginning of the current or the previous command by hitting the ESC key twice
+textmate              [ ]     set textmate as a default editor
+thefuck               [ ]     Initialization for fuck
+tmux                  [ ]     make sure that tmux is launched in 256 color mode
+tmuxinator            [ ]     sources tmuxinator script if available
+todo                  [ ]     Todo.txt integration
+virtualenv            [x]     virtualenvwrapper and pyenv-virtualenvwrapper helper functions
+xterm                 [x]     automatically set your xterm title with host and location info
+z_autoenv             [ ]     source into environment when cding to directories
 
 to enable a plugin, do:
 $ bash-it enable plugin  <plugin name> [plugin name]... -or- $ bash-it enable plugin all

@@ -80,6 +80,9 @@ export SCM_CHECK=true
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
+# BEGIN: Remove after https://github.com/Bash-it/bash-it/issues/1882
+eval "$(pyenv init --path)"
+#   END: Remove after https://github.com/Bash-it/bash-it/issues/1882
 
 # Make sure we on't clobber files by mistake.
 alias cp="cp -i"
