@@ -25,3 +25,5 @@
 	conflicted = diff --name-only --diff-filter=U
 [core]
 	editor = code --wait
+[pull]
+	rebase = false
