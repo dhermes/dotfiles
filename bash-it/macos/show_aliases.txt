@@ -7,7 +7,7 @@ atom                  [ ]     Atom.io editor abbreviations
 bash-it               [ ]     Aliases for the bash-it command (these aliases are automatically included with the "general" aliases)
 bolt                  [ ]     puppet bolt aliases
 bundler               [ ]     ruby bundler
-clipboard             [x]     xclip shortcuts
+clipboard             [ ]     xclip shortcuts
 composer              [ ]     common composer abbreviations
 curl                  [ ]     Curl aliases for convenience.
 dnf                   [ ]     dnf aliases for fedora 22+ distros
