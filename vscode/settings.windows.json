@@ -1,8 +1,10 @@
 {
-    "editor.fontFamily": "'Droid Sans Mono for Powerline', Consolas, 'Courier New', monospace",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
     "[markdown]": {
-        "editor.wordWrap": "off",
-        "editor.quickSuggestions": false
+        "editor.quickSuggestions": false,
+        "editor.wordWrap": "off"
     },
     "[typescript]": {
         "editor.rulers": [
@@ -10,6 +12,7 @@
         ]
     },
     "center-editor-window.threeStateToggle": true,
+    "editor.fontFamily": "'Droid Sans Mono for Powerline', Consolas, 'Courier New', monospace",
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "editor.rulers": [
@@ -50,6 +53,10 @@
     "git.autorefresh": false,
     "gitlens.codeLens.enabled": false,
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
     "python.formatting.blackArgs": [
         "--line-length",
         "79"
@@ -64,12 +71,5 @@
     "workbench.editor.enablePreview": false,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
-    },
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
     }
 }
