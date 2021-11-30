@@ -118,3 +118,7 @@ if [[ ! $PROMPT_COMMAND =~ ${PROMPT_PREFIX} ]] ;
 then
     export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-:}"
 fi
+
+if [[ -d ${HOME}/.nodenv/bin ]]; then
+  export PATH="${HOME}/.nodenv/bin:${PATH}"
+fi

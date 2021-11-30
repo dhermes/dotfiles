@@ -36,7 +36,7 @@ if [[ -d "${HOME}/.pyenv" ]]; then
   export PATH="${PYENV_ROOT}/bin:${PATH}"
 fi
 
-if [[ -f ${HOME}/.nodenv/bin ]]; then
+if [[ -d ${HOME}/.nodenv/bin ]]; then
   export PATH="${HOME}/.nodenv/bin:${PATH}"
 fi
 
