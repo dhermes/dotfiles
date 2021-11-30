@@ -63,6 +63,7 @@
     ],
     "python.formatting.provider": "black",
     "python.terminal.activateEnvironment": false,
+    "terminal.integrated.allowChords": false,
     "terminal.integrated.confirmOnExit": "hasChildProcesses",
     "terminal.integrated.fontFamily": "Droid Sans Mono for Powerline",
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
