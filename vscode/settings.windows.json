@@ -1,0 +1,76 @@
+{
+    "editor.fontFamily": "'Droid Sans Mono for Powerline', Consolas, 'Courier New', monospace",
+    "[markdown]": {
+        "editor.wordWrap": "off",
+        "editor.quickSuggestions": false
+    },
+    "[typescript]": {
+        "editor.rulers": [
+            120
+        ]
+    },
+    "center-editor-window.threeStateToggle": true,
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        80
+    ],
+    "editor.trimAutoWhitespace": true,
+    "editor.wordWrap": "off",
+    "files.autoSave": "afterDelay",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/.classpath": true,
+        "**/.factorypath": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.svn": true,
+        "**/CVS": true,
+        "**/bower_components": true,
+        "**/dist": true,
+        "**/node_modules": true,
+        "**/tmp": true
+    },
+    "files.hotExit": "onExitAndWindowClose",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/bower_components/**": true,
+        "**/dist/**": true,
+        "**/node_modules/**": true,
+        "**/tmp/**": true
+    },
+    "git.autoRepositoryDetection": false,
+    "git.autofetch": false,
+    "git.autorefresh": false,
+    "gitlens.codeLens.enabled": false,
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "79"
+    ],
+    "python.formatting.provider": "black",
+    "python.terminal.activateEnvironment": false,
+    "terminal.integrated.confirmOnExit": true,
+    "terminal.integrated.fontFamily": "Droid Sans Mono for Powerline",
+    "terminal.integrated.rendererType": "dom",
+    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.editor.enablePreview": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
+}
