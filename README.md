@@ -63,6 +63,21 @@ ln -s \
   "${HOME}/.config/Code/User/keybindings.json"
 ```
 
+To use VS Code settings on Windows for WSL2 (from PowerShell):
+
+```
+Remove-Item $env:APPDATA\Code\User\settings.json
+New-Item `
+  -Path  $env:APPDATA\Code\User\settings.json `
+  -ItemType SymbolicLink `
+  -Value $HOME\dotfiles\vscode\settings.windows.json
+Remove-Item $env:APPDATA\Code\User\keybindings.json
+New-Item `
+  -Path  $env:APPDATA\Code\User\keybindings.json `
+  -ItemType SymbolicLink `
+  -Value $HOME\dotfiles\vscode\keybindings.windows.json
+```
+
 ## GNU Screen
 
 In order to track open GNU Screen windows, the `dotfiles/screen_sessions.json`
