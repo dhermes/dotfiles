@@ -67,10 +67,10 @@
     "terminal.integrated.confirmOnExit": "hasChildProcesses",
     "terminal.integrated.fontFamily": "Droid Sans Mono for Powerline",
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-    "window.zoomLevel": 0,
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.enablePreview": false,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
-    }
+    },
+    "window.zoomLevel": 0
 }
