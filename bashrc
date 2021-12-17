@@ -82,7 +82,7 @@ export SCM_CHECK=true
 eval "$(pyenv init --path)"
 #   END: Remove after https://github.com/Bash-it/bash-it/issues/1882
 # Load Bash It
-source "$BASH_IT"/bash_it.sh
+source "${BASH_IT}"/bash_it.sh
 
 # Make sure we on't clobber files by mistake.
 alias cp="cp -i"
@@ -121,4 +121,17 @@ fi
 
 if [[ -d ${HOME}/.nodenv/bin ]]; then
   export PATH="${HOME}/.nodenv/bin:${PATH}"
+fi
+
+# Add SSH keys to Keychain on WSL2
+# H/T: https://esc.sh/blog/ssh-agent-windows10-wsl2/
+if [[ $(uname -r) == *microsoft-standard-WSL2 ]] ;
+then
+  # sudo apt-get install keychain
+  if test -f /usr/bin/keychain ;
+  then
+    /usr/bin/keychain --quiet --nogui ~/.ssh/github_rsa
+    /usr/bin/keychain --quiet --nogui ~/.ssh/id_ed25519
+    source ~/.keychain/"$(hostname)-sh"
+  fi
 fi
