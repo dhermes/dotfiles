@@ -137,4 +137,5 @@ then
 fi
 
 # Default history size (500) is too short
-export HISTFILESIZE=5000
+export HISTSIZE=20000
+export HISTFILESIZE=20000
