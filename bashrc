@@ -135,3 +135,6 @@ then
     source ~/.keychain/"$(hostname)-sh"
   fi
 fi
+
+# Default history size (500) is too short
+export HISTFILESIZE=5000
