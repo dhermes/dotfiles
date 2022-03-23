@@ -139,3 +139,7 @@ fi
 # Default history size (500) is too short
 export HISTSIZE=20000
 export HISTFILESIZE=20000
+
+if [[ -d "${HOME}/go/bin" ]]; then
+  export PATH="${PATH}:${HOME}/go/bin"
+fi
