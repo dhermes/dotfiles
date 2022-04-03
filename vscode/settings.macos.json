@@ -3,17 +3,13 @@
     "editor.wordWrap": "off"
   },
   "[typescript]": {
-    "editor.rulers": [
-      120
-    ]
+    "editor.rulers": [120]
   },
   "breadcrumbs.enabled": false,
   "center-editor-window.threeStateToggle": true,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "editor.trimAutoWhitespace": true,
   "editor.wordWrap": "off",
   "files.autoSave": "afterDelay",
@@ -53,10 +49,7 @@
   "peacock.affectStatusBar": true,
   "peacock.affectTitleBar": false,
   "peacock.surpriseMeOnStartup": true,
-  "python.formatting.blackArgs": [
-    "--line-length",
-    "79"
-  ],
+  "python.formatting.blackArgs": ["--line-length", "79"],
   "python.formatting.provider": "black",
   "python.pythonPath": "/Users/dhermes/.pyenv/shims/python",
   "python.terminal.activateEnvironment": false,
@@ -66,5 +59,6 @@
   "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Visual Studio Dark",
-  "workbench.editor.enablePreview": false
+  "workbench.editor.enablePreview": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false
 }
