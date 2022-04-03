@@ -2,6 +2,6 @@ Host *
   IgnoreUnknown UseKeychain
   AddKeysToAgent yes
   UseKeychain yes
-  IdentityFile ~/.ssh/github_rsa
+  IdentityFile ~/.ssh/github_ed25519
 
 ForwardAgent yes
