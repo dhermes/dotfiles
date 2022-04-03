@@ -1,82 +1,86 @@
 $ bash-it show plugins
-Plugin              Enabled?  Description
-alias-completion      [ ]     Automatic completion of aliases
-autojump              [x]     Autojump configuration, see https://github.com/wting/autojump for more details
-aws                   [x]     AWS helper functions
-base                  [x]     miscellaneous tools
-basher                [ ]     initializes basher, the shell package manager
-battery               [x]     display info about your battery charge level
-boot2docker           [ ]     Helpers to get Docker setup correctly for boot2docker
-browser               [ ]     render commandline output in your browser
-chruby-auto           [ ]     load chruby + auto-switching (from /usr/local/share/chruby)
-chruby                [ ]     load chruby                  (from /usr/local/share/chruby)
-cht-sh                [ ]     Simplify `curl cht.sh/<query>` to `cht.sh <query>`
-cmd-returned-notify   [ ]     Alert (BEL) when process ends after a threshold of seconds
-direnv                [ ]     load direnv, if you are using it: https://direnv.net/
-dirs                  [ ]     directory stack navigation
-docker-compose        [ ]     Helper functions for using docker-compose
-docker-machine        [ ]     Helpers to get Docker setup correctly for docker-machine
-docker                [ ]     Helpers to more easily work with Docker
-edit-mode-emacs       [ ]     Enable emacs editing mode
-edit-mode-vi          [ ]     Enable vi editing mode
-explain               [ ]     mankier.com explain function to explain other commands
-extract               [ ]     one command to extract them all...
-fasd                  [ ]     load fasd, if you are using it
-fzf                   [ ]     load fzf, if you are using it
-gif                   [ ]     video to gif, gif to WebM helper functions
-git-subrepo           [x]     load git-subrepo if you are using it, and initialize completions
-git                   [x]     git helper functions
-gitstatus             [ ]     speeds up your life by using gitstatus for git status calculations. install from https://github.com/romkatv/gitstatus
-go                    [x]     go environment variables & path configuration
-goenv                 [ ]     load goenv, if you are using it
-gradle                [ ]     Add a gw command to use gradle wrapper if present, else use system gradle
-hg                    [ ]     hg helper functions
-history-search        [ ]     search history using the prefix already entered
-history-substring-search  [ ]     search history using the substring already entered
-history               [x]     improve history handling with sane defaults
-hub                   [ ]     load hub, if you are using it
-java                  [ ]     Java and JAR helper functions
-javascript            [ ]     download jquery files into current project
-jekyll                [ ]     manage your jekyll site
-jenv                  [ ]     load jenv, if you are using it
-jgitflow              [ ]     Maven jgitflow build helpers
-jump                  [ ]     initialize jump (see https://github.com/gsamokovarov/jump). Add `export JUMP_OPTS=("--bind=z")` to change keybinding
-latex                 [ ]     use mactex
-less-pretty-cat       [x]     pygmentize instead of cat to terminal if possible
-man                   [ ]     colorize man pages for better readability
-nginx                 [ ]     manage your nginx service
-node                  [x]     Node.js helper functions
-nodenv                [x]     load nodenv, if you are using it
-nvm                   [ ]     node version manager configuration
-osx-timemachine       [ ]     OS X Time Machine functions
-osx                   [x]     osx-specific functions
-pack                  [ ]     CNB pack cli aliases
-percol                [ ]     Search&Select history with percol
-pipsi                 [ ]     load pipsi, if you are using it
-plenv                 [ ]     plenv plugin for Perl
-postgres              [ ]     postgres helper functions
-powerline             [x]     enables powerline daemon
-projects              [ ]     quickly navigate configured paths with `pj` and `pjo`. example: "export PROJECT_PATHS=~/projects:~/work/projects
-proxy                 [ ]     Proxy Tools
-pyenv                 [x]     load pyenv, if you are using it
-python                [ ]     alias "shttp" to SimpleHTTPServer
-rails                 [ ]     Helper functions for Ruby on Rails
-rbenv                 [ ]     load rbenv, if you are using it
-ruby                  [ ]     ruby and rubygems specific functions and settings
-rvm                   [ ]     load rvm, if you are using it
-sdkman                [ ]     Load Software Development Kit Manager
-ssh                   [x]     ssh helper functions
-sshagent              [ ]     sshagent helper functions
-subversion            [ ]     svn helper functions
-sudo                  [ ]     Toggle sudo at the beginning of the current or the previous command by hitting the ESC key twice
-textmate              [ ]     set textmate as a default editor
-thefuck               [ ]     Initialization for fuck
-tmux                  [ ]     make sure that tmux is launched in 256 color mode
-tmuxinator            [ ]     sources tmuxinator script if available
-todo                  [ ]     Todo.txt integration
-virtualenv            [x]     virtualenvwrapper and pyenv-virtualenvwrapper helper functions
-xterm                 [x]     automatically set your xterm title with host and location info
-z_autoenv             [ ]     source into environment when cding to directories
+Plugin               Enabled?   Description
+alias-completion     [ ]
+autojump             [x]        Autojump configuration, see https://github.com/wting/autojump for more details
+aws                  [x]        AWS helper functions
+base                 [x]        miscellaneous tools
+basher               [ ]        initializes basher, the shell package manager
+battery              [x]        display info about your battery charge level
+blesh                [ ]        load ble.sh, the Bash line editor!
+boot2docker          [ ]        Helpers to get Docker setup correctly for boot2docker
+browser              [ ]        render commandline output in your browser
+chruby-auto          [ ]        load chruby + auto-switching (from /usr/local/share/chruby)
+chruby               [ ]        load chruby                  (from /usr/local/share/chruby)
+cht-sh               [ ]        Simplify `curl cht.sh/<query>` to `cht.sh <query>`
+cmd-returned-notify  [ ]        Alert (BEL) when process ends after a threshold of seconds
+colors               [ ]
+direnv               [ ]        load direnv, if you are using it: https://direnv.net/
+dirs                 [ ]        directory stack navigation
+docker-compose       [ ]        Helper functions for using docker-compose
+docker-machine       [ ]        Helpers to get Docker setup correctly for docker-machine
+docker               [ ]        Helpers to more easily work with Docker
+edit-mode-emacs      [ ]        Enable emacs editing mode
+edit-mode-vi         [ ]        Enable vi editing mode
+explain              [ ]        mankier.com explain function to explain other commands
+extract              [ ]        one command to extract them all...
+fasd                 [ ]        load fasd, if you are using it
+fzf                  [ ]        load fzf, if you are using it
+gif                  [ ]        video to gif, gif to WebM helper functions
+git-subrepo          [x]        load git-subrepo if you are using it, and initialize completions
+git                  [x]        git helper functions
+gitstatus            [ ]        speeds up your life by using gitstatus for git status calculations. install from https://github.com/romkatv/gitstatus
+go                   [x]        go environment variables & path configuration
+goenv                [ ]        load goenv, if you are using it
+gradle               [ ]        Add a gw command to use gradle wrapper if present, else use system gradle
+hg                   [ ]        hg helper functions
+history-eternal      [ ]        eternal bash history
+history-search       [ ]        search history using the prefix already entered
+history-substring-search [ ]        search history using the substring already entered
+history              [x]        improve history handling with sane defaults
+hub                  [ ]        load hub, if you are using it
+java                 [ ]        Java and JAR helper functions
+javascript           [ ]        download jquery files into current project
+jekyll               [ ]        manage your jekyll site
+jenv                 [ ]        load jenv, if you are using it
+jgitflow             [ ]        Maven jgitflow build helpers
+jump                 [ ]        initialize jump (see https://github.com/gsamokovarov/jump). Add `export JUMP_OPTS=("--bind=z")` to change keybinding
+latex                [ ]        add MacTeX to PATH
+less-pretty-cat      [x]        pygmentize instead of cat to terminal if possible
+man                  [ ]        colorize man pages for better readability
+nginx                [ ]        manage your nginx service
+node                 [x]        Node.js helper functions
+nodenv               [x]        load nodenv, if you are using it
+nvm                  [ ]        node version manager configuration
+osx-timemachine      [ ]        OS X Time Machine functions
+osx                  [x]        osx-specific functions
+pack                 [ ]        CNB pack cli aliases
+percol               [ ]        Search&Select history with percol
+pipsi                [ ]        load pipsi, if you are using it
+plenv                [ ]        plenv plugin for Perl
+postgres             [ ]        postgres helper functions
+powerline            [x]        enables powerline daemon
+projects             [ ]        quickly navigate configured project paths
+proxy                [ ]        Proxy Tools
+pyenv                [x]        load pyenv, if you are using it
+python               [ ]        alias "shttp" to SimpleHTTPServer
+rails                [ ]        Helper functions for Ruby on Rails
+rbenv                [ ]        load rbenv, if you are using it
+ruby                 [ ]        ruby and rubygems specific functions and settings
+rvm                  [ ]        load rvm, if you are using it
+sdkman               [ ]        Load Software Development Kit Manager
+ssh                  [x]        ssh helper functions
+sshagent             [ ]        sshagent helper functions
+subversion           [ ]        svn helper functions
+sudo                 [ ]        Toggle sudo at the beginning of the current or the previous command by hitting the ESC key twice
+textmate             [ ]        set textmate as a default editor
+thefuck              [ ]        Initialization for fuck
+tmux                 [ ]        make sure that tmux is launched in 256 color mode
+tmuxinator           [ ]        sources tmuxinator script if available
+todo                 [ ]        Todo.txt integration
+virtualenv           [x]        virtualenvwrapper and pyenv-virtualenvwrapper helper functions
+xterm                [x]        automatically set your xterm title with host and location info
+z_autoenv            [ ]        source into environment when cding to directories
+zoxide               [ ]        zoxide is a smarter cd command for your shell.
 
 to enable a plugin, do:
 $ bash-it enable plugin  <plugin name> [plugin name]... -or- $ bash-it enable plugin all

@@ -1,5 +1,5 @@
 $ bash-it version
-Version type: dev
-Current git SHA: 8c47706 on 2021-05-15T18:58:15+03:00
-Commit info: https://github.com/Bash-it/bash-it/commit/8c47706
-Compare to latest: https://github.com/Bash-it/bash-it/compare/8c47706...master
+Version type: stable
+Current tag: v3.0.2
+Tag information: https://github.com/Bash-it/bash-it/releases/tag/v3.0.2
+Compare to latest: https://github.com/Bash-it/bash-it/compare/v3.0.2...master

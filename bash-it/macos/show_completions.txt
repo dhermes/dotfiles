@@ -1,88 +1,91 @@
 $ bash-it show completions
-Completion          Enabled?  Description
-apm                   [ ]     apm completion
-awless                [ ]     
-awscli                [x]     
-bash-it               [x]     
-brew                  [x]     brew completion
-bundler               [ ]     
-capistrano            [ ]     
-cargo                 [ ]     
-composer              [ ]     composer completion
-conda                 [x]     conda completion
-consul                [ ]     Hashicorp consul completion
-crystal               [ ]     
-defaults              [x]     
-dirs                  [ ]     
-django                [ ]     django completion
-dmidecode             [ ]     
-docker-compose        [ ]     
-docker-machine        [ ]     
-docker                [x]     docker completion
-drush                 [ ]     
-export                [x]     
-fabric                [ ]     
-flutter               [ ]     
-gcloud                [ ]     Google Cloud SDK completion
-gem                   [ ]     gem completion
-git                   [x]     
-git_flow              [ ]     
-git_flow_avh          [ ]     
-github-cli            [ ]     GitHub CLI completion
-go                    [x]     completion for go command using gocomplete
-gradle                [ ]     
-grunt                 [ ]     
-gulp                  [ ]     
-helm                  [ ]     helm (Kubernetes Package Manager) completion
-homesick              [ ]     
-hub                   [ ]     
-invoke                [ ]     
-jboss5                [ ]     jboss5 completion
-jboss7                [ ]     jboss7 completion
-jungle                [ ]     jungle(AWS cli tool) completion
-kind                  [ ]     
-knife                 [ ]     
-kontena               [ ]     
-kubectl               [ ]     kubectl (Kubernetes CLI) completion
-laravel               [ ]     
-lerna                 [ ]     lerna(javascript project manager tool) completion
-makefile              [x]     
-maven                 [ ]     
-minikube              [ ]     
-minishift             [ ]     
-ng                    [ ]     
-ngrok                 [ ]     
-notify-send           [ ]     
-npm                   [x]     npm (Node Package Manager) completion
-nvm                   [ ]     
-openshift             [ ]     
-packer                [ ]     packer completion
-pew                   [ ]     
-pip                   [x]     
-pip3                  [x]     
-pipenv                [x]     
-pipx                  [ ]     
-projects              [ ]     
-rake                  [ ]     
-rustup                [ ]     
-rvm                   [ ]     
-salt                  [ ]     
-sdkman                [ ]     
-sqlmap                [ ]     
-ssh                   [x]     
-svn                   [ ]     
-system                [x]     
-terraform             [ ]     
-test_kitchen          [ ]     
-tmux                  [ ]     
-todo                  [ ]     
-travis                [ ]     
-vagrant               [ ]     
-vault                 [ ]     vault completion
-virsh                 [ ]     
-virtualbox            [ ]     
-vuejs                 [ ]     
-wpscan                [ ]     
+Completion           Enabled?   Description
+aliases              [x]
+apm                  [ ]        apm completion
+awless               [ ]
+awscli               [x]
+bash-it              [x]
+brew                 [x]        brew completion
+bundler              [ ]
+capistrano           [ ]
+cargo                [ ]
+composer             [ ]        composer completion
+conda                [x]        conda completion
+consul               [ ]        Hashicorp consul completion
+crystal              [ ]
+dart                 [ ]
+defaults             [x]
+dirs                 [ ]
+django               [ ]        django completion
+dmidecode            [ ]
+docker-compose       [ ]
+docker-machine       [ ]
+docker               [x]        docker completion
+dotnet               [ ]        bash parameter completion for the dotnet CLI
+drush                [ ]
+export               [x]
+fabric               [ ]
+flutter              [ ]
+gcloud               [ ]        Google Cloud SDK completion
+gem                  [ ]        gem completion
+git                  [x]
+git_flow             [ ]
+git_flow_avh         [ ]
+github-cli           [ ]        GitHub CLI completion
+go                   [x]        completion for go command using gocomplete
+gradle               [ ]
+grunt                [ ]
+gulp                 [ ]
+helm                 [ ]        helm (Kubernetes Package Manager) completion
+homesick             [ ]
+hub                  [ ]
+invoke               [ ]
+jboss5               [ ]        jboss5 completion
+jboss7               [ ]        jboss7 completion
+jungle               [ ]        jungle(AWS cli tool) completion
+kind                 [ ]
+knife                [ ]
+kontena              [ ]
+kubectl              [ ]        kubectl (Kubernetes CLI) completion
+laravel              [ ]
+lerna                [ ]        lerna(javascript project manager tool) completion
+makefile             [x]
+maven                [ ]
+minikube             [ ]
+minishift            [ ]
+ng                   [ ]
+ngrok                [ ]
+notify-send          [ ]
+npm                  [x]        npm (Node Package Manager) completion
+nvm                  [ ]
+openshift            [ ]
+packer               [ ]        packer completion
+pew                  [ ]
+pip                  [x]
+pip3                 [x]
+pipenv               [x]
+pipx                 [ ]
+projects             [ ]
+rake                 [ ]
+rustup               [ ]
+rvm                  [ ]
+salt                 [ ]
+sdkman               [ ]
+sqlmap               [ ]
+ssh                  [x]
+svn                  [ ]
+system               [x]
+terraform            [ ]
+test_kitchen         [ ]
+tmux                 [ ]
+todo                 [ ]
+travis               [ ]
+vagrant              [ ]
+vault                [ ]        vault completion
+virsh                [ ]
+virtualbox           [ ]
+vuejs                [ ]
+wpscan               [ ]
 
 to enable a completion, do:
 $ bash-it enable completion  <completion name> [completion name]... -or- $ bash-it enable completion all

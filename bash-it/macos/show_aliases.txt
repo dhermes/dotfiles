@@ -1,52 +1,52 @@
 $ bash-it show aliases
-Alias               Enabled?  Description
-ag                    [ ]     the silver searcher (ag) aliases
-ansible               [ ]     ansible abbreviations
-apt                   [ ]     Apt and dpkg aliases for Ubuntu and Debian distros.
-atom                  [ ]     Atom.io editor abbreviations
-bash-it               [ ]     Aliases for the bash-it command (these aliases are automatically included with the "general" aliases)
-bolt                  [ ]     puppet bolt aliases
-bundler               [ ]     ruby bundler
-clipboard             [ ]     xclip shortcuts
-composer              [ ]     common composer abbreviations
-curl                  [ ]     Curl aliases for convenience.
-dnf                   [ ]     dnf aliases for fedora 22+ distros
-docker-compose        [ ]     docker-compose abbreviations
-docker                [ ]     docker abbreviations
-emacs                 [ ]     emacs editor
-fuck                  [ ]     fuck/please to retry last command with sudo
-general               [x]     general aliases
-git                   [ ]     common git abbreviations
-gitsvn                [ ]     common git-svn abbreviations
-heroku                [ ]     heroku task abbreviations
-hg                    [ ]     mercurial abbreviations
-homebrew-cask         [ ]     homebrew-cask abbreviations
-homebrew              [ ]     homebrew abbreviations
-homesick              [ ]     homesick aliases
-jitsu                 [ ]     jitsu task abbreviations
-kubectl               [ ]     kubectl aliases
-laravel               [ ]     laravel artisan abbreviations
-maven                 [ ]     maven abbreviations
-msys2                 [ ]     MSYS2 aliases
-node                  [ ]     the Node.js environment aliases
-npm                   [x]     common npm abbreviations
-osx                   [x]     osx-specific aliases
-phoenix               [ ]     phoenix abbreviations
-puppet                [ ]     puppet aliases
-pyrocms               [ ]     pyrocms abbreviations
-rails                 [ ]     rails abbreviations
-svn                   [ ]     common svn abbreviations
-systemd               [ ]     systemd service
-terraform             [ ]     Terraform abbreviations
-terragrunt            [ ]     Terragrunt abbreviations
-textmate              [ ]     textmate abbreviations
-tmux                  [ ]     Tmux terminal multiplexer
-todo.txt-cli          [ ]     todo.txt-cli abbreviations
-uuidgen               [ ]     uuidgen aliases
-vagrant               [ ]     vagrant aliases
-vault                 [ ]     vault aliases
-vim                   [ ]     vim abbreviations
-yarn                  [ ]     yarn package manager aliases
+Alias                Enabled?   Description
+ag                   [ ]        the silver searcher (ag) aliases
+ansible              [ ]        ansible abbreviations
+apt                  [ ]        Apt and dpkg aliases for Ubuntu and Debian distros.
+atom                 [ ]        Atom.io editor abbreviations
+bash-it              [ ]        Aliases for the bash-it command (these aliases are automatically included with the "general" aliases)
+bolt                 [ ]        puppet bolt aliases
+bundler              [ ]        ruby bundler
+clipboard            [ ]        xclip shortcuts
+composer             [ ]        common composer abbreviations
+curl                 [ ]        Curl aliases for convenience.
+dnf                  [ ]        dnf aliases for fedora 22+ distros
+docker-compose       [ ]        docker-compose abbreviations
+docker               [ ]        docker abbreviations
+emacs                [ ]        emacs editor
+fuck                 [ ]        fuck/please to retry last command with sudo
+general              [x]        general aliases
+git                  [ ]        common git abbreviations
+gitsvn               [ ]        common git-svn abbreviations
+heroku               [ ]        heroku task abbreviations
+hg                   [ ]        mercurial abbreviations
+homebrew-cask        [ ]        Some aliases for Homebrew Cask
+homebrew             [ ]        Some aliases for Homebrew
+homesick             [ ]        homesick aliases
+jitsu                [ ]        jitsu task abbreviations
+kubectl              [ ]        kubectl aliases
+laravel              [ ]        laravel artisan abbreviations
+maven                [ ]        maven abbreviations
+msys2                [ ]        MSYS2 aliases
+node                 [ ]        the Node.js environment aliases
+npm                  [x]        common npm abbreviations
+osx                  [x]        osx-specific aliases
+phoenix              [ ]        phoenix abbreviations
+puppet               [ ]        puppet aliases
+pyrocms              [ ]        pyrocms abbreviations
+rails                [ ]        rails abbreviations
+svn                  [ ]        common svn abbreviations
+systemd              [ ]        systemd service
+terraform            [ ]        Aliases for Terraform and Terragrunt
+terragrunt           [ ]        Aliases for Terraform and Terragrunt
+textmate             [ ]        textmate abbreviations
+tmux                 [ ]        Tmux terminal multiplexer
+todo.txt-cli         [ ]        todo.txt-cli abbreviations
+uuidgen              [ ]        uuidgen aliases
+vagrant              [ ]        vagrant aliases
+vault                [ ]        vault aliases
+vim                  [ ]        vim abbreviations
+yarn                 [ ]        yarn package manager aliases
 
 to enable an alias, do:
 $ bash-it enable alias  <alias name> [alias name]... -or- $ bash-it enable alias all
