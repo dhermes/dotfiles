@@ -77,7 +77,7 @@ thefuck              [ ]        Initialization for fuck
 tmux                 [ ]        make sure that tmux is launched in 256 color mode
 tmuxinator           [ ]        sources tmuxinator script if available
 todo                 [ ]        Todo.txt integration
-virtualenv           [x]        virtualenvwrapper and pyenv-virtualenvwrapper helper functions
+virtualenv           [ ]        virtualenvwrapper and pyenv-virtualenvwrapper helper functions
 xterm                [x]        automatically set your xterm title with host and location info
 z_autoenv            [ ]        source into environment when cding to directories
 zoxide               [ ]        zoxide is a smarter cd command for your shell.
