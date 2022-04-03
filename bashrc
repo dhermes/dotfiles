@@ -78,9 +78,6 @@ export SCM_CHECK=true
 # Uncomment this to make Bash-it create alias reload.
 # export BASH_IT_RELOAD_LEGACY=1
 
-# BEGIN: Remove after https://github.com/Bash-it/bash-it/issues/1882
-eval "$(pyenv init --path)"
-#   END: Remove after https://github.com/Bash-it/bash-it/issues/1882
 # Load Bash It
 source "${BASH_IT}"/bash_it.sh
 
