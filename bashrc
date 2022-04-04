@@ -140,3 +140,7 @@ export HISTFILESIZE=20000
 if [[ -d "${HOME}/go/bin" ]]; then
   export PATH="${PATH}:${HOME}/go/bin"
 fi
+
+if [[ -d "/opt/homebrew/bin" ]]; then
+  export PATH="${PATH}:/opt/homebrew/bin"
+fi
