@@ -125,11 +125,21 @@ DotJoshJohnson.xml
 eamodio.gitlens
 esbenp.prettier-vscode
 ExecutableBookProject.myst-highlight
-golang.Go
+golang.go
+hashicorp.terraform
 kaiwood.center-editor-window  # CTRL+L recenters editor on current line
+marvhen.reflow-markdown
 mostafa.change-case
+ms-azuretools.vscode-docker
 ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+ms-vscode-remote.remote-containers
 ms-vscode.cpptools
+stkb.rewrap
+tldraw-org.tldraw-vscode
 ```
 
 These can be installed on a new machine via
