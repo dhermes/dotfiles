@@ -144,3 +144,5 @@ fi
 if [[ -d "/opt/homebrew/bin" ]]; then
   export PATH="${PATH}:/opt/homebrew/bin"
 fi
+
+export AWS_VAULT_PROMPT=ykman
