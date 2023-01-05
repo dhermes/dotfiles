@@ -32,6 +32,12 @@ ln -s $(pwd)/xsessionrc ~/.xsessionrc
 ln -s $(pwd)/local_profile_extensions ~/.local_profile_extensions
 ```
 
+On macOS
+
+```
+[sudo] cp tailscale.sh /usr/local/bin/tailscale
+```
+
 You may also want to enable `git is-child` and `annoy` via:
 
 ```console
