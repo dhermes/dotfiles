@@ -3,13 +3,17 @@
     "editor.wordWrap": "off"
   },
   "[typescript]": {
-    "editor.rulers": [120]
+    "editor.rulers": [
+      120
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "breadcrumbs.enabled": false,
   "center-editor-window.threeStateToggle": true,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
-  "editor.rulers": [80],
+  "editor.rulers": [
+    80
+  ],
   "editor.trimAutoWhitespace": true,
   "editor.wordWrap": "off",
   "files.autoSave": "afterDelay",
@@ -49,7 +53,7 @@
   "peacock.affectStatusBar": true,
   "peacock.affectTitleBar": false,
   "peacock.surpriseMeOnStartup": true,
-  "python.formatting.blackArgs": ["--line-length", "79"],
+  "python.formatting.blackArgs": [],
   "python.formatting.provider": "black",
   "python.pythonPath": "/Users/dhermes/.pyenv/shims/python",
   "python.terminal.activateEnvironment": false,
@@ -57,8 +61,33 @@
   "terminal.integrated.fontFamily": "Menlo for Powerline",
   "terminal.integrated.rendererType": "dom",
   "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-  "window.zoomLevel": 1,
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.editor.enablePreview": false,
-  "terminal.integrated.enableMultiLinePasteWarning": false
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "breadcrumbs.enabled": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 1
 }
