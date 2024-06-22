@@ -127,21 +127,26 @@ My current (as of January 2023) list of extensions is
 ```console
 $ code --list-extensions
 artdiniz.quitcontrol-vscode
-DotJoshJohnson.xml
+dotjoshjohnson.xml
 eamodio.gitlens
 esbenp.prettier-vscode
-ExecutableBookProject.myst-highlight
+executablebookproject.myst-highlight
+github.copilot
+github.copilot-chat
 golang.go
-GraphQL.vscode-graphql
-GraphQL.vscode-graphql-execution
-GraphQL.vscode-graphql-syntax
+graphql.vscode-graphql
+graphql.vscode-graphql-execution
+graphql.vscode-graphql-syntax
 hashicorp.terraform
 janisdd.vscode-edit-csv
-kaiwood.center-editor-window  # CTRL+L recenters editor on current line
+kaiwood.center-editor-window
+ktnrg45.vscode-cython
 marvhen.reflow-markdown
 mostafa.change-case
 ms-azuretools.vscode-docker
 ms-ossdata.vscode-postgresql
+ms-python.black-formatter
+ms-python.debugpy
 ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
@@ -153,8 +158,11 @@ ms-toolsai.vscode-jupyter-slideshow
 ms-vscode-remote.remote-containers
 ms-vscode.cpptools
 ms-vscode.makefile-tools
+ms-vsliveshare.vsliveshare
 stkb.rewrap
+tamasfe.even-better-toml
 tldraw-org.tldraw-vscode
+yoavbls.pretty-ts-errors
 ```
 
 These can be installed on a new machine via

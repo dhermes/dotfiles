@@ -54,7 +54,7 @@
   "peacock.affectTitleBar": false,
   "peacock.surpriseMeOnStartup": true,
   "python.formatting.blackArgs": [],
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "python.pythonPath": "/Users/dhermes/.pyenv/shims/python",
   "python.terminal.activateEnvironment": false,
   "terminal.integrated.confirmOnExit": true,
@@ -89,5 +89,13 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 10,
+  "editor.accessibilitySupport": "off",
+  "window.commandCenter": false,
   "window.zoomLevel": 1
 }
