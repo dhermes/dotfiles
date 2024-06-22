@@ -186,6 +186,7 @@ current version of VS Code.)
 - For working with `ruby`, install [`rbenv`][7]
 - I occasionally like to use LaTeX for typesetting, so sometimes will
   install it on a new machine. I will also sometimes install `pdftk`.
+- I use the [Rectangle][18] window manager on macOS
 
 ### macOS
 
@@ -224,3 +225,4 @@ current version of VS Code.)
 [15]: https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7
 [16]: https://github.com/abertsch/Menlo-for-Powerline
 [17]: https://github.com/nodenv/node-build
+[18]: https://rectangleapp.com/
