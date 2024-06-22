@@ -139,7 +139,7 @@ graphql.vscode-graphql-execution
 graphql.vscode-graphql-syntax
 hashicorp.terraform
 janisdd.vscode-edit-csv
-kaiwood.center-editor-window
+kaiwood.center-editor-window  # CTRL+L recenters editor on current line
 ktnrg45.vscode-cython
 marvhen.reflow-markdown
 mostafa.change-case
