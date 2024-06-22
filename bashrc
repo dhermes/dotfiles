@@ -142,7 +142,7 @@ if [[ -d "${HOME}/go/bin" ]]; then
 fi
 
 if [[ -d "/opt/homebrew/bin" ]]; then
-  export PATH="${PATH}:/opt/homebrew/bin"
+  export PATH="/opt/homebrew/bin:${PATH}"
 fi
 
 export AWS_VAULT_PROMPT=ykman
