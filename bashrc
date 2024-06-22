@@ -145,4 +145,5 @@ if [[ -d "/opt/homebrew/bin" ]]; then
   export PATH="/opt/homebrew/bin:${PATH}"
 fi
 
+export YKMAN_OATH_CREDENTIAL_NAME='...' # E.g. 'AWS IAM:me'
 export AWS_VAULT_PROMPT=ykman
