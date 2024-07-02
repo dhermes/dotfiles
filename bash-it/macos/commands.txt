@@ -37,5 +37,4 @@ $ bash-it enable plugin osx
 $ bash-it enable plugin powerline
 $ bash-it enable plugin pyenv
 $ bash-it enable plugin ssh
-$ bash-it enable plugin virtualenv
 $ bash-it enable plugin xterm
