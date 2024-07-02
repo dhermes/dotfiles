@@ -86,6 +86,7 @@ virsh                [ ]
 virtualbox           [ ]
 vuejs                [ ]
 wpscan               [ ]
+yarn                 [ ]        yarn cli completions
 
 to enable a completion, do:
 $ bash-it enable completion  <completion name> [completion name]... -or- $ bash-it enable completion all
